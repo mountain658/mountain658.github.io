@@ -1,0 +1,8 @@
+javascript:
+document.body.innerHTML += '<div id="mydiv"> <div id="mydivheader">Drag Me To Move <br> <button onclick="shut()">Close</button></div><iframe src="https://mountain-game.human456.repl.co" width="131px" height="66px" id="MounatainGame"></iframe></div>';
+  document.getElementById("MounatainGame").style.zIndex = "10000";
+var script = document.createElement('script');
+script.textContent = 'function dragElement(n){var t=0,o=0,u=0,l=0;function e(e){(e=e||window.event).preventDefault(),u=e.clientX,l=e.clientY,document.onmouseup=m,document.onmousemove=d}function d(e){(e=e||window.event).preventDefault(),t=u-e.clientX,o=l-e.clientY,u=e.clientX,l=e.clientY,n.style.top=n.offsetTop-o+"px",n.style.left=n.offsetLeft-t+"px"}function m(){document.onmouseup=null,document.onmousemove=null}document.getElementById(n.id+"header")?document.getElementById(n.id+"header").onmousedown=e:n.onmousedown=e}function shut(){document.getElementById("mydiv").style.visibility = "hidden";}dragElement(document.getElementById("mydiv"));'; 
+document.head.appendChild(script);
+
+var style = document.createElement('style'), styleContent = document.createTextNode('#mydiv{position: absolute !important; z-index: 9 !important; background-color: #f1f1f1 !important; text-align: center !important; border: 1px solid #d3d3d3 !important;}#mydivheader{padding: 10px !important; cursor: move !important; z-index: 10 !important; background-color: #2196F3 !important; color: #fff !important;}iframe {resize:both;}#MounatainGame{position:relative;top:0;right:0}'); style.appendChild(styleContent ); var caput = document.getElementsByTagName('head'); caput[0].appendChild(style); 

@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html>
+    <head>
+      <title>Mountain Game Advanced Page</title>
+    <link rel="shortcut icon"
+    type="image/jpg" href=""
+    />
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+.accordion {
+  background-color: #eee;
+  color: #444;
+  cursor: pointer;
+  padding: 18px;
+  width: 100%;
+  border: none;
+  text-align: left;
+  outline: none;
+  font-size: 15px;
+  transition: 0.4s;
+}
+
+.active, .accordion:hover {
+  background-color: #ccc;
+}
+
+.accordion:after {
+  content: '\002B';
+  color: #777;
+  font-weight: bold;
+  float: right;
+  margin-left: 5px;
+}
+
+.active:after {
+  content: "\2212";
+}
+
+.panel {
+  padding: 0 18px;
+  background-color: white;
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.2s ease-out;
+}
+</style>
+<script>
+
+</script>
+</head>
+<body>
+<a href="https://mountain-game.human456.repl.co"
+style="position:absolute;left:0px;top: 0px;" >Back To Home Page</a>
+ <h1>Mountain Game Advanced Page</h1>
+ <p>Below are the features to customize my site to your liking.</p>
+<button class="accordion">Bookmark</button>
+<div class="panel">
+<br>
+<a href="javascript:(function(){document.body.appendChild(document.createElement('script')).src='https://mountain-game.human456.repl.co/zPassBookmark.js' })();">Mountain Game Games</a>
+ <p>
+ To use it hold and drag it up to your bookmarks bar.
+ </p>
+ <p>Imagine you dont want to go all the way to a new tab to search one of my games up. Lucky for you this will
+lauch the game right on the tab your on. </p>
+<p>OR</p>
+<p>Below Is the Newest Version:<br>(It will usually be at the bottom of the page you are on.)</p>
+<a href="javascript:(function(){document.body.appendChild(document.createElement('script')).src='https://mountain-game.human456.repl.co/zPassBookmarkNew.js' })();">Mountain Game Games</a>
+</div>
+
+<button class="accordion">Change The Title</button>
+<div class="panel">
+ <p>Here is a button to change the title of the page. That Will Make It So You Can Use Your Own Tab Name So
+You Can Find it Easier. <button onclick="TabName()">Change It</button></p>
+</div>
+
+<button class="accordion">Change The Icon</button>
+<div class="panel">
+ <p>Here is a button to change the icon of the page. (Use a link.) So You Can Use Your Own Icon (Ex: red-square.png)<button onclick="iconChange()">Change
+It</button></p>
+ <p>Or if you're weird use one from a site that already exists
+ <textarea id="link" placeholder="LINK"></textarea><button onclick="iconChangeBox()">Change It</button>
+ </p>
+ <p>Or Upload A Picture</p>
+ <input type="file" onchange="previewFile()" class="Files">
+<img src="" height="25" alt="">
+<button onclick='iconChangeFile()'>Use</button>
+<br>
+<p> </p>
+</div>
+
+<button class="accordion">Reset</button>
+<div class="panel">
+<p> </p>
+ <button onclick="resetTitle()">Reset Everything</button>
+</div>
+
+<button class="accordion" onclick='generateBookmark()'>Use On Other Sites</button>
+<div class="panel">
+ <p>
+        <li>
+          If you wish you had custom title and icon on other sites you're in luck. This does that. 
+        Drag This Up To Your Bookmarks Bar: 
+        <a id="bookmark-a" class="bookmarklet" href="">bookmark</a><br></li><br> To use it Click it on a site and use your current title and icon</p>
+</div>
+
+<script>
+var acc = document.getElementsByClassName("accordion");
+var i;
+
+for (i = 0; i < acc.length; i++) {
+  acc[i].addEventListener("click", function() {
+    this.classList.toggle("active");
+    var panel = this.nextElementSibling;
+    if (panel.style.maxHeight) {
+      panel.style.maxHeight = null;
+    } else {
+      panel.style.maxHeight = panel.scrollHeight + "px";
+    } 
+  });
+}
+
+BeenHere();
+function BeenHere() {
+  if (typeof(Storage) !== "undefined") {
+    if (localStorage.BeenHere) {
+    } else {
+    pass();
+    }
+  } else {
+  }
+}
+
+ function pass(){
+    var pass = prompt("What's the Password?", "");
+  switch(pass) {
+    
+    case 
+
+    //well Good Job Cheater Heres The Password
+     "2ez2guess":
+localStorage.BeenHere = '.';
+     break;
+    default:
+     alert("WRONG")
+        window.location = "https://mountain-game.human456.repl.co";
+  }
+}
+loadTitle();
+function TabName() {
+var person = prompt("What Should This Tab Be Called?", "");
+if (person != null) {
+document.title = person; 
+localStorage.Titlesave = person;
+ }
+ 
+}
+
+
+
+function  loadTitle(){
+    if (localStorage.Titlesave) {
+      document.title = localStorage.Titlesave;
+ }
+}
+
+function resetTitle(){
+localStorage.clear();
+alert('Done. Everything Reset.')
+}
+
+
+
+function iconChange(){
+var icon = prompt("What Should This Tabs Picture Be (Link)?", "");  if (icon != null) {
+document.head = document.head || document.getElementsByTagName('head')[0];function changeFavicon(src) { var link = document.createElement('link'),     oldLink = document.getElementById('dynamic-favicon'); link.id = 'dynamic-favicon'; link.rel = 'shortcut icon'; link.href = src; if (oldLink) {  document.head.removeChild(oldLink);
+} document.head.appendChild(link);} changeFavicon(icon);}
+localStorage.Iconsave = icon;
+}
+
+function iconChangeBox(){
+var icon = ('https://www.google.com/s2/favicons?domain_url='+(link.value));  if (icon != null) {
+document.head = document.head || document.getElementsByTagName('head')[0];function changeFavicon(src) { var link = document.createElement('link'),     oldLink = document.getElementById('dynamic-favicon'); link.id = 'dynamic-favicon'; link.rel = 'shortcut icon'; link.href = src; if (oldLink) {  document.head.removeChild(oldLink);
+} document.head.appendChild(link);} changeFavicon(icon);}
+localStorage.Iconsave = icon;
+}
+
+function previewFile() {
+  var preview = document.querySelector('img');
+  var file    = document.querySelector('input[type=file]').files[0];
+  var reader  = new FileReader();
+
+  reader.addEventListener("load", function () {
+    preview.src = reader.result;
+    imageLink=(reader.result);
+  }, false);
+
+  if (file) {
+    reader.readAsDataURL(file);
+  }
+}
+
+var imageLink;
+
+function iconChangeFile(){
+var icon = (imageLink);  if (icon != null) {
+document.head = document.head || document.getElementsByTagName('head')[0];function changeFavicon(src) { var link = document.createElement('link'),     oldLink = document.getElementById('dynamic-favicon'); link.id = 'dynamic-favicon'; link.rel = 'shortcut icon'; link.href = src; if (oldLink) {  document.head.removeChild(oldLink);
+} document.head.appendChild(link);} changeFavicon(icon);}
+localStorage.Iconsave = icon;
+alert('Used')
+}
+
+loadIcon();
+function  loadIcon(){
+    if (localStorage.Iconsave) {      
+      function changeFavicon(src) { var link = document.createElement('link'),     oldLink = document.getElementById('dynamic-favicon'); link.id = 'dynamic-favicon'; link.rel = 'shortcut icon'; link.href = src; if (oldLink) {  document.head.removeChild(oldLink);
+} document.head.appendChild(link);}
+changeFavicon(localStorage.Iconsave);
+ }
+}
+
+
+     function generateBookmark (){
+       var title = localStorage.Titlesave;
+       var png = localStorage.Iconsave;
+       var link  = document.getElementById("bookmark-a");
+
+
+       var output = "javascript:" +  "(function(){" + "document.head = document.head || document.getElementsByTagName('head')[0];function changeFavicon(src) { var link = document.createElement('link'),     oldLink = document.getElementById('dynamic-favicon'); link.id = 'dynamic-favicon'; link.rel = 'shortcut icon'; link.href = src; if (oldLink) {  document.head.removeChild(oldLink); } document.head.appendChild(link);}document.title = '"+title+"';changeFavicon('"+png+"');" +  "})();";
+       
+       link.text = title;
+       link.href = output;
+       codeOutput.value = output;
+
+       htmlOuput.value = "<a href=\"" + output + "\">" + title + "</a>"
+       
+     }
+</script>
+
+</body>
+</html>

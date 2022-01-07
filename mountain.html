@@ -1,0 +1,709 @@
+<!DOCTYPE html>
+<!--I didn't make some of this code it is from https://code-clicker--makrayne.repl.co i only used it as a start to my game.---->
+<html>
+
+  <head>
+    <title>The Mountain Game</title>
+    <link rel="shortcut icon"
+    type="image/jpg" href="https://cdn.mos.cms.futurecdn.net/ntFmJUZ8tw3ULD3tkBaAtf-970-80.jpg.webp"
+    />
+  </head>
+<style>
+  body {
+  animation: 30000ms ease-in-out infinite color-change;
+}
+
+@keyframes color-change {
+  0% {
+    background-color: #3f8d9b;
+  }
+  20% {
+    background-color: #3f8d9b;
+  }
+  40% {
+    background-color: #3f8d9b;
+  }
+  60% {
+    background-color: white;
+  }
+  80% {
+    background-color: #3f8d9b;
+  }
+  100% {
+    background-color: #3f8d9b;
+  }
+}
+
+@keyframes second-color-change {
+  0% {
+    background-color: white;
+  }
+  20% {
+    background-color: white;
+  }
+  40% {
+    background-color: white;
+  }
+  60% {
+    background-color: #3f8d9b;
+  }
+  80% {
+    background-color: white;
+  }
+  100% {
+    background-color: white;
+  }
+}
+
+.money{
+position: absolute;
+  left: 40%;
+  margin-left: 50px;
+  margin-top: -40px;
+  text-align: center;
+  font-size: 50px;
+}
+
+.upgrade-btn {
+	box-shadow: 4px 5px 0px -1px #91b8b3;
+	background:linear-gradient(to bottom, #768d87 5%, #6c7c7c 100%);
+	background-color:#768d87;
+	border-radius:22px;
+	display:inline-block;
+	cursor:pointer;
+	color:#ffffff;
+	font-family:Arial;
+	font-size:15px;
+	font-weight:bold;
+	padding:2px 7px;
+	text-decoration:none;
+	text-shadow:0px 3px 50px #2b665e;
+}
+.upgrade-btn:hover {
+	background:linear-gradient(to bottom, #6c7c7c 5%, #768d87 100%);
+	background-color:#6c7c7c;
+}
+.upgrade-btn:active {
+	position:relative;
+	top:1px;
+}
+
+.clicker {
+	box-shadow: 4px 5px 0px -1px #91b8b3;
+	background:linear-gradient(to bottom, #768d87 5%, #6c7c7c 100%);
+	background-color:#768d87;
+	border-radius:22px;
+	display:inline-block;
+	cursor:pointer;
+	color:#ffffff;
+	font-family:Arial;
+	font-size:25px;
+	font-weight:bold;
+	padding:2px 7px;
+	text-decoration:none;
+	text-shadow:0px 3px 50px #2b665e;
+}
+.clicker:hover {
+	background:linear-gradient(to bottom, #6c7c7c 5%, #768d87 100%);
+	background-color:#6c7c7c;
+}
+.clicker:active {
+	position:relative;
+	top:1px;
+}
+
+.scroll-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-gap: 1px;
+}
+
+ div.first-scroll {
+    margin:4px, 4px;
+    padding:4px;
+    width: 200px;
+    height: 510px;
+    overflow-x: hidden;
+    overflow-y: auto;
+    text-align:justify; 
+    flex: 1;
+  animation: 30000ms ease-in-out infinite second-color-change;
+}
+
+ div.second-scroll {
+    margin:4px, 4px;
+    padding:4px;
+    width: 200px;
+    height: 510px;
+    overflow-x: hidden;
+    overflow-y: auto; 
+    text-align:justify;
+    margin-right: 800px;
+  animation: 30000ms ease-in-out infinite second-color-change;
+}
+
+p2{ 
+  font-size:25px;
+}
+
+p3{
+ font-size:20px;
+}
+
+.redButtons {
+	box-shadow: 3px 4px 0px 0px #8a2a21;
+	background:linear-gradient(to bottom, #c62d1f 5%, #f24437 100%);
+	background-color:#c62d1f;
+	border-radius:42px;
+	display:inline-block;
+	cursor:pointer;
+	color:#ffffff;
+	font-family:Arial;
+	font-size:18px;
+	padding:2px 6px;
+	text-decoration:none;
+	text-shadow:0px 1px 0px #810e05;
+}
+.redButtons:hover {
+	background:linear-gradient(to bottom, #f24437 5%, #c62d1f 100%);
+	background-color:#f24437;
+}
+.redButtons:active {
+	position:relative;
+	top:1px;
+}
+
+.text-shadow{
+text-shadow: 1px 1px 0px #3f8d9b;
+}
+
+.text-shadow-white{
+text-shadow: 2px 2px 0px #ffffff;
+}
+
+.overlay{
+    opacity:1;
+    background-color:#ccc;
+    position:fixed;
+    width:100%;
+    height:100%;
+    top:0px;
+    left:0px;
+    z-index:1000;
+    display: block;
+}
+
+h2 {
+font-size: 50px;
+
+}
+.x-button {
+  border-radius: 50%;
+  top: 0px;
+  left: 0px;
+  position: fixed;
+  font-size: 25px;
+  }
+</style>
+<body onload="load()"> 
+
+<div class="overlay" id="awayMoneyScreen" onclick="hideDiv()">
+<center>
+<h2>Welcome Back!</h2>
+<br>
+<br>
+<br>
+<br>
+<p>You Earned: <span id="awayCash">0</span> While You Were Away</p>
+<p>(Click Anywhere to Continue)</p>
+</center>
+<button class="x-button" onclick="hideDiv()">X</button>
+</div>
+
+    <div class="container">
+           <a href="https://mountain-game.human456.repl.co"
+       style="position:absolute;width;50px;height: 50px;left:20px;top: 50px;" >Back To Home Page</a>
+    <h1 class="text-shadow-white">The Mountain Game</h1>
+
+    <div class="aligner-item">
+     <div class="money">
+      <button class="clicker" onClick="moneyButtonClick()">Dig A Piece Of Trail</button>
+      <br>
+      <p class="text-shadow-white">Money: <span id="money">0</span></p>
+      <p3 class="text-shadow-white">Money Per Second: <span id="mps">0</span></p3>
+      </div>
+      <br>
+      <div class="scroll-container">
+      <div class="first-scroll">
+      <p2>Shop:</p2>
+      <br>
+      <button class="upgrade-btn" onClick="buyTrailMaker()">Buy 1 Trail Maker</button>  
+      <br>
+      <p class="text-shadow">Trail Makers: <span id="TrailMakers">0</span>
+        <br />
+      </p>
+      <p class="text-shadow">Cost: <span id="TrailMakerCost">50</span></p>
+      
+      <p class="text-shadow">Effect: <span id="TrailMakerEffect">1</span> per Second</p> 
+      
+      <button class="upgrade-btn" onClick="buyHiker()">Buy 1 Hiker</button>  
+      <br>
+      <p class="text-shadow">Hikers: <span id="Hikers">0</span>
+        <br />
+      </p>
+      <p class="text-shadow">Cost: <span id="HikerCost">1k</span></p>
+
+      <p class="text-shadow">Effect: <span id="HikerEffect">20</span> per Second</p>
+
+      <button class="upgrade-btn" onClick="buyTrailGuide()">Buy 1 Trail Guide</button>
+      <br>
+      <p class="text-shadow">Trail Guide: <span id="TrailGuide">0</span>
+        <br />
+      </p>
+      <p class="text-shadow">Cost: <span id="TrailGuideCost">50k</span></p>
+      <p class="text-shadow">Effect: <span id="TrailGuideEffect">50</span> per Second</p>
+
+      <button class="upgrade-btn" onClick="buySkiSlope()">Buy 1 Ski Slope</button>
+      <br>
+      <p class="text-shadow">Ski Slopes: <span id="SkiSlope">0</span>
+        <br />
+      </p>
+      <p class="text-shadow">Cost: <span id="SkiSlopeCost">2.5m</span></p>
+      <p class="text-shadow">Effect: <span id="SkiSlopeEffect">2.5k</span> per Second</p>
+
+      <button class="upgrade-btn" onClick="buyTrailMix()">Buy 1 Trail Mix Bag</button>
+      <br>
+      <p class="text-shadow">Trail Mix Bags: <span id="TrailMix">0</span>
+        <br />
+      </p>
+      <p class="text-shadow">Cost: <span id="TrailMixCost">12.5m</span></p>
+      <p class="text-shadow">Effect: <span id="TrailMixEffect">125k</span> per Second</p>
+      </div>
+   <div class="second-scroll">
+   <p2>Upgrades: </p2>
+ <button class="upgrade-btn" onClick="upgradeHikers()" id="firstHikerUpgrade">Speedy Shoes<br><br>Cost: 50k<br><br>Effect: X2 Hikers</button>
+   </div>
+   </div>
+    </div>
+  </div>
+  <br>
+<button class="upgrade-btn" onClick="save()">Save</button>
+<button class="upgrade-btn" onClick="clearProgress()">RESET</button>
+      <script>
+loadTitle();
+function  loadTitle(){
+    if (localStorage.Titlesave) {
+      document.title = localStorage.Titlesave;
+ }
+}
+loadIcon();
+function  loadIcon(){
+    if (localStorage.Iconsave) {
+      function changeFavicon(src) { var link = document.createElement('link'),     oldLink = document.getElementById('dynamic-favicon'); link.id = 'dynamic-favicon'; link.rel = 'shortcut icon'; link.href = src; if (oldLink) {  document.head.removeChild(oldLink);
+} document.head.appendChild(link);}
+changeFavicon(localStorage.Iconsave);
+ }
+}
+</script>
+<script>
+
+var money = 0;
+
+//startSpamClickGlitch
+document.addEventListener("keydown", (e) => {
+  if (e.keyCode == 13) {
+    e.preventDefault();
+  }
+});
+//endSpamClickGlitch
+
+//strtNumberFormater
+ function nFormatter(num) {
+     if (num >= Math.pow(10, 33)) {
+        return (num / Math.pow(10, 33)).toFixed(1).replace(/\.0$/, '') + ' d';
+     }
+     if (num >= Math.pow(10, 30)) {
+        return (num / Math.pow(10, 30)).toFixed(1).replace(/\.0$/, '') + ' n';
+     }
+     if (num >= 1000000000000000000000000000) {
+        return (num / 1000000000000000000000000000).toFixed(1).replace(/\.0$/, '') + ' o';
+     }
+     if (num >= 1000000000000000000000000) {
+        return (num / 1000000000000000000000000).toFixed(1).replace(/\.0$/, '') + ' S';
+     }
+     if (num >= 1000000000000000000000) {
+        return (num / 1000000000000000000000).toFixed(1).replace(/\.0$/, '') + ' s';
+     }
+     if (num >= 1000000000000000000) {
+        return (num / 1000000000000000000).toFixed(1).replace(/\.0$/, '') + ' Q';
+     }
+     if (num >= 1000000000000000) {
+        return (num / 1000000000000000).toFixed(1).replace(/\.0$/, '') + ' q';
+     }
+     if (num >= 1000000000000) {
+        return (num / 1000000000000).toFixed(1).replace(/\.0$/, '') + ' t';
+     }
+     if (num >= 1000000000) {
+        return (num / 1000000000).toFixed(1).replace(/\.0$/, '') + ' B';
+     }
+     if (num >= 1000000) {
+        return (num / 1000000).toFixed(1).replace(/\.0$/, '') + ' M';
+     }
+     if (num >= 1000) {
+        return (num / 1000).toFixed(1).replace(/\.0$/, '') + ' k';
+     }
+     
+     return Math.floor(num);
+}
+//endNumberFormater
+
+//startMoneyAdder
+function moneyButton(number) {
+  money = money + (number);
+  document.getElementById("money").innerHTML = nFormatter(money);
+};
+//endMoneyAdder
+
+//startmoneyButton
+var moneyPerClick = 1;
+function moneyButtonClick() {
+moneyButton(moneyPerClick);
+}
+//endMoneyButton
+
+//startTrailMaker
+var TrailMakers = 0;
+var TrailMakersMultiplier = 1;
+function buyTrailMaker() {
+  var TrailMakerCost = Math.floor(50* Math.pow(1.1, TrailMakers)); //works out the cost of the item
+  if (money >= TrailMakerCost) { //checks that the player can afford the upgrade
+    TrailMakers = TrailMakers + 1; //adds one cursor
+    money = money - TrailMakerCost; //deducts the cost of item from your total
+    document.getElementById('TrailMakers').innerHTML = nFormatter(TrailMakers); //updates the number of items shown to you
+    document.getElementById('money').innerHTML = nFormatter(money); //updates your cookie total
+  };
+  var nextCost = Math.floor(50 * Math.pow(1.1, TrailMakers)); //calculation that works out the cost of the next item
+  document.getElementById('TrailMakerCost').innerHTML = nFormatter(nextCost); //updates the cost of the item, as displayed to the user.
+};
+window.setInterval(function() {
+  moneyButton(TrailMakers*TrailMakersMultiplier); 
+}, 1000);
+//endTrailMaker
+
+
+//startHiker
+var Hikers = 0;
+var HikersMultiplier = 20;
+function buyHiker() {
+  var HikerCost = Math.floor(1000 * Math.pow(1.2, Hikers)); //works out the cost of the item
+  if (money >= HikerCost) { //checks that the player can afford the upgrade
+    Hikers = Hikers + 1; //adds one cursor
+    money = money - HikerCost; //deducts the cost of item from your total
+    document.getElementById('Hikers').innerHTML = nFormatter(Hikers); //updates the number of items shown to you
+    document.getElementById('money').innerHTML = nFormatter(money); //updates your cookie total
+  };
+  var nextCost = Math.floor(1000 * Math.pow(1.2, Hikers)); //calculation that works out the cost of the next item
+  document.getElementById('HikerCost').innerHTML = nFormatter(nextCost); //updates the cost of the item, as displayed to the user.
+};
+window.setInterval(function() {
+  moneyButton(Hikers*HikersMultiplier);
+}, 1000);
+//endHiker
+
+
+//startTrailGuide
+var TrailGuide = 0;
+function buyTrailGuide() {
+  var TrailGuideCost = Math.floor(50000 * Math.pow(1.3, TrailGuide)); //works out the cost of the item
+  if (money >= TrailGuideCost) { //checks that the player can afford the upgrade
+    TrailGuide = TrailGuide + 1; //adds one cursor
+    money = money - TrailGuideCost; //deducts the cost of item from your total
+    document.getElementById('TrailGuide').innerHTML = nFormatter(TrailGuide); //updates the number of items shown to you
+    document.getElementById('money').innerHTML = 
+nFormatter(money); //updates your cookie total
+  };
+  var nextCost = Math.floor(50000 * Math.pow(1.3, TrailGuide)); //calculation that works out the cost of the next item
+  document.getElementById('TrailGuideCost').innerHTML = nFormatter(nextCost); //updates the cost of the item, as displayed to the user.
+};
+window.setInterval(function() {
+  moneyButton(TrailGuide*50);
+}, 1000);
+//endTrailGuide
+
+//startSkiSlope
+var SkiSlope = 0;
+function buySkiSlope() {
+  var SkiSlopeCost = Math.floor(2500000 * Math.pow(1.4, SkiSlope)); //works out the cost of the item
+  if (money >= SkiSlopeCost) { //checks that the player can afford the upgrade
+    SkiSlope = SkiSlope + 1; //adds one cursor
+    money = money - SkiSlopeCost; //deducts the cost of item from your total
+    document.getElementById('SkiSlope').innerHTML = nFormatter(SkiSlope); //updates the number of items shown to you
+    document.getElementById('money').innerHTML = nFormatter(money); //updates your cookie total
+  };
+  var nextCost = Math.floor(2500000 * Math.pow(1.4, SkiSlope)); //calculation that works out the cost of the next item
+  document.getElementById('SkiSlopeCost').innerHTML = nFormatter(nextCost); //updates the cost of the item, as displayed to the user.
+};
+window.setInterval(function() {
+  moneyButton(SkiSlope*2500);
+}, 1000);
+//endSkiSlope
+
+//startTrailMix
+var TrailMix = 0;
+function buyTrailMix() {
+  var TrailMixCost = Math.floor(125000000 * Math.pow(1.5, TrailMix)); //works out the cost of the item
+  if (money >= TrailMixCost) { //checks that the player can afford the upgrade
+    TrailMix = TrailMix + 1; //adds one cursor
+    money = money - TrailMixCost; //deducts the cost of item from your total
+    document.getElementById('TrailMix').innerHTML = nFormatter(TrailMix); //updates the number of items shown to you
+    document.getElementById('money').innerHTML = nFormatter(money); //updates your cookie total
+  };
+  var nextCost = Math.floor(125000000 * Math.pow(1.5, TrailMix)); //calculation that works out the cost of the next item
+  document.getElementById('TrailMixCost').innerHTML = nFormatter(nextCost); //updates the cost of the item, as displayed to the user.
+};
+window.setInterval(function() {
+  moneyButton(TrailMix*125000);
+}, 1000);
+//endTrailMix
+
+//startMoneyPerSecond
+window.setInterval(function() {
+   document.getElementById('mps').innerHTML = nFormatter(((TrailMakers*TrailMakersMultiplier)+(Hikers*HikersMultiplier)+(TrailGuide*50)+(SkiSlope*2500)+(TrailMix*125000)));
+   document.getElementById("money").innerHTML = nFormatter(money);
+}, 1);
+
+//endMoneyPerSecond
+
+//startSave
+//startTrailMakersSave
+function loadTrailMakers() {
+  if (typeof(Storage) !== "undefined") {
+    if (localStorage.TrailMakerssave) {
+      TrailMakers = Number(localStorage.TrailMakerssave);
+    } else {
+      localStorage.TrailMakerssave = 0;
+    }
+    document.getElementById("TrailMakers").innerHTML = nFormatter(TrailMakers);
+  } else {
+    document.getElementById("TrailMakers").innerHTML = "";
+  }
+}
+
+function saveTrailMakers() {
+   localStorage.TrailMakerssave = TrailMakers;
+   document.getElementById("TrailMakers").innerHTML = nFormatter(TrailMakers); 
+}
+//endTrailMakersSave
+
+//startHikersSave
+function loadHikers() {
+  if (typeof(Storage) !== "undefined") {
+    if (localStorage.Hikerssave) {
+      Hikers = Number(localStorage.Hikerssave);
+    } else {
+      localStorage.Hikerssave = 0;
+    }
+    document.getElementById("Hikers").innerHTML = nFormatter(Hikers);
+  } else {
+    document.getElementById("Hikers").innerHTML = "";
+  }
+}
+
+function saveHikers() {
+   localStorage.Hikerssave = Hikers;
+   document.getElementById("Hikers").innerHTML = nFormatter(Hikers); 
+}
+//endHikersSave
+
+//startTrailGuideSave
+function loadTrailGuide() {
+  if (typeof(Storage) !== "undefined") {
+    if (localStorage.TrailGuidesave) {
+      TrailGuide = Number(localStorage.TrailGuidesave);
+    } else {
+      localStorage.TrailGuidesave = 0;
+    }
+    document.getElementById("TrailGuide").innerHTML = nFormatter(TrailGuide);
+  } else {
+    document.getElementById("TrailGuide").innerHTML = "";
+  }
+}
+
+function saveTrailGuide() {
+   localStorage.TrailGuidesave = TrailGuide;
+   document.getElementById("TrailGuide").innerHTML = nFormatter(TrailGuide); 
+}
+//endTrailGuideSave
+
+//startSkiSlopeSave
+function loadSkiSlope() {
+  if (typeof(Storage) !== "undefined") {
+    if (localStorage.SkiSlopesave) {
+      SkiSlope = Number(localStorage.SkiSlopesave);
+    } else {
+      localStorage.SkiSlopesave = 0;
+    }
+    document.getElementById("SkiSlope").innerHTML = nFormatter(SkiSlope);
+  } else {
+    document.getElementById("SkiSlope").innerHTML = "";
+  }
+}
+
+function saveSkiSlope() {
+   localStorage.SkiSlopesave = SkiSlope;
+   document.getElementById("SkiSlope").innerHTML = nFormatter(SkiSlope); 
+}
+//endSkiSlopeSave
+
+//startTrailMixSave
+function loadTrailMix() {
+  if (typeof(Storage) !== "undefined") {
+    if (localStorage.TrailMixsave) {
+      TrailMix = Number(localStorage.TrailMixsave);
+    } else {
+      localStorage.TrailMixsave = 0;
+    }
+    document.getElementById("TrailMix").innerHTML = nFormatter(TrailMix);
+  } else {
+    document.getElementById("TrailMix").innerHTML = "";
+  }
+}
+
+function saveTrailMix() {
+   localStorage.TrailMixsave = TrailMix;
+   document.getElementById("TrailMix").innerHTML = nFormatter(TrailMix); 
+}
+//endTrailMixSave
+
+//startMainLoad
+function load() {
+  if (typeof(Storage) !== "undefined") {
+    if (localStorage.moneySave) {
+      money = Number(localStorage.moneySave);
+    } else {
+      localStorage.moneySave = 0;
+    }
+  } else {
+  }
+  loadTrailMakers();
+  loadHikers();
+  loadTrailGuide();
+  loadSkiSlope();
+  loadTrailMix();
+  loaddate();
+}
+//endMainLoad
+
+//startMainSave
+function save() {
+   localStorage.moneySave = money;
+   saveTrailMakers();
+   saveHikers();
+   saveTrailGuide();
+   saveSkiSlope();
+   saveTrailMix();
+   gettheDate();
+}
+//endMainSave
+//endSave
+
+//startConfirmLeave
+function showADialog(e){
+    var confirmationMessage = 'Sure?';
+
+    (e || window.event).returnValue = confirmationMessage; 
+    return confirmationMessage;
+}
+window.addEventListener("beforeunload", function (e) {
+
+    save();
+    gettheDate();
+    return showADialog(e);  
+});
+//endConfirmLeave
+
+//startReset
+function clearProgress() {
+  let reset = prompt("Type 'yes' To Confirm Reset:", "");
+  if (reset == "yes") {
+    text = "User cancelled the prompt.";
+  localStorage.clear();
+alert("Reset Succesful, Reload The Page To Really Lose All Progress");
+  }else{
+  alert("No Progress Lost")
+  }
+}
+//endReset
+
+//Start-Function-For-Hiding-Upgrades-After-Purchase
+function deleteThis(id) {
+  var myobj = document.getElementById(id);
+  myobj.remove();
+}
+//end-Function-For-Hiding-Upgrades-After-Purchase
+
+//startUpGrades
+//startUpgradeHikers
+function upgradeHikers() {
+  if (money >= 50000) {
+    HikersMultiplier = 40;
+    money = money-50000;
+    deleteThis("firstHikerUpgrade");
+    document.getElementById("HikerEffect").innerHTML = nFormatter(HikersMultiplier);
+    document.getElementById('money').innerHTML = nFormatter(money);
+
+ }
+}
+//endUpgradeHikers
+//endUpGrades
+
+//startSpamClickGlitch
+document.addEventListener("keydown", (e) => {
+  if (e.keyCode == 13) {
+    e.preventDefault();
+  }
+});
+//endSpamClickGlitch
+
+//startHideAwayScreen
+function hideDiv() {
+ document.getElementById('awayMoneyScreen').style.display = "none";
+}
+//endAwayScreen
+
+//startIdleMoney
+var blank = 1;
+function gettheDate() {
+var leaveTime = new Date().getTime();
+localStorage.dateSave = leaveTime;
+}
+
+function loaddate() {
+  if (typeof(Storage) !== "undefined") {
+    if (localStorage.dateSave) {
+      var awayTime = ((new Date().getTime() - Number(localStorage.dateSave))/1000);
+      money = money + (awayTime*((TrailMakers*TrailMakersMultiplier)+(Hikers*HikersMultiplier)+(TrailGuide*50)+(SkiSlope*2500)+(TrailMix*125000)))
+   document.getElementById('awayCash').innerHTML= nFormatter(Math.floor((awayTime*((TrailMakers*TrailMakersMultiplier)+(Hikers*HikersMultiplier)+(TrailGuide*50)+(SkiSlope*2500)+(TrailMix*125000)))))
+    } else {
+      hideDiv();
+    }
+    blank = 2;
+  } else {
+    blank = 2;
+  }
+}
+
+//endIdleMoney
+
+//StartsaveWhenLeaveTab
+window.onblur = function() {
+save();
+};
+window.window.onfocus = function() {
+ document.getElementById('awayMoneyScreen').style.display = "block";
+load();
+};
+//EndsaveWhenLeaveTab
+</script>
+ </body>
+</html>

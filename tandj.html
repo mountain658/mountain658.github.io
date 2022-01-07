@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html>
+    <head>
+      <title>Tom And Jerry</title>
+    <link rel="shortcut icon"
+    type="image/jpg" href="https://www.linkpicture.com/q/output-onlinepngtools-5_1.png"
+    />
+  </head>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<style>
+canvas {
+    border:5px solid #000;
+    background-color: #FF0000;
+}
+p {
+  text-align: top;
+  font-size: 20px;
+  margin-top: 0px;
+}
+p2 {
+  text-align: top;
+  font-size: 15px;
+  margin-top: -200px;
+  color: green;
+}
+#restart {
+    visibility:hidden;
+}
+
+</style>
+</head>
+<body>
+        <script>
+loadTitle();
+function  loadTitle(){
+    if (localStorage.Titlesave) {
+      document.title = localStorage.Titlesave;
+ }
+}
+loadIcon();
+function  loadIcon(){
+    if (localStorage.Iconsave) {
+      function changeFavicon(src) { var link = document.createElement('link'),     oldLink = document.getElementById('dynamic-favicon'); link.id = 'dynamic-favicon'; link.rel = 'shortcut icon'; link.href = src; if (oldLink) {  document.head.removeChild(oldLink);
+} document.head.appendChild(link);}
+changeFavicon(localStorage.Iconsave);
+ }
+}
+</script>
+        <a href="https://mountain-game.human456.repl.co"
+       style="position:absolute;width;50px;height: 50px;left:20px;top: 50px;" >Back To Home Page</a>
+ <button id="starter" onclick="seeable(),startGame(),counter(),timer(),suicideButton()"><img src="https://www.linkpicture.com/q/Screenshot-2021-09-20-12.08.54-PM.png" /></button>
+ 
+<button id="restart" onclick="startGame(),timer(),hider()">Restart</button>
+
+<p id="timer"></p>
+
+<script>
+
+
+var myGamePiece;
+var myObstacle = [];
+var myLeftBorder;
+
+function startGame() {
+    myGamePiece = new component(10, 10, "tan", 450, 250);
+    myObstacle = new component(30, 30, "grey", 60, 257);
+    myLeftBorder = new component(0,514,"black",5,257);
+    myGameArea.start();
+    count = 21;
+}
+
+function suicideButton() {
+  var myobj = document.getElementById("starter");
+  myobj.remove();
+}
+
+var hi = 21;
+
+var timy =    document.getElementById("timer");
+var starter = document.getElementById("starter");
+var restart = document.getElementById("restart");
+
+function seeable() {
+    timy.style.visibility = "visible";
+}
+function hider() {
+    restart.style.visibility = "hidden";
+}
+/* Get the element you want displayed in fullscreen */ 
+var elem = document.documentElement;
+
+/* Function to open fullscreen mode */
+function openFullscreen() {
+  if (elem.requestFullscreen) {
+    elem.requestFullscreen();
+  } else if (elem.mozRequestFullScreen) { /* Firefox */
+    elem.mozRequestFullScreen();
+  } else if (elem.webkitRequestFullscreen) { /* Chrome, Safari & Opera */
+    elem.webkitRequestFullscreen();
+  } else if (elem.msRequestFullscreen) { /* IE/Edge */
+    elem = window.top.document.body; //To break out of frame in IE
+    elem.msRequestFullscreen();
+  }
+}
+
+/* Function to close fullscreen mode */
+function closeFullscreen() {
+  if (document.exitFullscreen) {
+    document.exitFullscreen();
+  } else if (document.mozCancelFullScreen) {
+    document.mozCancelFullScreen();
+  } else if (document.webkitExitFullscreen) {
+    document.webkitExitFullscreen();
+  } else if (document.msExitFullscreen) {
+    window.top.document.msExitFullscreen();
+  }
+}
+
+var tik=9999999999999999999999999999999999999999999999999999999999;
+var tiker=setInterval(toker, 1); //1000 will  run it every 1 second
+function toker()
+{
+  if (tik <= -1)
+  {
+	 document.getElementById("timer").innerHTML= "";
+     return;
+  }
+
+ if (myGamePiece.y.toFixed()<7) {
+ myGamePiece.y = 7;
+ }
+  if (myGamePiece.x.toFixed()<7) {
+ myGamePiece.x = 7;
+ }
+  if (myGamePiece.y.toFixed()>509) {
+ myGamePiece.y = 509;
+ }
+  if (myGamePiece.x.toFixed()>509) {
+ myGamePiece.x = 509;
+ }
+  if (myObstacle.y.toFixed()<17) {
+ myObstacle.y = 17;
+ }
+  if (myObstacle.x.toFixed()<17) {
+ myObstacle.x = 17;
+ }
+  if (myObstacle.y.toFixed()>495) {
+ myObstacle.y = 495;
+ }
+  if (myObstacle.x.toFixed()>495) {
+ myObstacle.x = 495;
+ }
+  if (myGamePiece.crashWith(myObstacle)) {
+    myGameArea.stop();
+    document.getElementById("timer").innerHTML="Tom Wins";
+    restart.style.visibility = "visible";
+ }
+}
+
+
+
+
+
+
+
+
+
+var count=21;
+function counter() {
+setInterval(timer, 1000); //1000 will  run it every 1 second
+}
+
+function timer()
+{
+
+  count=count-1;
+  if (count <= -1)
+  {
+  document.getElementById("timer").innerHTML="Jerry Wins";
+  myGameArea.stop();
+  restart.style.visibility = "visible";
+
+     return;
+  } else {
+
+ document.getElementById("timer").innerHTML='Time until Jerry Wins: '+count+ "s"; // watch for spelling
+ }
+}
+
+var nameWidth =514;
+var nameHeight =514;
+var canvas = document.createElement("canvas");
+var myGameArea = {
+    canvas : canvas,
+    start : function() {
+        this.canvas.width = nameWidth;
+        this.canvas.height = nameHeight;
+        this.context = this.canvas.getContext("2d");
+        document.body.insertBefore(this.canvas, document.body.childNodes[0]);
+        this.frameNo = 0;
+        this.interval = setInterval(updateGameArea, 20);
+        window.addEventListener('keydown', function (e) {
+            e.preventDefault();
+            myGameArea.keys = (myGameArea.keys || []);
+            myGameArea.keys[e.keyCode] = (e.type == "keydown");
+        })
+        window.addEventListener('keyup', function (e) {
+            myGameArea.keys[e.keyCode] = (e.type == "keydown");
+        })
+    },
+    stop : function() {
+        clearInterval(this.interval);
+    },    
+    clear : function() {
+        this.context.clearRect(0, 0, this.canvas.width, this.canvas.height);
+    },
+    stop : function() {
+    clearInterval(this.interval);
+  }
+}
+
+function component(width, height, color, x, y, type) {
+
+    this.type = type;
+    this.width = width;
+    this.height = height;
+    this.angle = 0;
+    this.moveAngle = 0;
+    this.speed = 0;
+    this.x = x;
+    this.y = y;    
+    this.update = function() {
+        ctx = myGameArea.context;
+        ctx.save();
+        ctx.translate(this.x, this.y);
+        ctx.rotate(this.angle);
+        ctx.fillStyle = color;
+        ctx.fillRect(this.width / -2, this.height / -2, this.width, this.height);
+        ctx.restore();    
+    }
+    this.newPos = function() {
+    this.x += this.speed * Math.sin(this.angle);
+    this.y -= this.speed * Math.cos(this.angle);
+  }
+    this.newPos = function() {
+        this.angle += this.moveAngle * Math.PI / 160;
+        this.x += this.speed * Math.sin(this.angle);
+        this.y -= this.speed * Math.cos(this.angle);
+    }
+      this.crashWith = function(otherobj) {
+    var myleft = this.x;
+    var myright = this.x + (this.width);
+    var mytop = this.y;
+    var mybottom = this.y + (this.height);
+    var otherleft = otherobj.x;
+    var otherright = otherobj.x + (otherobj.width);
+    var othertop = otherobj.y;
+    var otherbottom = otherobj.y + (otherobj.height);
+    var crash = true;
+    if ((mybottom < othertop) ||
+    (mytop > otherbottom) ||
+    (myright < otherleft) ||
+    (myleft > otherright)) {
+      crash = false;
+    }
+    return crash;
+  }
+}
+
+document.querySelector('.restart-btn').addEventListener('click', function(){
+  window.location.reload();
+  return false;
+});
+
+function updateGameArea() { 
+ if (myGamePiece.crashWith(myObstacle)) {
+    myGameArea.stop();
+    document.getElementById("timer").innerHTML="Tom Wins"
+    
+    
+  } else {
+    myGameArea.clear();
+    myObstacle.moveAngle = 0;
+    myObstacle.speed = 0;
+    myObstacle.update();
+    myGamePiece.moveAngle = 0;
+    myGamePiece.speed = 0;
+    myGamePiece.update();
+    myLeftBorder.update();
+    if (myGameArea.keys && myGameArea.keys[37]) {myGamePiece.moveAngle = -4; }
+    if (myGameArea.keys && myGameArea.keys[39]) {myGamePiece.moveAngle = 4; }
+    if (myGameArea.keys && myGameArea.keys[38]) {myGamePiece.speed= 4; }
+    if (myGameArea.keys && myGameArea.keys[40]) {myGamePiece.speed= -4; }
+    
+    
+    
+    if (myGameArea.keys && myGameArea.keys[83]) {myObstacle.speed = -3.7; }
+    if (myGameArea.keys && myGameArea.keys[87]) {myObstacle.speed = 3.7; }	
+    if (myGameArea.keys && myGameArea.keys[65])   {myObstacle.moveAngle=-3.7;}
+    if (myGameArea.keys && myGameArea.keys[68])   {myObstacle.moveAngle=3.7;}
+    myGamePiece.newPos();
+    myGamePiece.update();
+    myObstacle.newPos();
+    myObstacle.update();
+    myLeftBorder.update();
+    myLeftBorder.newPos();
+  }
+ }
+</script>
+</body>
+</html>

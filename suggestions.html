@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+  <head>
+      <title>Suggestions</title>
+    <link rel="shortcut icon"
+    type="image/jpg" href=""
+    />
+  </head>
+        <style>
+            body, html
+            {
+                margin: 0; padding: 0; height: 100%; overflow: hidden;
+            }
+
+
+            .holder {
+  width: 100%;
+  height: 100%;
+  position: relative;
+}
+        </style>
+    </head>
+    <body>
+            <script>
+loadTitle();
+function  loadTitle(){
+    if (localStorage.Titlesave) {
+      document.title = localStorage.Titlesave;
+ }
+}
+loadIcon();
+function  loadIcon(){
+    if (localStorage.Iconsave) {
+      function changeFavicon(src) { var link = document.createElement('link'),     oldLink = document.getElementById('dynamic-favicon'); link.id = 'dynamic-favicon'; link.rel = 'shortcut icon'; link.href = src; if (oldLink) {  document.head.removeChild(oldLink);
+} document.head.appendChild(link);}
+changeFavicon(localStorage.Iconsave);
+ }
+}
+</script>
+      <div class="holder">
+       <a href="https://mountain-game.human456.repl.co"
+       style="position:absolute;width;50px;height: 50px;left:20px;top: 50px;" >Back To Home Page</a>
+       <br>
+       <br>
+       <br>
+         <br>
+  <br>
+    <br>
+  <br>
+<iframe src="https://docs.google.com/forms/d/e/1FAIpQLSd_KmGN-KpfFg41THjYJLLvSS4B7GVWij9hw6pzkS6hkmEM7g/viewform?embedded=true" width="640" height="539" frameborder="0" marginheight="0" marginwidth="0">Loading…</iframe>
+        </div>
+    </body>
+</html>

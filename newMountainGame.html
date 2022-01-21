@@ -342,6 +342,41 @@ document.getElementById('bigmoneybutton').addEventListener("keydown", (e) => {
     e.preventDefault();
   }
 });
+
+if (localStorage.saveLeaveDate) {
+var awayTime = ((new Date().getTime() - Number(localStorage.saveLeaveDate))/1000);
+var awayMoney = (Math.floor(awayTime*mps));
+addMoney(awayMoney)
+document.write( '<div style=\"opacity:1;background-color:#ccc;position:fixed;width:100%;height:100%;top:0px;left:0px;z-index:1000;display: block;\" id=\"awayMoneyScreen\" onclick=\"hideDiv()\">\n' );
+document.write( '<center>\n' );
+document.write( '<h2>Welcome Back!</h2>\n' );
+document.write( '<br>\n' );
+document.write( '<br>\n' );
+document.write( '<br>\n' );
+document.write( '<br>\n' );
+document.write( '<p>You Earned: <span id=\"awayCash\">'+awayMoney+'</span> While You Were Away</p>\n' );
+document.write( '<p>(Click Anywhere to Continue)</p>\n' );
+document.write( '</center>\n' );
+document.write( '</div>' );
+
+}else{
+localStorage.saveLeaveDate = 0;
+}
+
+function gettheDate() {
+var leaveTime = new Date().getTime();
+localStorage.saveLeaveDate = leaveTime;
+}
+
+window.addEventListener("beforeunload", function(event) {
+  gettheDate();
+  event.returnValue = "Are You Sure You Want To Leave THIS GAME IS GREAT!";
+  gettheDate();
+});
+
+function hideDiv() {
+document.getElementById('awayMoneyScreen').style.display = "none";
+}
 </script>
 </body>
 </html>

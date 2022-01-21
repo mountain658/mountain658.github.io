@@ -76,8 +76,8 @@
        style="position:absolute;width;50px;height: 50px;left:20px;top: 50px;" >Back To Home Page</a>
 <h1 style="text-shadow: 2px 2px 0px #ffffff;">The Mountain Game</h1>
 <div style="float:right;width:100%;text-align:center;font-size:20px;">
-<button onclick="addMoney(1)" class="upgrade-btn" style="font-size:20px;">Dig A Piece Of Trail</button>
-<p style="text-shadow: 2px 2px 0px #ffffff;font-size:40px;">Money: <span id="money"></span></p>
+<button onclick="addMoney(1)" class="upgrade-btn" style="font-size:20px;" id="bigmoneybutton">Dig A Piece Of Trail</button>
+<p style="text-shadow: 2px 2px 0px #ffffff;font-size:50px;">Money: <span id="money"></span></p>
 <p style="text-shadow: 2px 2px 0px #ffffff;">Money Per Second: <span id="mps"></span></p>
 </div>
 
@@ -122,7 +122,7 @@ setVar(name, ls((name), 0));
 
 document.getElementById("shop").innerHTML += '<div id="'+name+"Holder"+'" style="display: inline-block;padding:10px;font-family:Arial;font-size:10pt;border:1px solid #808080;text-align:center;text-shadow: 1px 1px 0px #3f8d9b;"></div><br><br>';
 
-document.getElementById(name+"Holder").innerHTML += '<button onclick="'+name+'()" class="upgrade-btn">Buy '+snglr+'</button>';
+document.getElementById(name+"Holder").innerHTML += '<button id="'+name+'buyButton" onclick="'+name+'()" class="upgrade-btn">Buy '+snglr+'</button>';
 
 document.getElementById(name+"Holder").innerHTML += '<p id="owned'+name+'">Owned '+plural+': </p>';
 document.getElementById('owned'+name).innerHTML += '<span id="'+name+'"></span>';
@@ -336,6 +336,12 @@ return exp;
      
      return Math.floor(num);
 }
+
+document.getElementById('bigmoneybutton').addEventListener("keydown", (e) => {
+  if (e.keyCode == 13) {
+    e.preventDefault();
+  }
+});
 </script>
 </body>
 </html>

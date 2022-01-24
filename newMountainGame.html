@@ -116,6 +116,10 @@ Item("SkiSlopes", 1000, 60000, 1.04, "Ski Slopes", "Ski Slope");
 Item("Skier", 5000, 150000, 1.05, "Skiers", "Skier");
 Item("SkiLift", 50000, 1000000, 1.06, "Ski Lifts", "Ski Lift");
 Item("GiftShop", 200000, 3500000, 1.07, "Gift Shops", "Gift Shop");
+Item("RockClimbing", 1000000, 17000000, 1.08, "Climbing Areas", "Climbing Area");
+Item("RockClimbers", 5000000, 70000000, 1.09, "Rock Climbers", "Rock Climber");
+Item("HangGliders", 25000000, 300000000, 1.10, "Hang Gliders", "Hang Glider");
+Item("Museums", 125000000, 1000000000, 1.10, "Museums", "Museum");
 
 function Item(name, MoneyPerSecond, cost, expPrice, plural, snglr) {
 setVar(name, ls((name), 0));
@@ -349,6 +353,7 @@ document.getElementById('bigmoneybutton').addEventListener("keydown", (e) => {
   }
 });
 
+function welcomeBack() {
 if (localStorage.saveLeaveDate) {
 var awayTime = ((new Date().getTime() - Number(localStorage.saveLeaveDate))/1000);
 var awayMoney = (Math.floor(awayTime*mps));
@@ -367,6 +372,7 @@ document.write( '</div>' );
 
 }else{
 localStorage.saveLeaveDate = 0;
+ }
 }
 
 function gettheDate() {
@@ -383,6 +389,8 @@ window.addEventListener("beforeunload", function(event) {
 function hideDiv() {
 document.getElementById('awayMoneyScreen').style.display = "none";
 }
+
+welcomeBack();
 </script>
 </body>
 </html>

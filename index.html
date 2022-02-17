@@ -1,5 +1,6 @@
 
 
+
 <!DOCTYPE html>
 <html>
   <head>
@@ -32,6 +33,7 @@
 .container img {
   width: 100%;
   height: auto;
+  border-radius: 5px;
 }
 
 .container .btn {
@@ -101,7 +103,7 @@ var rick = getRandomInt(1, 100)
 <h3>This is a new site the other one doesn't work anymore for some reason so sadly some progress on games were lost I'll try to fix it but I don't know if I'll be able to.</h3>
 <p>(To make it easier to find for next time drag the names up to the bookmarks bar.)</p>
 
-<div id="5new" style="background-image: url('https://upload.wikimedia.org/wikipedia/commons/f/fb/Light_blue.png');text-align:center;">
+<div id="5new" style="background-image: url('https://upload.wikimedia.org/wikipedia/commons/f/fb/Light_blue.png');text-align:center;  border-radius: 5px;">
 <h3>5 Newest Games</h3>
 
 <div id="5newHolder" style="display: grid;grid-template-columns: 1fr 1fr 1fr 1fr 1fr;"> 
@@ -135,12 +137,13 @@ var rick = getRandomInt(1, 100)
 </div>
 
 </div>
-
+<br>
 <label for="searchbox">Search</label>
 <input 
   type="search" 
   oninput="liveSearch()" 
   id="searchbox" 
+  style='border-radius: 5px;'
 >
 <script src="search.js"></script>
 <br>

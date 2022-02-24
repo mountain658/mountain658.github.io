@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+<title>Oregon Trail</title>
+</head>
+
+<body>
+
+
+<style>
+* {
+  font-family: sans-serif;
+}
+p {
+  font-size: 14px;
+  margin: 8px 0;
+  color: #888;
+}
+.pcejs {
+  padding-right: 0;
+  margin-left: auto;
+  margin-right: auto;
+  display: block;
+  text-align: center;
+}
+div.pcejs-border {
+  border: none;
+}
+/* the canvas *must not* have any border or padding, or mouse coords will be wrong */
+.pcejs-canvas {
+  border: 0px none;
+}
+.pcejs-container {
+  margin-top: 32px;
+  text-align: center;
+}
+
+/* macplus has mouse integration, so we can hide the host mouse */
+.pcejs-container canvas {
+  cursor: none;
+}
+
+</style>
+
+<div id="content">
+
+<h1 id='fixType'>Click <a href='#' onclick='document.getElementById("fixType").innerHTML = "Fixed."'>Here</a> if you can't type</h1>
+<div class="pcejs pcejs-container">
+  <div class="pcejs pcejs-loading-status" style="display: none;"><div innerhtml="Downloading...">Loading... (7/8)</div><progress value="0" max="0" hidden="true" style="display: inline;"></progress></div>
+  <div class="pcejs-border">
+    <canvas class="pcejs pcejs-canvas" oncontextmenu="event.preventDefault()" width="512" height="342"></canvas>
+  </div>
+</div>
+<p class="pcejs">press esc + ↑ to zoom in, esc + ↓ to zoom out</p>
+
+</div>
+
+<script type="text/javascript" src="https://mountain658.github.io/pcejs-macplus.umd.js"></script>
+<script>
+(function(f){if(typeof exports==="object"&&typeof module!=="undefined"){module.exports=f()}else if(typeof define==="function"&&define.amd){define([],f)}else{var g;if(typeof window!=="undefined"){g=window}else if(typeof global!=="undefined"){g=global}else if(typeof self!=="undefined"){g=self}else{g=this}g.PCEJSUtil = f()}})(function(){var define,module,exports;return (function(){function r(e,n,t){function o(i,f){if(!n[i]){if(!e[i]){var c="function"==typeof require&&require;if(!f&&c)return c(i,!0);if(u)return u(i,!0);var a=new Error("Cannot find module '"+i+"'");throw a.code="MODULE_NOT_FOUND",a}var p=n[i]={exports:{}};e[i][0].call(p.exports,function(r){var n=e[i][1][r];return o(n||r)},p,p.exports,r,e,n,t)}return n[i].exports}for(var u="function"==typeof require&&require,i=0;i<t.length;i++)o(t[i]);return o}return r})()({1:[function(require,module,exports){
+function setElAttrs(el, attrs) {
+  Object.keys(attrs).forEach(function (key) {
+    el.setAttribute(key, attrs[key]);
+  });
+  return el;
+}
+
+function emptyEl(el) {
+  while (el.firstChild) el.removeChild(el.firstChild);
+  return el;
+}
+
+function loadingStatus(loadingStatusEl) {
+  var initialStatus = loadingStatusEl.innerText;
+
+  emptyEl(loadingStatusEl);
+
+  var statusEl = setElAttrs(document.createElement('div'), {
+    innerHTML: initialStatus,
+  });
+
+  var progressEl = setElAttrs(document.createElement('progress'), {
+    value: 0,
+    max: 100,
+    hidden: true,
+  });
+
+  progressEl.style.display = 'inline';
+
+  loadingStatusEl.appendChild(statusEl);
+  loadingStatusEl.appendChild(progressEl);
+
+  return {
+    totalDependencies: 0,
+    update: function (remainingDependencies) {
+      this.totalDependencies = Math.max(
+        this.totalDependencies,
+        remainingDependencies
+      );
+      this.setStatus(remainingDependencies);
+    },
+
+    setStatus: function (remainingDependencies) {
+      if (this.setStatus.interval) clearInterval(this.setStatus.interval);
+
+      var loadedDependiences = this.totalDependencies - remainingDependencies;
+
+      if (remainingDependencies) {
+        statusEl.innerHTML =
+          'Loading... (' +
+          loadedDependiences +
+          '/' +
+          this.totalDependencies +
+          ')';
+        setElAttrs(progressEl, {
+          value: loadedDependiences * 100,
+          max: this.totalDependencies * 100,
+          hidden: false,
+        });
+      } else {
+        // close progress element
+        setElAttrs(progressEl, {
+          value: 0,
+          max: 0,
+          hidden: true,
+        });
+        loadingStatusEl.style.display = 'none';
+      }
+    },
+  };
+}
+
+module.exports = {
+  loadingStatus: loadingStatus,
+};
+
+},{}]},{},[1])(1)
+});
+</script>
+<script>
+  // add a load progress bar. not required, but good ux
+  var loadingStatus = PCEJSUtil.loadingStatus(
+    document.querySelector('.pcejs-loading-status')
+  );
+  PCEJSMacplus({
+    arguments: ['-c', 'pce-config.cfg', '-r'],
+    autoloadFiles: [
+      'https://mountain658.github.io/mac-plus.rom', // a macintosh rom file (you can use this one or any rom from an early macintosh eg. classic or earlier)
+      'https://mountain658.github.io/hd1.qed', // a macintosh disk image (replace this file with your own)
+      'https://mountain658.github.io/pce-config.cfg', // the PCE config file (edit and replace this file with your own)
+      'https://mountain658.github.io/macplus-pcex.rom', // the PCE extension rom, from the pcejs-macplus package
+    ],
+    locateFile(filename) {
+      // allows you to specify the absolute path to where the .wasm file is located (from the pcejs-macplus package)
+      return 'https://mountain658.github.io/pce-macplus.wasm';
+    },
+    print: console.log.bind(console),
+    printErr: console.warn.bind(console),
+    canvas: document.querySelector('.pcejs-canvas'),
+    monitorRunDependencies: function(remainingDependencies) {
+      loadingStatus.update(remainingDependencies);
+    },
+  });
+  
+</script>
+
+
+</body>
+
+</html>

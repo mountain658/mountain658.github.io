@@ -109,7 +109,7 @@ var rick = getRandomInt(1, 100)
 }
 </script>
 </head>
-<body>
+<body onload='giveSearchFocus()'>
 
 <h1>Mountain Game Games</h1>
 
@@ -151,13 +151,20 @@ var rick = getRandomInt(1, 100)
 
 </div>
 <br>
-<label for="searchbox">Search</label>
+<div style='font-size:20px;'>
+<label for="searchbox">Search Games:</label>
 <input 
   type="search" 
   oninput="liveSearch()" 
   id="searchbox" 
-  style='border-radius: 5px;'
+  style='border-radius: 5px;font-size:20px;'
 >
+</div>
+<script>
+function giveSearchFocus() {
+document.getElementById('searchbox').focus()
+}
+</script>
 <script src="search.js"></script>
 <br>
 <br>

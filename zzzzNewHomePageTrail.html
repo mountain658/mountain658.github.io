@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html>
+<head>
+      <title>Mountain Game Games</title>
+    <link rel="shortcut icon" type="image/jpg" href="https://cdn.mos.cms.futurecdn.net/ntFmJUZ8tw3ULD3tkBaAtf-970-80.jpg.webp">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+  .overlay{
+    opacity:1;
+    background-color:#ccc;
+    position:fixed;
+    width:100%;
+    height:100%;
+    top:0px;
+    left:0px;
+    z-index:1000;
+    display: block;
+}
+
+.container {
+  position: relative;
+  width: 100%;
+  max-width: 150px;
+}
+
+.container img {
+  width: 100%;
+  height: auto;
+  border-radius: 5px;
+}
+
+.container .btn {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  background-color: white;
+  color: white;
+  font-size: 16px;
+  padding: 12px 24px;
+  border: none;
+  cursor: pointer;
+  border-radius: 5px;
+  text-align: center;
+}
+
+.container .btn:hover {
+  background-color: white;
+}
+.whiteButton {
+  position: absolute;
+  top: 0px;
+  right: 0px;
+  display: flex;
+}
+.whitebutton {
+    background-color: Transparent;
+    background-repeat:no-repeat;
+    border: none;
+    cursor: default;
+    overflow: hidden;
+    outline:none;
+}
+body {
+  background-image: url('https://i.imgur.com/cXb5Phu.jpg');
+    background-repeat: no-repeat;
+      background-attachment: fixed;
+  background-size: cover;
+}
+
+.is-hidden { display: none; }
+</style>
+<script>
+function getRandomInt(min, max) {
+    min = Math.ceil(min);
+    max = Math.floor(max);
+    return Math.floor(Math.random() * (max - min + 1)) + min;
+}
+var rick = getRandomInt(1, 100)
+
+ if ((rick == 1)) {
+    window.location="/zzz.html"; 
+ }
+ 
+ function hideDiv() {
+ document.getElementById('awayMoneyScreen').style.display = "none";
+  var myobj = document.getElementById('awayMoneyScreen');
+  myobj.remove();
+}
+</script>
+</head>
+<body data-new-gr-c-s-check-loaded="14.1052.0" data-gr-ext-installed="">
+
+
+<h1>Mountain Game Games</h1>
+
+<h3>This is a new site the other one doesn't work anymore for some reason so sadly some progress on games were lost I'll try to fix it but I don't know if I'll be able to.</h3>
+<p>(To make it easier to find for next time drag the names up to the bookmarks bar.)</p>
+
+<div id="5new" style="background-image: url('https://upload.wikimedia.org/wikipedia/commons/f/fb/Light_blue.png');text-align:center;  border-radius: 5px;">
+<h3>5 Newest Games</h3>
+
+<div id="5newHolder" style="display: grid;grid-template-columns: 1fr 1fr 1fr 1fr 1fr;"> 
+
+  <div class="container">
+  <img src="mountainmaze.png" alt="Mountain Maze" style="width:100%">
+  <button class="btn"><a href="mountainmaze.html">Mountain Maze</a></button>
+  </div>
+  
+      <div class="container">
+  <img src="forests.png" alt="Rolling Forests" style="width:100%">
+  <button class="btn"><a href="forests.html">Rolling Forests</a></button>
+  </div>
+  
+  <div class="container">
+  <img src="theoregontrial.png" alt="The Oregon Trail" style="width:100%">
+  <button class="btn"><a href="theoregontrial.html">The Oregon Trail</a></button>
+  </div>
+  
+    <div class="container">
+  <img src="stack.png" alt="Stack" style="width:100%">
+  <button class="btn"><a href="stack.html">Stack</a></button>
+  </div>
+  
+               <div class="container">
+  <img src="wordle.png" alt="Wordle" style="width:100%">
+  <button class="btn"><a href="wordle.html">Wordle</a></button>
+  </div>
+  
+  
+</div>
+
+</div>
+<br>
+<label for="searchbox">Search</label>
+<input type="search" oninput="liveSearch()" id="searchbox" style="border-radius: 5px;">
+<script src="search.js"></script>
+<br>
+<br>
+
+<div style="width: 500px;">
+ <div style="float: left; width: 33.333333333%;"><div class="container">
+  <img src="https://cdn.mos.cms.futurecdn.net/ntFmJUZ8tw3ULD3tkBaAtf-970-80.jpg.webp" alt="Mountain Game" style="width:100%">
+  <button class="btn"><a href="mountain.html">The Mountain Game</a></button>
+</div>
+<div class="container">
+    <img src="retrobowl.png" alt="Retro Bowl" style="width:100%">
+  <button class="btn"><a href="retro.html">Retro Bowl</a></button>
+</div>
+<div class="container">
+  <img src="slope.png" alt="Slope" style="width:100%">
+  <button class="btn"><a href="slope.html">Slope</a></button>
+</div>
+<div class="container">
+  <img src="tube-jumpers.png" alt="Tube Jumpers" style="width:100%">
+  <button class="btn"><a href="jumpers.html">Tube Jumpers</a></button>
+</div>
+<div class="container">
+  <img src="2048.png" alt="2048" style="width:100%">
+  <button class="btn"><a href="2048.html">2048</a></button>
+</div>
+<div class="container">
+  <img src="tetris.png" alt="Tetris" style="width:100%">
+  <button class="btn"><a href="tetris.html">Tetris</a></button>
+</div>
+  <div class="container">
+  <img src="tom-and-jerry.png" alt="Tom And Jerry" style="width:100%">
+  <button class="btn"><a href="tandj.html">Tom And Jerry</a></button>
+  </div>
+
+    <div class="container">
+  <img src="geometry-dash.png" alt="Geometry Dash 1&amp;2" style="width:100%">
+  <button class="btn"><a href="dash/dashHome.html">Geometry Dash 1&amp;2</a></button>
+  </div>
+
+      <div class="container">
+  <img src="duck-life.png" alt="Duck Life" style="width:100%">
+  <button class="btn"><a href="duckLife/duckLifeHome.html">Duck Life 1-4</a></button>
+  </div>
+
+      <div class="container">
+  <img src="flood-runner.png" alt="Flood Runner" style="width:100%">
+  <button class="btn"><a href="floodRunner.html">Flood Runner</a></button>
+  </div>
+
+      <div class="container">
+  <img src="electric-man.png" alt="Electro Man" style="width:100%">
+  <button class="btn"><a href="ElectroMan.html">Electro Man</a></button>
+  </div>
+  
+        <div class="container">
+  <img src="worlds-hardest-game.png" alt="World's Hardest Game" style="width:100%">
+  <button class="btn"><a href="WorldsHardestGame.html">World's Hardest Game</a></button>
+  </div>
+
+        <div class="container">
+  <img src="1-on-1-soccer.png" alt="1 on 1 Soccer" style="width:100%">
+  <button class="btn"><a href="1v1Soccer.html">1 on 1 Soccer</a></button>
+  </div>
+</div>
+ <div style="float: left; width: 33.333333333%;">
+
+        <div class="container">
+  <img src="chess.png" alt="Chess" style="width:100%">
+  <button class="btn"><a href="chess.html">Chess</a></button>
+  </div>
+
+          <div class="container">
+  <img src="snake.png" alt="Snake" style="width:100%">
+  <button class="btn"><a href="snake.html">Snake</a></button>
+  </div>
+
+            <div class="container">
+  <img src="cookie.png" alt="Cookie Clicker" style="width:100%">
+  <button class="btn"><a href="cookie.html">Cookie Clicker</a></button>
+  </div>
+
+              <div class="container">
+  <img src="t-rex.jpeg" alt="T-rex Game" style="width:100%">
+  <button class="btn"><a href="t-rex-game">T-rex Game</a></button>
+  </div>
+
+              <div class="container">
+  <img src="madalin-stunt-cars-2.jpeg" alt="Madalin Stunt Cars 2" style="width:100%">
+  <button class="btn"><a href="StuntCars.html">Madalin Stunt Cars 2</a></button>
+  </div>
+
+                <div class="container">
+  <img src="10.png" alt="10 More Bullets" style="width:100%">
+  <button class="btn"><a href="10moreBullets.html">10 More Bullets</a></button>
+  </div>
+
+                <div class="container">
+  <img src="burrito.png" alt="Burrito Bison" style="width:100%">
+  <button class="btn"><a href="BurritoBison.html">Burrito Bison</a></button>
+  </div>
+
+                  <div class="container">
+  <img src="moto-x3m.png" alt="Moto-X3M 1 &amp; 4" style="width:100%">
+  <button class="btn"><a href="motox3mhome.html
+">Moto X3M 1 &amp; 4</a></button>
+  </div>
+
+                    <div class="container">
+  <img src="tunnelrush.png" alt="Tunnel Rush" style="width:100%">
+  <button class="btn"><a href="Tunnel-Rush.html">Tunnel Rush</a></button>
+  </div>
+
+                      <div class="container">
+  <img src="google-baseball.png" alt="Google Baseball" style="width:100%">
+  <button class="btn"><a href="Google-Baseball.html">Google Baseball</a></button>
+  </div>
+
+                      <div class="container">
+  <img src="drift-hunters.png" alt="Drift Hunters" style="width:100%">
+  <button class="btn"><a href="Drift-Hunters.html">Drift Hunters</a></button>
+  </div>
+
+                        <div class="container">
+  <img src="firewater.png" alt="Fireboy And Watergirl" style="width:100%">
+  <button class="btn"><a href="Fire-Boy-Water-Girl">Fireboy And Watergirl</a></button>
+  </div>
+</div>
+
+<div style="float: left; width: 33.333333333%;">
+
+                          <div class="container">
+  <img src="TinySquare.png" alt="Big Tower Tiny Square" style="width:100%">
+  <button class="btn"><a href="BigTowerTinySquare.html">Big Tower Tiny Square</a></button>
+  </div>
+
+                            <div class="container">
+  <img src="basketballstars.png" alt="Basketball Stars" style="width:100%">
+  <button class="btn"><a href="Basket-Ball-Stars.html">Basketball Stars</a></button>
+  </div>
+  
+                              <div class="container">
+  <img src="deepestsword.png" alt="Deepest Sword" style="width:100%">
+  <button class="btn"><a href="deepestsword.html">Deepest Sword</a></button>
+  </div>
+  
+   <div class="container">
+  <img src="stickmanclimb.png" alt="Stickman Climb 1&amp;2" style="width:100%">
+  <button class="btn"><a href="stickmanclimbmain.html">Stickman Climb 1&amp;2</a></button>
+  </div>
+  
+   <div class="container">
+  <img src="justflip.png" alt="Just Flip" style="width:100%">
+  <button class="btn"><a href="justflip.html">Just Flip</a></button>
+  </div>
+  
+     <div class="container">
+  <img src="idleminer.png" alt="Idle Miner" style="width:100%">
+  <button class="btn"><a href="idleminer.html">Idle Miner</a></button>
+  </div>
+  
+       <div class="container">
+  <img src="launchball.png" alt="Launchball" style="width:100%">
+  <button class="btn"><a href="launchball.html">Launchball</a></button>
+  </div>
+  
+         <div class="container">
+  <img src="paperio2.png" alt="Paper.io 2" style="width:100%">
+  <button class="btn"><a href="paperio2.html">Paper.io 2</a></button>
+  </div>
+  
+           <div class="container">
+  <img src="lastwood.png" alt="Last Wood" style="width:100%">
+  <button class="btn"><a href="lastwood.html">Last Wood</a></button>
+  </div>
+  
+             <div class="container">
+  <img src="airhockey.png" alt="Air Hockey" style="width:100%">
+  <button class="btn"><a href="airhockey.html">Air Hockey</a></button>
+  </div>
+  
+               <div class="container">
+  <img src="wordle.png" alt="Wordle" style="width:100%">
+  <button class="btn"><a href="wordle.html">Wordle</a></button>
+  </div>
+  
+                 <div class="container">
+  <img src="pacman.png" alt="Pacman" style="width:100%">
+  <button class="btn"><a href="pacman.html">Pacman</a></button>
+  </div>
+  
+                   <div class="container">
+  <img src="motox3mwinter.png" alt="Moto X3M Winter" style="width:100%">
+  <button class="btn"><a href="motox3mwinter.html">Moto X3M Winter</a></button>
+  </div>
+  
+                     <div class="container">
+  <img src="theoregontrial.png" alt="The Oregon Trail" style="width:100%">
+  <button class="btn"><a href="theoregontrial.html">The Oregon Trail</a></button>
+  </div>
+  
+  <div class="container">
+  <img src="mountainmaze.png" alt="Mountain Maze" style="width:100%">
+  <button class="btn"><a href="mountainmaze.html">Mountain Maze</a></button>
+  </div>
+  
+    <div class="container">
+  <img src="stack.png" alt="Stack" style="width:100%">
+  <button class="btn"><a href="stack.html">Stack</a></button>
+  </div>
+  
+      <div class="container">
+  <img src="forests.png" alt="Rolling Forests" style="width:100%">
+  <button class="btn"><a href="forests.html">Rolling Forests</a></button>
+  </div>
+</div>
+ <br style="clear: left;" />
+</div>
+
+ <br>
+  <br>
+    <br>
+  <br>
+    <br>
+  <br>
+  
+      <div class="container">
+        <img src="vector.gif" alt="Suggestions" style="width:100%">
+  <button class="btn"><a href="suggestions.html">Suggestions</a></button>
+  </div>
+    <br>
+    <br>
+  <br>
+        <div class="container">
+  <button class="btn"><a href="privacyPolicy.html">Privacy Policy</a></button>
+  </div>
+  
+    <div class="whiteButton"> 
+  <input class="whitebutton" type="button" onclick="location.href='zPass.html';" value="  .  ">
+  </div>
+
+<img src="https://www.free-website-hit-counter.com/c.php?d=9&amp;id=131905&amp;s=10" border="0" alt="" width="0px">
+<script src="load.js"></script>
+   
+</body>
+
+</html>

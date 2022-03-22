@@ -1,0 +1,9 @@
+{
+"TOTAL_MEMORY": 268435456,
+"dataUrl": "tube_jumpersdata.unityweb",
+"asmCodeUrl": "tube_jumperscode.unityweb",
+"asmMemoryUrl": "tube_jumpersmemory.unityweb",
+"asmFrameworkUrl": "tube_jumpersframework.unityweb",
+"splashScreenStyle": "Dark",
+"backgroundColor": "#0B4580"
+}

@@ -1,3 +1,4 @@
+
 <!DOCTYPE HTML>
 <head>
    <title>Snowball Fight</title>
@@ -237,6 +238,9 @@
       leftPColor = document.getElementById("lplayerColor").style.color;
       
       rightPColor = document.getElementById("rplayerColor").style.color;
+      
+      player.bullets = [];
+      player2.bullets = [];
       }
           
       (function () {
@@ -292,8 +296,8 @@
       boxes.push({
           x: 0,
           y: 0,
-          width: 5,
-          height: height+5
+          width: 10,
+          height: height+50
       });
       
       //Floor
@@ -304,38 +308,61 @@
           height: 0
       });
       
-      //RIght Wall
+      //Top
       boxes.push({
-          x: width - 5,
-          y: 0,
-          width: 5,
-          height: height+5
+          x: 0,
+          y: -45,
+          width: width,
+          height: 5
       });
       
+      //RIght Wall
+      boxes.push({
+          x: width-10,
+          y: 0,
+          width: 10,
+          height: height+50
+      });
+ 
+ //Bottom Left Platform
       boxes.push({
           x: 0,
           y: 150,
           width: 80,
           height: 20
       });
-      
+ //Bottom Right Platform      
       boxes.push({
           x: width-80,
           y: 150,
           width: 80,
           height: 20
       });
-      
+//Top Left Platform   
+      boxes.push({
+          x: 0,
+          y: 50,
+          width: 80,
+          height: 20
+      });
+//Top Right Platform   
+      boxes.push({
+          x: width-80,
+          y: 50,
+          width: 80,
+          height: 20
+      });
+//Big Middle Platform
       boxes.push({
           x: width-375,
-          y: height/1.5,
+          y: height/2,
           width: 250,
           height: 20
       });
-      
+//Little Part In Middle Of Big Platform
       boxes.push({
           x: width/2,
-          y: height/2,
+          y: height/3,
           width: 20,
           height: 50
       });
@@ -390,11 +417,12 @@
               if (dir === "l" || dir === "r") {
                   player.velX = 0;
                   player.jumping = false;
+                  player.grounded = false;
               } else if (dir === "b") {
                   player.grounded = true;
                   player.jumping = false;
               } else if (dir === "t") {
-                  player.velY *= -1;
+                  player.velY *= -0.1;
               }
       
           }
@@ -404,6 +432,17 @@
           
           player.x += player.velX;
           player.y += player.velY;
+      }
+      
+function bulletsHitBoxes(obj) {
+          for (var i = 0; i < boxes.length; i++) {
+              ctx.rect(boxes[i].x, boxes[i].y, boxes[i].width, boxes[i].height);
+              var dir = colCheck(obj, boxes[i]);
+      
+              if (dir === "l" || dir === "r") {
+return true;
+              }
+          }
       }
       
       function playerColor(player, color) {
@@ -437,13 +476,14 @@
         ctx.beginPath();
         ctx.fillRect(bullet.x, bullet.y, bullet.width, bullet.height);
         ctx.fill();
-        bullet.x += bullet.dx
-        if (bullet.x > canvas.width) {
-        obj.bullets.slice(bullet);
-        }
+        bullet.x += bullet.dx;
           if (collides(bullet, enemy)) {
       obj.hits += 1;
       obj.bullets = [];
+      enemy.bullets = [];
+        }
+        if (bulletsHitBoxes(bullet)) {
+        
         }
       })
       }

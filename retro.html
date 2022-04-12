@@ -2,35 +2,18 @@
 <html>
   <head>
       <title>Retro Bowl</title>
-    <link rel="shortcut icon"
-    type="image/jpg" href="/retrobowl.png"
-    />
+    <link rel="shortcut icon" type="image/jpg" href="retrobowl.png"/>
   </head>
-<body>
-        <script>
-loadTitle();
-function  loadTitle(){
-    if (localStorage.Titlesave) {
-      document.title = localStorage.Titlesave;
- }
-}
-loadIcon();
-function  loadIcon(){
-    if (localStorage.Iconsave) {
-      function changeFavicon(src) { var link = document.createElement('link'),     oldLink = document.getElementById('dynamic-favicon'); link.id = 'dynamic-favicon'; link.rel = 'shortcut icon'; link.href = src; if (oldLink) {  document.head.removeChild(oldLink);
-} document.head.appendChild(link);}
-changeFavicon(localStorage.Iconsave);
- }
-}
-</script>
-         <a href="/"
-       style="position:absolute;width;50px;height: 50px;left:20px;top: 50px;" >Back To Home Page</a>
-<iframe title="Include gadget (iframe)" width="960" height="540"scrolling="no" frameborder="0" id="518929564" name="518929564" allowtransparency="true" class="igm" src="https://debbiewatermanphd.com/uploads/5/5/6/7/5567194/custom_themes/230188292910318641/files/rb1.html"></iframe>
-
+<body onload='focus()'>
+<script src="load.js"></script>
+         <a href="/" style='font-size: 2vw;'>Back To Home Page</a>
+         <button onclick="openFullscreen('518929564')" style='font-size: 2vw;'>Fullscreen Mode</button>      
+<iframe style='height: 95vh; width: 95vw;' scrolling="no" frameborder="0" id="518929564" allowtransparency="true" 
+        src="https://debbiewatermanphd.com/uploads/5/5/6/7/5567194/custom_themes/230188292910318641/files/rb1.html"></iframe>
 <script src="fullScreen.js"></script>
-<button onclick="openFullscreen('518929564')">Fullscreen Mode</button>
-
-
+<script>
+function focus() {document.getElementById('518929564').focus();}
+</script>
 </body>
-
 </html>
+

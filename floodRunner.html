@@ -1,20 +1,19 @@
 <!DOCTYPE html>
 <html>
   <head>
-
       <title>Flood Runner</title>
-    <link rel="shortcut icon"
-    type="image/jpg" href="https://iili.io/5Vu4Qn.jpg"
-    />
+    <link rel="shortcut icon" type="image/jpg" 
+    href="flood-runner.png"/>
   </head>
-<body>
+<body onload='focus()'>
 <script src="load.js"></script>
+         <a href="/" style='font-size: 2vw;'>Back To Home Page</a>
+         <button onclick="openFullscreen('518929564')" style='font-size: 2vw;'>Fullscreen Mode</button>      
+<iframe style='height: 95vh; width: 95vw;' scrolling="no" frameborder="0" id="518929564" allowtransparency="true" 
+        src="zFlood.html"></iframe>
 <script src="fullScreen.js"></script>
-         <a href="/"
-       style="position:absolute;width;50px;height: 50px;left:20px;top: 50px;" >Back To Home Page</a>
-       <p>Might Take A While.</p>
-<iframe title="Include gadget (iframe)" width="960" height="640"scrolling="no" frameborder="0" id="518929564" name="518929564" allowtransparency="true" class="igm" src="/zFlood.html"></iframe>
-<button onclick="openFullscreen('518929564')">Fullscreen Mode</button>
+<script>
+function focus() {document.getElementById('518929564').focus();}
+</script>
 </body>
-
 </html>

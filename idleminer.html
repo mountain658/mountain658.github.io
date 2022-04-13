@@ -1,26 +1,19 @@
 <!DOCTYPE html>
 <html>
   <head>
-
       <title>Idle Miners</title>
-    <link rel="shortcut icon"
-    type="image/jpg" href="idleminer.png"
-    />
+    <link rel="shortcut icon" type="image/jpg" 
+    href="idleminer.png"/>
   </head>
-<body>
+<body onload='focus()'>
 <script src="load.js"></script>
-  <script src="display.js"></script>
-  <script>
-  display("BEFORE YOU SPEND A LOT OF TIME ON THIS GAME KNOW IT MIGHT NOT SAVE", 5, "h1");
-  </script>
-         <a href="/"
-       style="position:absolute;width;50px;height: 50px;left:20px;top: 50px;" >Back To Home Page</a>
-<iframe title="Include gadget (iframe)" width="960" height="640"scrolling="no" frameborder="0" id="518929564" name="518929564" allowtransparency="true" class="igm" src="zidleminer.html"></iframe>
-
+         <a href="/" style='font-size: 2vw;'>Back To Home Page</a>
+         <button onclick="openFullscreen('518929564')" style='font-size: 2vw;'>Fullscreen Mode</button>      
+<iframe style='height: 95vh; width: 95vw;' scrolling="no" frameborder="0" id="518929564" allowtransparency="true" 
+        src="zidleminer.html"></iframe>
 <script src="fullScreen.js"></script>
-<button onclick="openFullscreen('518929564')">Fullscreen Mode</button>
-
-
+<script>
+function focus() {document.getElementById('518929564').focus();}
+</script>
 </body>
-
 </html>

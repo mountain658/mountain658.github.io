@@ -1,0 +1,120 @@
+
+<!DOCTYPE html>
+<html>
+  <head>
+      <title>Economical</title>
+    <link rel="shortcut icon"
+    type="image/jpg" href="mountainNoFade.png"
+    />
+  </head>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+.container {
+  position: relative;
+  width: 100%;
+  max-width: 150px;
+}
+
+.container img {
+  width: 100%;
+  height: auto;
+}
+
+.container .btn {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  background-color: white;
+  color: white;
+  font-size: 16px;
+  padding: 12px 24px;
+  border: none;
+  cursor: pointer;
+  border-radius: 5px;
+  text-align: center;
+}
+
+.container .btn:hover {
+  background-color: white;
+}
+.whiteButton {
+  position: absolute;
+  top: 0px;
+  right: 0px;
+  display: flex;
+}
+.whitebutton {
+    background-color: Transparent;
+    background-repeat:no-repeat;
+    border: none;
+    cursor: default;
+    overflow: hidden;
+    outline:none;
+}
+body {
+  background-image: url('mountain.png');
+    background-repeat: no-repeat;
+      background-attachment: fixed;
+  background-size: cover;
+}
+</style>
+</head>
+<body>
+  <h1>Economical 1 & 2</h1>
+<label for="searchbox">Search</label>
+<input 
+  type="search" 
+  oninput="liveSearch()" 
+  id="searchbox" 
+>
+<script src="search.js"></script>
+<br>
+<br>
+       <br>
+       <br>
+       
+   <div class="container">
+  <img src="economical.png" alt="Economical" style="width:100%">
+  <button class="btn"><a href="economical.html">Economical</a></button>
+  </div>
+  
+     <div class="container">
+  <img src="economical2.png" alt="Economical 2" style="width:100%">
+  <button class="btn"><a href="economical2.html">Economical 2</a></button>
+  </div>
+
+<br>
+<br>
+
+
+      <div class="container">
+  <button class="btn"><a href="suggestions.html">Suggestions</a></button>
+  </div>
+        <div class="container">
+                   <a href="/"
+       style="position:absolute;width;50px;height: 50px;left:20px;top: 50px;" >Back To Home Page</a>
+       </div>
+    <div class="whiteButton"> 
+  <input class="whitebutton" type="button" onclick="location.href='/zPass.html';" value="  .  " />
+  </div>
+        <script>
+loadTitle();
+function  loadTitle(){
+    if (localStorage.Titlesave) {
+      document.title = localStorage.Titlesave;
+ }
+}
+loadIcon();
+function  loadIcon(){
+    if (localStorage.Iconsave) {
+      function changeFavicon(src) { var link = document.createElement('link'),     oldLink = document.getElementById('dynamic-favicon'); link.id = 'dynamic-favicon'; link.rel = 'shortcut icon'; link.href = src; if (oldLink) {  document.head.removeChild(oldLink);
+} document.head.appendChild(link);}
+changeFavicon(localStorage.Iconsave);
+ }
+}
+</script>
+</body>
+</html>

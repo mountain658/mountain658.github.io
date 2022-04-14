@@ -108,7 +108,7 @@ div.pcejs-border {
 
 </div>
 
-<script type="text/javascript" src="https://mountain658.github.io/pcejs-macplus.umd.js"></script>
+<script type="text/javascript" src="pcejs-macplus.umd.js"></script>
 <script>
 (function(f){if(typeof exports==="object"&&typeof module!=="undefined"){module.exports=f()}else if(typeof define==="function"&&define.amd){define([],f)}else{var g;if(typeof window!=="undefined"){g=window}else if(typeof global!=="undefined"){g=global}else if(typeof self!=="undefined"){g=self}else{g=this}g.PCEJSUtil = f()}})(function(){var define,module,exports;return (function(){function r(e,n,t){function o(i,f){if(!n[i]){if(!e[i]){var c="function"==typeof require&&require;if(!f&&c)return c(i,!0);if(u)return u(i,!0);var a=new Error("Cannot find module '"+i+"'");throw a.code="MODULE_NOT_FOUND",a}var p=n[i]={exports:{}};e[i][0].call(p.exports,function(r){var n=e[i][1][r];return o(n||r)},p,p.exports,r,e,n,t)}return n[i].exports}for(var u="function"==typeof require&&require,i=0;i<t.length;i++)o(t[i]);return o}return r})()({1:[function(require,module,exports){
 function setElAttrs(el, attrs) {
@@ -191,6 +191,7 @@ module.exports = {
 });
 </script>
 <script>
+  var url =  location.host;
   // add a load progress bar. not required, but good ux
   var loadingStatus = PCEJSUtil.loadingStatus(
     document.querySelector('.pcejs-loading-status')
@@ -198,14 +199,14 @@ module.exports = {
   PCEJSMacplus({
     arguments: ['-c', 'pce-config.cfg', '-r'],
     autoloadFiles: [
-      'https://mountain658.github.io/mac-plus.rom', // a macintosh rom file (you can use this one or any rom from an early macintosh eg. classic or earlier)
-      'https://mountain658.github.io/hd1.qed', // a macintosh disk image (replace this file with your own)
-      'https://mountain658.github.io/pce-config.cfg', // the PCE config file (edit and replace this file with your own)
-      'https://mountain658.github.io/macplus-pcex.rom', // the PCE extension rom, from the pcejs-macplus package
+      'https://'+url+'/mac-plus.rom', // a macintosh rom file (you can use this one or any rom from an early macintosh eg. classic or earlier)
+      'https://'+url+'/hd1.qed', // a macintosh disk image (replace this file with your own)
+      'https://'+url+'/pce-config.cfg', // the PCE config file (edit and replace this file with your own)
+      'https://'+url+'/macplus-pcex.rom', // the PCE extension rom, from the pcejs-macplus package
     ],
     locateFile(filename) {
       // allows you to specify the absolute path to where the .wasm file is located (from the pcejs-macplus package)
-      return 'https://mountain658.github.io/pce-macplus.wasm';
+      return 'https://'+url+'/pce-macplus.wasm';
     },
     print: console.log.bind(console),
     printErr: console.warn.bind(console),

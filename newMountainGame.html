@@ -1,4 +1,7 @@
 
+
+
+
 <!DOCTYPE html>
 <html>
   <head>
@@ -62,9 +65,9 @@
 	cursor:pointer;
 	color:#ffffff;
 	font-family:Arial;
-	font-size:15px;
+	font-size: 1vw;
 	font-weight:bold;
-	padding:2px 7px;
+	padding: 0.2vw 0.5vw;
 	text-decoration:none;
 	text-shadow:0px 3px 50px #2b665e;
 }
@@ -76,40 +79,37 @@
 	position:relative;
 	top:1px;
 }
+
+p {
+font-size: 1.25vw;
+}
 </style>
 </head>
 <body onload="load();">
-           <a href="/"
-       style="position:absolute;width;50px;height: 50px;left:20px;top: 50px;" >Back To Home Page</a>
-<h1 style="text-shadow: 2px 2px 0px #ffffff;">The Mountain Game</h1>
-<div style="float:right;width:100%;text-align:center;font-size:20px;">
-<button onclick="addMoney(1)" class="upgrade-btn" style="font-size:20px;" id="bigmoneybutton">Dig A Piece Of Trail</button>
-<p style="text-shadow: 2px 2px 0px #ffffff;font-size:50px;">Money: <span id="money"></span></p>
-<p style="text-shadow: 2px 2px 0px #ffffff;">Money Per Second: <span id="mps"></span></p>
+
+<div style="position:absolute;right:5vw;top: 0vw;text-align:center;">
+ <a href="/" style="font-size:1vw;" >Back To Home Page</a>
+<h1 style="text-shadow: 2px 2px 0px #ffffff;font-size:2vw;">The Mountain Game</h1>
+<button onclick="addMoney(1)" class="upgrade-btn" style="font-size:2vw;" id="bigmoneybutton">Dig A Piece Of Trail</button>
+<p style="text-shadow: 2px 2px 0px #ffffff;font-size:3vw;">Money: <span id="money"></span></p>
+<p style="text-shadow: 2px 2px 0px #ffffff;font-size:2vw;">Money Per Second: <span id="mps"></span></p>
+<button onclick="Confimrreset()" class="upgrade-btn">RESET</button>
 </div>
 
-<div id="container" style="display:grid;grid-template-columns:1fr 1fr;grid-gap:10px;">
+<div id="container" style="display:grid;grid-template-columns:1fr 1fr;grid-gap:1vw;">
 
-<div style="display: inline-block;font-family:Arial;font-size:10pt;border:1px solid #808080;text-align:center;width: 200px;height: 510px;overflow-y: auto;animation: 30000ms ease-in-out infinite second-color-change;">
-<h3>Shop:</h3>
+<div style="display: inline-block;font-family:Arial;font-size:10pt;border:1px solid #808080;text-align:center;width: 25vw;height: 95vh;overflow-y: auto;animation: 30000ms ease-in-out infinite second-color-change;">
+<h3 style='font-size:1vw'>Shop:</h3>
 <div id='shop'>
 </div>
 </div>
-
-<div style="display: inline-block;font-family:Arial;font-size:10pt;border:1px solid #808080;text-align:center;width: 200px;height: 510px;overflow-y: auto;margin-right:9999999999999999999999px;animation: 30000ms ease-in-out infinite second-color-change;">
-<h3>Upgrades:</h3>
 </div>
-
-</div>
-<br>
-<button onclick="Confimrreset()" class="upgrade-btn">RESET</button>
 <script>
 var mps = 0;
-
+ls('money', 0);
 setVar("money", ls(("money"), 0));
 
 Item("TrailMakers", 1, 50, 1.01, "Trail Makers", "Trail Maker");
-Upgrade("TrailMakers", 1);
 
 Item("Hikers", 10, 550, 1.02, "Hikers", "Hiker");
 Item("TrailGuides", 50, 3000, 1.03, "Trail Guides", "Trail Guide");
@@ -145,7 +145,7 @@ setVar(name, ls((name), 0));
  localStorage[name] = 0;
  }
 
-document.getElementById("shop").innerHTML += '<div id="'+name+"Holder"+'" style="display: inline-block;padding:10px;font-family:Arial;font-size:10pt;border:1px solid #808080;text-align:center;text-shadow: 1px 1px 0px #3f8d9b;"></div><br><br>';
+document.getElementById("shop").innerHTML += '<div id="'+name+"Holder"+'" style="display: inline-block;padding:5px;font-family:Arial;font-size:1vw;border:1px solid #808080;text-align:center;text-shadow: 1px 1px 0px #3f8d9b;width:90%;"></div><br><br>';
 
 document.getElementById(name+"Holder").innerHTML += '<button id="'+name+'buyButton" onclick="'+name+'()" class="upgrade-btn">Buy '+snglr+'</button>';
 
@@ -160,15 +160,14 @@ document.getElementById(name+'MPSHolder').innerHTML += '<span id="'+name+'MPS"><
 
 document.getElementById(name+'MPS').innerHTML = nm(MoneyPerSecond);
 
-(ls(name+"MoneyPerSecond", MoneyPerSecond));
-
-(Number(localStorage[name+"MoneyPerSecond"])+0)
-
 var nextCost = Math.floor(cost * Math.pow(expPrice, localStorage[name]));
 document.getElementById(name+'Cost').innerHTML = nm(nextCost);
 document.getElementById(name).innerHTML = nm(localStorage[name]);
 mpsUpdate(localStorage[name]*MoneyPerSecond);
 window[name] = function() {
+ if (localStorage.money == "NaN") {
+localStorage.money = 0;
+}
  if (localStorage.money >= nextCost) {
 takeMoney(nextCost);
 localStorage[name] = (Number(localStorage[name])+1);
@@ -189,13 +188,6 @@ document.getElementById(name).innerHTML = nm(localStorage[name]);
  });
 }
 
-function Upgrade(name, add) {
-if (localStorage["Bought"+name+add]) {
-
- }else{
-(name+add)
- }
-}
 
 function adls(name, add) {
 var Stored=(Number(localStorage[name])+add);
@@ -290,77 +282,21 @@ document.getElementById("mps").innerHTML = nm(mps);
  }
 }
 
-function nm(num) {
-function p(e) {
-var exp = Math.pow(10, (e*3));
-return exp;
+function nm(f){
+var a=[" thousand"," million"," billion"," trillion"," quadrillion"," quintillion"," sextillion"," septillion"," octillion"," nonillion"];
+function d(j){
+var i=0,h="";
+if(!isFinite(j)){return (nm(99999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999))}
+if(j>=1000000){j/=1000;while(Math.round(j)>=1000){j/=1000;i++}if(i>=a.length){return (nm(99999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999))}else{
+h=a[i]}
+}return(Math.round(j*1000)/1000)+h}
+var g=["","un","duo","tre","quattuor","quin","sex","septen","octo","novem"];var b=["decillion","vigintillion","trigintillion","quadragintillion","quinquagintillion","sexagintillion","septuagintillion","octogintillion","nonagintillion","decintillion","undecintillion","duodecintillion","tredecintillion"];
+for(var c in b){
+for(var e in g){
+a.push(" "+g[e]+b[c])}
+ }return(d(f))
 }
-     if (num >= p(20)) {
-        return (num / p(20)).toFixed(1).replace(/\.0$/, '') + ' uD';
-     }
-     if (num >= p(20)) {
-        return (num / p(20)).toFixed(1).replace(/\.0$/, '') + ' nd';
-     }
-     if (num >= p(19)) {
-        return (num / p(19)).toFixed(1).replace(/\.0$/, '') + ' od';
-     }
-     if (num >= p(18)) {
-        return (num / p(18)).toFixed(1).replace(/\.0$/, '') + ' Sd';
-     }
-     if (num >= p(17)) {
-        return (num / p(17)).toFixed(1).replace(/\.0$/, '') + ' sd';
-     }
-     if (num >= p(16)) {
-        return (num / p(16)).toFixed(1).replace(/\.0$/, '') + ' Qd';
-     }
-     if (num >= p(15)) {
-        return (num / p(15)).toFixed(1).replace(/\.0$/, '') + ' qd';
-     }
-     if (num >= p(14)) {
-        return (num / p(14)).toFixed(1).replace(/\.0$/, '') + ' td';
-     }
-     if (num >= p(13)) {
-        return (num / p(13)).toFixed(1).replace(/\.0$/, '') + ' dd';
-     }
-     if (num >= p(12)) {
-        return (num / p(12)).toFixed(1).replace(/\.0$/, '') + ' ud';
-     }
-     if (num >= p(11)) {
-        return (num / p(11)).toFixed(1).replace(/\.0$/, '') + ' d';
-     }
-     if (num >= Math.pow(10, 30)) {
-        return (num / Math.pow(10, 30)).toFixed(1).replace(/\.0$/, '') + ' n';
-     }
-     if (num >= 1000000000000000000000000000) {
-        return (num / 1000000000000000000000000000).toFixed(1).replace(/\.0$/, '') + ' o';
-     }
-     if (num >= 1000000000000000000000000) {
-        return (num / 1000000000000000000000000).toFixed(1).replace(/\.0$/, '') + ' S';
-     }
-     if (num >= 1000000000000000000000) {
-        return (num / 1000000000000000000000).toFixed(1).replace(/\.0$/, '') + ' s';
-     }
-     if (num >= 1000000000000000000) {
-        return (num / 1000000000000000000).toFixed(1).replace(/\.0$/, '') + ' Q';
-     }
-     if (num >= 1000000000000000) {
-        return (num / 1000000000000000).toFixed(1).replace(/\.0$/, '') + ' q';
-     }
-     if (num >= 1000000000000) {
-        return (num / 1000000000000).toFixed(1).replace(/\.0$/, '') + ' t';
-     }
-     if (num >= 1000000000) {
-        return (num / 1000000000).toFixed(1).replace(/\.0$/, '') + ' B';
-     }
-     if (num >= 1000000) {
-        return (num / 1000000).toFixed(1).replace(/\.0$/, '') + ' M';
-     }
-     if (num >= 1000) {
-        return (num / 1000).toFixed(1).replace(/\.0$/, '') + ' k';
-     }
-     
-     return Math.floor(num);
-}
+
 
 document.getElementById('bigmoneybutton').addEventListener("keydown", (e) => {
   if (e.keyCode == 13) {
@@ -373,15 +309,15 @@ if (localStorage.saveLeaveDate) {
 var awayTime = ((new Date().getTime() - Number(localStorage.saveLeaveDate))/1000);
 var awayMoney = (Math.floor(awayTime*mps));
 addMoney(awayMoney)
-document.write( '<div style=\"opacity:1;background-color:#ccc;position:fixed;width:100%;height:100%;top:0px;left:0px;z-index:1000;display: block;\" id=\"awayMoneyScreen\" onclick=\"hideDiv()\">\n' );
+document.write( '<div style=\"opacity:1;background-color:#ccc;position:fixed;width:100%;height:100vh;top:0px;left:0px;z-index:1000;display: block;\" id=\"awayMoneyScreen\" onclick=\"hideDiv()\">\n' );
 document.write( '<center>\n' );
-document.write( '<h2>Welcome Back!</h2>\n' );
+document.write( '<h2 style="font-size:3vw">Welcome Back!</h2>\n' );
 document.write( '<br>\n' );
 document.write( '<br>\n' );
 document.write( '<br>\n' );
 document.write( '<br>\n' );
-document.write( '<p>You Earned: <span id=\"awayCash\">'+nm(awayMoney)+'</span> While You Were Away</p>\n' );
-document.write( '<p>(Click Anywhere to Continue)</p>\n' );
+document.write( '<p style="font-size:2vw;">You Earned: <span id=\"awayCash\">'+nm(awayMoney)+'</span> While You Were Away</p>\n' );
+document.write( '<p style="font-size:2vw;">(Click Anywhere to Continue)</p>\n' );
 document.write( '</center>\n' );
 document.write( '</div>' );
 

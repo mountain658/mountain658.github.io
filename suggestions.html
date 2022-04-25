@@ -6,20 +6,6 @@
     type="image/jpg" href=""
     />
   </head>
-        <style>
-            body, html
-            {
-                margin: 0; padding: 0; height: 100%; overflow: hidden;
-            }
-
-
-            .holder {
-  width: 100%;
-  height: 100%;
-  position: relative;
-}
-        </style>
-    </head>
     <body>
             <script>
 loadTitle();
@@ -37,17 +23,26 @@ changeFavicon(localStorage.Iconsave);
  }
 }
 </script>
-      <div class="holder">
-       <a href="/"
-       style="position:absolute;width;50px;height: 50px;left:20px;top: 50px;" >Back To Home Page</a>
-       <br>
-       <br>
-       <br>
-         <br>
-  <br>
-    <br>
-  <br>
+<a href="/" style='font-size: 2vw;'>Back To Home Page</a><br><br>
+
+<div id='emailForm'>
+<h1 style='font-size: 3vw;'>Send An Email:</h1>
+<label style='font-size:3vw'>Email: </label><input style='font-size:3vw' id='text' autocomplete='off'>
+<button style='font-size:3vw' id='send' target='_blank' onclick='updateLink()'>Send</button>
+<script>
+function updateLink(){
+var email = 'mailto:contact@mgame658.ga?subject=Suggestions&body='+document.getElementById('text').value;
+
+window.open(email, "_blank", "toolbar=yes,scrollbars=yes,resizable=yes,top="+window.outerHeight/4+",left="+window.outerWidth/3+",width="+window.outerWidth/2+",height="+window.outerHeight/2+"");
+}
+</script>
+</div>
+<script>
+function email(){
+document.getElementById('emailForm').style.display = "block";
+}
+</script>
+<h1 style='font-size: 3vw;'>Or:</h1>
 <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSd_KmGN-KpfFg41THjYJLLvSS4B7GVWij9hw6pzkS6hkmEM7g/viewform?embedded=true" width="640" height="539" frameborder="0" marginheight="0" marginwidth="0">Loading…</iframe>
-        </div>
     </body>
 </html>

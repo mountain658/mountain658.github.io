@@ -13,14 +13,12 @@ height: 100%;
 }
 </style>
 <script src="load.js"></script>
-         <a href="/" style='font-size: 2vw;'>Back To Home Page</a>
-         <button onclick="openFullscreen('518929564')" style='font-size: 2vw;'>Fullscreen Mode</button>     
+<a href="/" style='font-size: 2vw;'>Back To Home Page</a>
+<button onclick="openFullscreen('518929564')" style='font-size: 2vw;'>Fullscreen Mode</button>     
 <br>
-<button onclick='s1()'style='font-size: 1vw;'>Server 1</button>
-<button onclick='s2()'style='font-size: 1vw;'>Server 2</button>
-<button onclick='s3()'style='font-size: 1vw;'>Server 3</button>
-<button onclick='s4()'style='font-size: 1vw;'>Server 4</button>
-<button onclick='s5()'style='font-size: 1vw;'>Server 5</button>
+<div id='servers'>
+
+</div>
 
 <h3>Playing On Server: <span id='currentServer'></span></h3>
 
@@ -31,30 +29,17 @@ height: 100%;
 document.getElementById('518929564').src='https://ytmous.herokuapp.com/';
 document.getElementById('currentServer').innerHTML = '1';
 
-function s1(){
-document.getElementById('518929564').src='https://ytmous.herokuapp.com/';
-document.getElementById('currentServer').innerHTML = '1';
+const links = ['https://ytmous.herokuapp.com/', 'https://simple-youtube-clone.vercel.app/', 'https://226d606f-e036-4e53-8fe1-abfa95129f61.id.repl.co/', 'https://ytmous.glitch.me/', 'https://ytmous.yonle.repl.co/', 'https://0qnq3.sse.codesandbox.io/'];
+
+links.forEach(server);
+
+function server(item, index) {
+window[("s"+(index+1))] = function(){
+document.getElementById('518929564').src= item;
+document.getElementById('currentServer').innerHTML = (index+1);
 document.getElementById('518929564').focus();
-}
-function s2(){
-document.getElementById('518929564').src='https://simple-youtube-clone.vercel.app/';
-document.getElementById('currentServer').innerHTML = '2';
-document.getElementById('518929564').focus();
-}
-function s3(){
-document.getElementById('518929564').src='https://226d606f-e036-4e53-8fe1-abfa95129f61.id.repl.co/';
-document.getElementById('currentServer').innerHTML = '3';
-document.getElementById('518929564').focus();
-}
-function s4(){
-document.getElementById('518929564').src='https://ytmous.glitch.me/';
-document.getElementById('currentServer').innerHTML = '4';
-document.getElementById('518929564').focus();
-}
-function s5(){
-document.getElementById('518929564').src='https://ytmous.yonle.repl.co/';
-document.getElementById('currentServer').innerHTML = '5';
-document.getElementById('518929564').focus();
+ }
+document.getElementById('servers').innerHTML += "<button style='font-size: 1vw;' onclick="+("s"+(index+1))+"()>Server "+(index+1)+"</button>";
 }
 </script>
 <script src="fullScreen.js"></script>

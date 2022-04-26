@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+  <head>
+      <title>Youtube</title>
+    <link rel="shortcut icon" type="image/jpg" 
+    href="youtube.png"/>
+  </head>
+<body onload='focus()'>
+<style>
+html, body{
+width: 100%;
+height: 100%;
+}
+</style>
+<script src="load.js"></script>
+         <a href="/" style='font-size: 2vw;'>Back To Home Page</a>
+         <button onclick="openFullscreen('518929564')" style='font-size: 2vw;'>Fullscreen Mode</button>     
+<br>
+<button onclick='s1()'style='font-size: 1vw;'>Server 1</button>
+<button onclick='s2()'style='font-size: 1vw;'>Server 2</button>
+<button onclick='s3()'style='font-size: 1vw;'>Server 3</button>
+<button onclick='s4()'style='font-size: 1vw;'>Server 4</button>
+<button onclick='s5()'style='font-size: 1vw;'>Server 5</button>
+
+<h3>Playing On Server: <span id='currentServer'></span></h3>
+
+<iframe style='height: 95vh; width: 95vw;' scrolling="no" frameborder="0" id="518929564" allowtransparency="true" 
+        src=""></iframe>
+<br>
+<script>
+document.getElementById('518929564').src='https://ytmous.herokuapp.com/';
+document.getElementById('currentServer').innerHTML = '1';
+
+function s1(){
+document.getElementById('518929564').src='https://ytmous.herokuapp.com/';
+document.getElementById('currentServer').innerHTML = '1';
+document.getElementById('518929564').focus();
+}
+function s2(){
+document.getElementById('518929564').src='https://simple-youtube-clone.vercel.app/';
+document.getElementById('currentServer').innerHTML = '2';
+document.getElementById('518929564').focus();
+}
+function s3(){
+document.getElementById('518929564').src='https://226d606f-e036-4e53-8fe1-abfa95129f61.id.repl.co/';
+document.getElementById('currentServer').innerHTML = '3';
+document.getElementById('518929564').focus();
+}
+function s4(){
+document.getElementById('518929564').src='https://ytmous.glitch.me/';
+document.getElementById('currentServer').innerHTML = '4';
+document.getElementById('518929564').focus();
+}
+function s5(){
+document.getElementById('518929564').src='https://ytmous.yonle.repl.co/';
+document.getElementById('currentServer').innerHTML = '5';
+document.getElementById('518929564').focus();
+}
+</script>
+<script src="fullScreen.js"></script>
+<script>
+function focus() {document.getElementById('518929564').focus();}
+</script>
+</body>
+</html>

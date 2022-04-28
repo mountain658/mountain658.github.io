@@ -85,7 +85,8 @@ It</button></p>
 <img src="" height="25" alt="">
 <button onclick='iconChangeFile()'>Use</button>
 <br>
-<p> </p>
+<p>Or click one of these to use:</p>
+<img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAABsklEQVQYV6WPMY9MYRSGnzO5K5mrsczINCujkBh3ihU1CX9BMSsKtqTQ6mzDr5BFQiLRSkRoFRu7icIQ3YoCESHL3DEbmfMqzjc3d1BxmvPlS97nPK9J4n8mm75Yvsz00zkzYTYPkwypAbJ4e2xkyBuw0LpvPzfaMpURrgMUAIhgBZGBGgGznIzpGMx4OW7xatLGbBYGJJTecoHHu2h+pZ/vgP8gQ4YQw3GbB1+OQgIgkS80kYvR7igBHLkzaImi+Q1kZKEJuJB71WDvnpy1M1dBsPb0BqNJiWpGqSWN6GRJ05ELubiwvEJ33xLdxSVWT5xHVRclw8ilCoY89STwt7fu0V08BMD687thKM1biKhgM3CtwmhScu3xdSRR7pZVuPInDicDknoA+p0eRecY/U4PgOGH12y83WT783aAHDSrIBlAquBcOXmJ00dOUZ+i02Nw/CwPh4+4+exWfMqQjExuYIDC4vdwfQ7v786FEWSoAYiiucPgwDuGb9bnQlVloCw/stJ+T5F/j4MyrHxyUKCw+NsIIK4pbbAAy8gkWwUu2uzSDKT6+jMIINkdU93xH+YXTrImgXmBBtYAAAAASUVORK5CYII=" height="25" onclick='changeLinkImgClick(this.src)' alt="">
 </div>
 
 <button class="accordion">Reset</button>
@@ -128,6 +129,7 @@ function BeenHere() {
     }
   } else {
   }
+  generateBookmark();
 }
 
  function pass(){
@@ -144,6 +146,7 @@ localStorage.BeenHere = '.';
      alert("WRONG")
         window.location = "/";
   }
+  generateBookmark();
 }
 loadTitle();
 function TabName() {
@@ -151,8 +154,9 @@ var person = prompt("What Should This Tab Be Called?", "");
 if (person != null) {
 document.title = person; 
 localStorage.Titlesave = person;
+generateBookmark();
  }
- 
+ generateBookmark();
 }
 
 
@@ -161,11 +165,15 @@ function  loadTitle(){
     if (localStorage.Titlesave) {
       document.title = localStorage.Titlesave;
  }
+ generateBookmark();
 }
 
 function resetTitle(){
-localStorage.clear();
+localStorage.removeItem("Titlesave");
+localStorage.removeItem("Iconsave");
+localStorage.removeItem("BeenHere");
 alert('Done. Everything Reset.')
+generateBookmark();
 }
 
 
@@ -175,6 +183,7 @@ var icon = prompt("What Should This Tabs Picture Be (Link)?", "");  if (icon != 
 document.head = document.head || document.getElementsByTagName('head')[0];function changeFavicon(src) { var link = document.createElement('link'),     oldLink = document.getElementById('dynamic-favicon'); link.id = 'dynamic-favicon'; link.rel = 'shortcut icon'; link.href = src; if (oldLink) {  document.head.removeChild(oldLink);
 } document.head.appendChild(link);} changeFavicon(icon);}
 localStorage.Iconsave = icon;
+generateBookmark();
 }
 
 function iconChangeBox(){
@@ -182,6 +191,7 @@ var icon = ('https://www.google.com/s2/favicons?domain_url='+(link.value));  if 
 document.head = document.head || document.getElementsByTagName('head')[0];function changeFavicon(src) { var link = document.createElement('link'),     oldLink = document.getElementById('dynamic-favicon'); link.id = 'dynamic-favicon'; link.rel = 'shortcut icon'; link.href = src; if (oldLink) {  document.head.removeChild(oldLink);
 } document.head.appendChild(link);} changeFavicon(icon);}
 localStorage.Iconsave = icon;
+generateBookmark();
 }
 
 function previewFile() {
@@ -197,6 +207,7 @@ function previewFile() {
   if (file) {
     reader.readAsDataURL(file);
   }
+  generateBookmark();
 }
 
 var imageLink;
@@ -206,7 +217,8 @@ var icon = (imageLink);  if (icon != null) {
 document.head = document.head || document.getElementsByTagName('head')[0];function changeFavicon(src) { var link = document.createElement('link'),     oldLink = document.getElementById('dynamic-favicon'); link.id = 'dynamic-favicon'; link.rel = 'shortcut icon'; link.href = src; if (oldLink) {  document.head.removeChild(oldLink);
 } document.head.appendChild(link);} changeFavicon(icon);}
 localStorage.Iconsave = icon;
-alert('Used')
+alert('Used');
+generateBookmark();
 }
 
 loadIcon();
@@ -216,8 +228,22 @@ function  loadIcon(){
 } document.head.appendChild(link);}
 changeFavicon(localStorage.Iconsave);
  }
+ generateBookmark();
 }
 
+function changeLinkImgClick(src) { 
+var link = document.createElement('link'),
+oldLink = document.getElementById('dynamic-favicon');
+
+link.id = 'dynamic-favicon';
+link.rel = 'shortcut icon';
+link.href = src; 
+	if (oldLink) { 
+    document.head.removeChild(oldLink);
+  } 
+	document.head.appendChild(link);
+    alert("Used")
+}
 
      function generateBookmark (){
        var title = localStorage.Titlesave;

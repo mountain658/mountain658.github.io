@@ -139,10 +139,21 @@ var rick = getRandomInt(1, 100)
   <img src="other.png" alt="Others" style="width:100%">
   <button class="btn"><a href="Others">Others</a></button>
   </div>
-      <div class="container">
+
+  <head><link rel="stylesheet" href="https://unpkg.com/intro.js/minified/introjs.min.css">
+</head><script src='https://unpkg.com/intro.js/minified/intro.min.js'></script>
+
+      <div class="container" data-intro='Added new ways to make a  suggestion!'>
         <img src="vector.gif" alt="Suggestions" style="width:100%">
   <button class="btn"><a href="suggestions.html">Suggestions</a></button>
   </div>
+<script>
+if (localStorage.knowAboutTheNewSuggestions) {} else {
+introJs().start();
+localStorage.knowAboutTheNewSuggestions = 1;  
+    }
+</script>
+  
         <div class="container">
   <button class="btn"><a href="privacyPolicy.html">Privacy Policy</a></button>
   </div>

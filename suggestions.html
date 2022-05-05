@@ -2,47 +2,53 @@
 <html>
   <head>
       <title>Suggestions</title>
-    <link rel="shortcut icon"
-    type="image/jpg" href=""
-    />
+    <link rel="shortcut icon" type="image/jpg" 
+    href="mountain.png"/>
   </head>
-    <body>
-            <script>
-loadTitle();
-function  loadTitle(){
-    if (localStorage.Titlesave) {
-      document.title = localStorage.Titlesave;
- }
+<body onload='focus()'>
+<style>
+html, body{
+width: 100%;
+height: 100%;
 }
-loadIcon();
-function  loadIcon(){
-    if (localStorage.Iconsave) {
-      function changeFavicon(src) { var link = document.createElement('link'),     oldLink = document.getElementById('dynamic-favicon'); link.id = 'dynamic-favicon'; link.rel = 'shortcut icon'; link.href = src; if (oldLink) {  document.head.removeChild(oldLink);
-} document.head.appendChild(link);}
-changeFavicon(localStorage.Iconsave);
- }
-}
-</script>
-<a href="/" style='font-size: 2vw;'>Back To Home Page</a><br><br>
+</style>
+<script src="load.js"></script>
+<a href="/" style='font-size: 2vw;'>Back To Home Page</a>    
+<br>
+<h3>Select one of the options below</h3>
+<div id='servers'>
 
-<div id='emailForm'>
-<h1 style='font-size: 3vw;'>Send An Email:</h1>
-<label style='font-size:3vw'>Email: </label><input style='font-size:3vw' id='text' autocomplete='off'>
-<button style='font-size:3vw' id='send' target='_blank' onclick='updateLink()'>Send</button>
-<script>
-function updateLink(){
-var email = 'mailto:contact@mgame658.ga?subject=Suggestions&body='+document.getElementById('text').value;
-
-window.open(email, "_blank", "toolbar=yes,scrollbars=yes,resizable=yes,top="+window.outerHeight/4+",left="+window.outerWidth/3+",width="+window.outerWidth/2+",height="+window.outerHeight/2+"");
-}
-</script>
 </div>
+
+<h3>Currently on option: <span id='currentServer'></span></h3>
+
+<iframe style='height: 95vh; width: 95vw;' frameborder="0" id="518929564" allowtransparency="true" 
+        src=""></iframe>
+<br>
 <script>
-function email(){
-document.getElementById('emailForm').style.display = "block";
+document.getElementById('518929564').src='https://docs.google.com/forms/d/e/1FAIpQLSd_KmGN-KpfFg41THjYJLLvSS4B7GVWij9hw6pzkS6hkmEM7g/viewform?embedded=true';
+document.getElementById('currentServer').innerHTML = '1';
+
+const links = ['https://docs.google.com/forms/d/e/1FAIpQLSd_KmGN-KpfFg41THjYJLLvSS4B7GVWij9hw6pzkS6hkmEM7g/viewform?embedded=true',
+
+'https://mountain658.github.io/jotform.html', 
+
+'data:text/html;base64,PCFET0NUWVBFIGh0bWw+CjxodG1sPgoKPGxhYmVsIHN0eWxlPSdmb250LXNpemU6M3Z3Jz5TdWdnZXN0aW9uOiA8L2xhYmVsPjxpbnB1dCBzdHlsZT0nZm9udC1zaXplOjN2dycgaWQ9J3RleHQnIGF1dG9jb21wbGV0ZT0nb2ZmJz4KPGJ1dHRvbiBzdHlsZT0nZm9udC1zaXplOjN2dycgaWQ9J3NlbmQnIHRhcmdldD0nX2JsYW5rJyBvbmNsaWNrPSd1cGRhdGVMaW5rKCknPlNlbmQ8L2J1dHRvbj4KPHNjcmlwdD4KZnVuY3Rpb24gdXBkYXRlTGluaygpewp2YXIgZW1haWwgPSAnbWFpbHRvOmNvbnRhY3RAbWdhbWU2NTguZ2E/c3ViamVjdD1TdWdnZXN0aW9ucyZib2R5PScrZG9jdW1lbnQuZ2V0RWxlbWVudEJ5SWQoJ3RleHQnKS52YWx1ZTsKCndpbmRvdy5vcGVuKGVtYWlsLCAiX2JsYW5rIiwgInRvb2xiYXI9eWVzLHNjcm9sbGJhcnM9eWVzLHJlc2l6YWJsZT15ZXMsdG9wPSIrd2luZG93Lm91dGVySGVpZ2h0LzQrIixsZWZ0PSIrd2luZG93Lm91dGVyV2lkdGgvMysiLHdpZHRoPSIrd2luZG93Lm91dGVyV2lkdGgvMisiLGhlaWdodD0iK3dpbmRvdy5vdXRlckhlaWdodC8yKyIiKTsKfQo8L3NjcmlwdD4KPC9odG1sPgo='];
+
+links.forEach(server);
+
+function server(item, index) {
+window[("s"+(index+1))] = function(){
+document.getElementById('518929564').src= item;
+document.getElementById('currentServer').innerHTML = (index+1);
+document.getElementById('518929564').focus();
+ }
+document.getElementById('servers').innerHTML += "<button style='font-size: 2vw;' onclick="+("s"+(index+1))+"()>Option "+(index+1)+"</button>";
 }
 </script>
-<h1 style='font-size: 3vw;'>Or:</h1>
-<iframe src="https://docs.google.com/forms/d/e/1FAIpQLSd_KmGN-KpfFg41THjYJLLvSS4B7GVWij9hw6pzkS6hkmEM7g/viewform?embedded=true" width="640" height="539" frameborder="0" marginheight="0" marginwidth="0">Loading…</iframe>
-    </body>
+<script src="fullScreen.js"></script>
+<script>
+function focus() {document.getElementById('518929564').focus();}
+</script>
+</body>
 </html>

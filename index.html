@@ -148,10 +148,14 @@ var rick = getRandomInt(1, 100)
   <button class="btn"><a href="suggestions.html">Suggestions</a></button>
   </div>
 <script>
-if (localStorage.knowAboutTheNewSuggestions) {} else {
+if (localStorage.suggestionsNew) {
+    localStorage.suggestionsNew = Number(localStorage.suggestionsNew)+1;
+  } else {
+    localStorage.suggestionsNew = 0;
+  }
+ if (Number(localStorage.suggestionsNew) >= 5) {}else{
 introJs().start();
-localStorage.knowAboutTheNewSuggestions = 1;  
-    }
+  }
 </script>
   
         <div class="container">

@@ -19,10 +19,6 @@ height: 100%;
 <style>#countdown{text-align:center;font-size:3vw;margin-top:0;background-color:grey;}</style>
 </head>
 <body>
-<p id="countdown"></p>
-<script>var countDownDate=new Date("Aug 17, 2022 8:30:00").getTime();var x=setInterval(function(){var b=new Date().getTime();var f=countDownDate-b;var e=Math.floor(f/(1000*60*60*24));var a=Math.floor((f%(1000*60*60*24))/(1000*60*60));var c=Math.floor((f%(1000*60*60))/(1000*60));var d=Math.floor((f%(1000*60))/1000);document.getElementById("countdown").innerHTML="Back In: "+e+" days "+a+" hours "+c+" minutes "+d+" seconds. Will read suggestions then, keep suggesting things!";if(f<0){clearInterval(x);document.getElementById("countdown").innerHTML="I'm Back!!!"}},1000);/*]]>*/</script>
-</body>
-
 <a href="/" style='font-size: 2vw;'>Back To Home Page</a>    
 <br>
 <h3>Select one of the options below</h3>
@@ -41,7 +37,7 @@ document.getElementById('currentServer').innerHTML = '1';
 
 const links = ['https://docs.google.com/forms/d/e/1FAIpQLSd_KmGN-KpfFg41THjYJLLvSS4B7GVWij9hw6pzkS6hkmEM7g/viewform?embedded=true',
 
-'https://mountain658.github.io/jotform.html', 
+'/jotform.html', 
 
 "https://share.hsforms.com/1TnvrRyb6TF-A81UjE0LKvAd1v91",
 

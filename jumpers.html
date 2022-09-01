@@ -6,11 +6,43 @@
     href="tube-jumpers.png"/>
   </head>
 <body onload='focus()'>
+<style>
+html, body{
+width: 100%;
+height: 100%;
+}
+</style>
 <script src="load.js"></script>
-         <a href="/" style='font-size: 2vw;'>Back To Home Page</a>
-         <button onclick="openFullscreen('518929564')" style='font-size: 2vw;'>Fullscreen Mode</button>      
-<iframe style='height: 95vh; width: 95vw;' scrolling="no" frameborder="0" id="518929564" allowtransparency="true" 
-        src="tube-jumpers/index.html"></iframe>
+<a href="/" style='font-size: 1em;'>Back To Home Page</a>
+<button onclick="openFullscreen('518929564')" style='font-size: 1em;'>Fullscreen Mode</button>     
+<br>
+<div id='servers'>
+</div>
+
+<h3>Playing On Server: <span id='currentServer'></span></h3>
+
+<iframe style='height: 95vh; width: 95vw;' frameborder="0" id="518929564" allowtransparency="true" 
+        src=""></iframe>
+<br>
+<script>
+document.getElementById('518929564').src='tube-jumpers/index.html';
+document.getElementById('currentServer').innerHTML = '1';
+
+const links = ['tube-jumpers/index.html', 
+
+'/zjumpers.html'];
+
+links.forEach(server);
+
+function server(item, index) {
+window[("s"+(index+1))] = function(){
+document.getElementById('518929564').src= item;
+document.getElementById('currentServer').innerHTML = (index+1);
+document.getElementById('518929564').focus();
+ }
+document.getElementById('servers').innerHTML += "<button style='font-size: 1em;' onclick="+("s"+(index+1))+"()>Server "+(index+1)+"</button>";
+}
+</script>
 <script src="fullScreen.js"></script>
 <script>
 function focus() {document.getElementById('518929564').focus();}

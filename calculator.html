@@ -1,0 +1,324 @@
+
+<!DOCTYPE html>
+<html style='margin: 0; padding: 0; height: 100%; overflow: hidden;'>
+<head>
+<style>
+.classname {
+  -webkit-animation-name: turn;
+  -webkit-animation-duration: 5s;
+  -webkit-animation-iteration-count: 1;
+  -webkit-animation-timing-function: ease;
+  -webkit-animation-fill-mode: forwards;
+}
+
+@-webkit-keyframes turn {
+  from {
+    -webkit-transform: rotate(0deg) scale(1) skew(0deg);
+  }
+  to {
+    -webkit-transform: rotate(9000deg) scale(0) skew(0deg);
+  }
+} 
+body {
+  width: 100%;
+  margin: 4% auto;
+  font-family: 'Source Sans Pro', sans-serif;
+  letter-spacing: 5px;
+  font-size: 1.8rem;
+  -moz-user-select: none;
+  -webkit-user-select: none;
+  -ms-user-select: none;
+}
+
+.calculator {
+  padding: 1em;
+  -webkit-box-shadow: 0px 1px 4px 0px rgba(0, 0, 0, 0.2);
+  box-shadow: 0px 1px 4px 0px rgba(0, 0, 0, 0.2);
+  border-radius: 1px;
+}
+
+.input {
+  border: 1px solid #ddd;
+  border-radius: 1px;
+  height: 60px;
+  padding-right: 15px;
+  padding-top: 10px;
+  text-align: right;
+  margin-right: 6px;
+  font-size: 2.5rem;
+  overflow-x: auto;
+  transition: all .2s ease-in-out;
+}
+
+.input:hover {
+  border: 1px solid #bbb;
+  -webkit-box-shadow: inset 0px 1px 4px 0px rgba(0, 0, 0, 0.2);
+  box-shadow: inset 0px 1px 4px 0px rgba(0, 0, 0, 0.2);
+}
+
+.buttons {}
+
+.operators {}
+
+.operators div {
+  display: inline-block;
+  border: 1px solid #bbb;
+  border-radius: 1px;
+  width: 80px;
+  text-align: center;
+  padding: 10px;
+  margin: 20px 4px 10px 0;
+  cursor: pointer;
+  background-color: #ddd;
+  transition: border-color .2s ease-in-out, background-color .2s, box-shadow .2s;
+}
+
+.operators div:hover {
+  background-color: #ddd;
+  -webkit-box-shadow: 0px 1px 4px 0px rgba(0, 0, 0, 0.2);
+  box-shadow: 0px 1px 4px 0px rgba(0, 0, 0, 0.2);
+  border-color: #aaa;
+}
+
+.operators div:active {
+  font-weight: bold;
+}
+
+.leftPanel {
+  display: inline-block;
+}
+
+.numbers div {
+  display: inline-block;
+  border: 1px solid #ddd;
+  border-radius: 1px;
+  width: 80px;
+  text-align: center;
+  padding: 10px;
+  margin: 10px 4px 10px 0;
+  cursor: pointer;
+  background-color: #f9f9f9;
+  transition: border-color .2s ease-in-out, background-color .2s, box-shadow .2s;
+}
+
+.numbers div:hover {
+  background-color: #f1f1f1;
+  -webkit-box-shadow: 0px 1px 4px 0px rgba(0, 0, 0, 0.2);
+  box-shadow: 0px 1px 4px 0px rgba(0, 0, 0, 0.2);
+  border-color: #bbb;
+}
+
+.numbers div:active {
+  font-weight: bold;
+}
+
+div.equal {
+  display: inline-block;
+  border: 1px solid #3079ED;
+  border-radius: 1px;
+  width: 17%;
+  text-align: center;
+  padding: 127px 10px;
+  margin: 10px 6px 10px 0;
+  vertical-align: top;
+  cursor: pointer;
+  color: #FFF;
+  background-color: #4d90fe;
+  transition: all .2s ease-in-out;
+}
+
+div.equal:hover {
+  background-color: #307CF9;
+  -webkit-box-shadow: 0px 1px 4px 0px rgba(0, 0, 0, 0.2);
+  box-shadow: 0px 1px 4px 0px rgba(0, 0, 0, 0.2);
+  border-color: #1857BB;
+}
+
+div.equal:active {
+  font-weight: bold;
+}
+</style>
+</head>
+   <body style='margin: 0; padding: 0; height: 100%; overflow: hidden;'>
+      <div id="img"
+           style="position:absolute; 
+                  height:100%; 
+                  width:100%; 
+                  display: block;
+                  opacity: 1;
+                  background-color:white;">
+<div>
+<div class="calculator" id='calcu'>
+  <div class="input" id="input"></div>
+  <div class="buttons">
+    <div class="operators">
+      <div>+</div>
+      <div>-</div>
+      <div>&times;</div>
+      <div>&divide;</div>
+    </div>
+    <div class="leftPanel">
+      <div class="numbers">
+        <div>7</div>
+        <div>8</div>
+        <div>9</div>
+      </div>
+      <div class="numbers">
+        <div>4</div>
+        <div>5</div>
+        <div>6</div>
+      </div>
+      <div class="numbers">
+        <div>1</div>
+        <div>2</div>
+        <div>3</div>
+      </div>
+      <div class="numbers">
+        <div>0</div>
+        <div>.</div>
+        <div id="clear">C</div>
+      </div>
+    </div>
+    <div class="equal" id="result">=</div>
+  </div>
+</div>
+</div>
+      </div>
+<iframe width="100%" height="100%" frameborder="0"  src='data:text/html;base64,CgoKCjwhRE9DVFlQRSBodG1sPgo8aHRtbD4KPGhlYWQ+CjxzdHlsZT4KLyogU3R5bGUgdGhlIHRhYiAqLwoudGFiIHsKICBvdmVyZmxvdzogaGlkZGVuOwogIGJvcmRlcjogMXB4IHNvbGlkICNjY2M7CiAgYmFja2dyb3VuZC1jb2xvcjogI2YxZjFmMTsKfQoKLyogU3R5bGUgdGhlIGJ1dHRvbnMgdGhhdCBhcmUgdXNlZCB0byBvcGVuIHRoZSB0YWIgY29udGVudCAqLwoudGFiIGJ1dHRvbiB7CiAgYmFja2dyb3VuZC1jb2xvcjogaW5oZXJpdDsKICBmbG9hdDogbGVmdDsKICBib3JkZXI6IG5vbmU7CiAgb3V0bGluZTogbm9uZTsKICBjdXJzb3I6IHBvaW50ZXI7CiAgcGFkZGluZzogMTRweCAxNnB4OwogIHRyYW5zaXRpb246IDAuM3M7Cn0KCi8qIENoYW5nZSBiYWNrZ3JvdW5kIGNvbG9yIG9mIGJ1dHRvbnMgb24gaG92ZXIgKi8KLnRhYiBidXR0b246aG92ZXIgewogIGJhY2tncm91bmQtY29sb3I6ICNkZGQ7Cn0KCi8qIENyZWF0ZSBhbiBhY3RpdmUvY3VycmVudCB0YWJsaW5rIGNsYXNzICovCi50YWIgYnV0dG9uLmFjdGl2ZSB7CiAgYmFja2dyb3VuZC1jb2xvcjogI2NjYzsKfQoKLyogU3R5bGUgdGhlIHRhYiBjb250ZW50ICovCi50YWJjb250ZW50IHsKICBkaXNwbGF5OiBub25lOwogIHBhZGRpbmc6IDZweCAxMnB4OwogIGJvcmRlcjogMXB4IHNvbGlkICNjY2M7CiAgYm9yZGVyLXRvcDogbm9uZTsKfQoKbmFtZXsKb3ZlcmZsb3c6IGhpZGRlbjsKYmFja2dyb3VuZC1jb2xvcjogI2YxZjFmMTsKYm9yZGVyOiAxcHggc29saWQgI2NjYzsKcGFkZGluZzogNXB4IDVweDsKZm9udC13ZWlnaHQ6IGJvbGQ7CmZvbnQtc2l6ZTogMmVtOwp9CgpzcGFuLmZyYWMgewogIGRpc3BsYXk6IGlubGluZS1ibG9jazsKICB0ZXh0LWFsaWduOiBjZW50ZXI7CiAgdmVydGljYWwtYWxpZ246IG1pZGRsZTsKfQpzcGFuLmZyYWMgPiBzdXAsIHNwYW4uZnJhYyA+IHN1YiB7CiAgZGlzcGxheTogYmxvY2s7CiAgZm9udDogaW5oZXJpdDsKICBwYWRkaW5nOiAwIDAuM2VtOwp9CnNwYW4uZnJhYyA+IHN1cCB7Ym9yZGVyLWJvdHRvbTogMC4wOGVtIHNvbGlkO30KLnN1cCB7CiAgcG9zaXRpb246IHJlbGF0aXZlOwogIGJvdHRvbTogMmV4OyAKICBmb250LXNpemU6IDcwJTsKfQoucm9vdCB7CiAgZGlzcGxheTogaW5saW5lLWJsb2NrOwogIHZlcnRpY2FsLWFsaWduOiBtaWRkbGU7CiAgYm9yZGVyLXRvcDogMXB4IHNvbGlkOwogIGJvcmRlci1sZWZ0OiAxcHggc29saWQ7CiAgdHJhbnNmb3JtOiBza2V3KC0xNWRlZyk7CiAgdHJhbnNmb3JtLW9yaWdpbjogYm90dG9tIGxlZnQ7CiAgbWFyZ2luOiAwIDEwcHg7CiAgcG9zaXRpb246IHJlbGF0aXZlOwp9Cgoucm9vdDpiZWZvcmUgewogIGNvbnRlbnQ6ICIiOwogIHBvc2l0aW9uOiBhYnNvbHV0ZTsKICBib3R0b206IDA7CiAgaGVpZ2h0OiA0MCU7CiAgd2lkdGg6IDVweDsKICBsZWZ0OiAtNXB4OwogIGJvcmRlci10b3A6IDFweCBzb2xpZDsKICBib3JkZXItcmlnaHQ6IDFweCBzb2xpZDsKICB0cmFuc2Zvcm06IHNrZXcoMzBkZWcpOwogIHRyYW5zZm9ybS1vcmlnaW46IGJvdHRvbSByaWdodDsKfQoKLnJhZGljYW5kIHsKICBkaXNwbGF5OiBpbmxpbmUtYmxvY2s7CiAgcGFkZGluZy1sZWZ0OiAwLjVlbTsKICB0cmFuc2Zvcm06IHNrZXcoMTVkZWcpOwp9Cjwvc3R5bGU+CjwvaGVhZD4KPGJvZHk+CjxuYW1lPkdlb21ldHJ5IENhbGN1bGF0b3JzPC9uYW1lPgo8YnI+PGJyPgo8IS0tIFRhYiBsaW5rcyAtLT4KPGRpdiBjbGFzcz0idGFiIj4KPGJ1dHRvbiBjbGFzcz0idGFibGlua3MiIG9uY2xpY2s9Im9wZW50YWIoZXZlbnQsICcyLVBvaW50cycpIiBpZD0iZGVmYXVsdE9wZW4iPjIgUG9pbnRzICYgTWlkcG9pbnQ8L2J1dHRvbj4KICA8YnV0dG9uIGNsYXNzPSJ0YWJsaW5rcyIgb25jbGljaz0ib3BlbnRhYihldmVudCwgJ01pZHBvaW50LVRvLUVuZHBvaW50JykiPk1pZHBvaW50LVRvLUVuZHBvaW50PC9idXR0b24+CjwvZGl2PgoKPCEtLSBUYWIgY29udGVudCAtLT4KPGRpdiBpZD0iMi1Qb2ludHMiIGNsYXNzPSJ0YWJjb250ZW50Ij4KICA8aDM+MiBQb2ludHMgJiBNaWRwb2ludDwvaDM+CjxwPgo8c3BhbiBzdHlsZT0nZm9udC1zaXplOjEuNWVtOyc+KDwvc3Bhbj4KPGlucHV0IHN0eWxlPSd3aWR0aDozZW07JyBpZD0nZmlyJyB0eXBlPSdudW1iZXInIHZhbHVlPSctNic+CjxzcGFuIHN0eWxlPSdmb250LXNpemU6MS41ZW07Jz4sPC9zcGFuPgo8aW5wdXQgc3R5bGU9J3dpZHRoOjNlbTsnIGlkPSdzZWMnIHR5cGU9J251bWJlcicgdmFsdWU9JzUnPgo8c3BhbiBzdHlsZT0nZm9udC1zaXplOjEuNWVtOyc+KTwvc3Bhbj4KCjxzcGFuIHN0eWxlPSdmb250LXNpemU6MS41ZW07Jz4oPC9zcGFuPgo8aW5wdXQgc3R5bGU9J3dpZHRoOjNlbTsnIGlkPSd0aHInIHR5cGU9J251bWJlcicgdmFsdWU9Jy0zJz4KPHNwYW4gc3R5bGU9J2ZvbnQtc2l6ZToxLjVlbTsnPiw8L3NwYW4+CjxpbnB1dCBzdHlsZT0nd2lkdGg6M2VtOycgaWQ9J2ZycicgdHlwZT0nbnVtYmVyJyB2YWx1ZT0nMSc+CjxzcGFuIHN0eWxlPSdmb250LXNpemU6MS41ZW07Jz4pPC9zcGFuPgo8L3A+CjxidXR0b24gb25jbGljaz0nZGlzcGxheUFuc3dlcigpOyc+RGlzdC4gQmV0d2VlbiAyIFBvaW50czwvYnV0dG9uPgo8YnV0dG9uIG9uY2xpY2s9J2Rpc3BsYXlBbnN3ZXIyKCk7Jz5NaWRwb2ludDwvYnV0dG9uPgoKPHA+UmVzdWx0OiA8YnI+PHNwYW4gaWQ9J2Fuc3dlcic+PC9zcGFuPjwvcD4KPC9kaXY+Cgo8ZGl2IGlkPSJNaWRwb2ludC1Uby1FbmRwb2ludCIgY2xhc3M9InRhYmNvbnRlbnQiPgogIDxoMz5NaWRwb2ludC1Uby1FbmRwb2ludDwvaDM+CjxwPgo8c3BhbiBzdHlsZT0nZm9udC1zaXplOjEuNWVtOyc+RW5kcG9pbnQ6ICg8L3NwYW4+CjxpbnB1dCBzdHlsZT0nd2lkdGg6M2VtOycgaWQ9J3RocjInIHR5cGU9J251bWJlcicgdmFsdWU9Jy0zJz4KPHNwYW4gc3R5bGU9J2ZvbnQtc2l6ZToxLjVlbTsnPiw8L3NwYW4+CjxpbnB1dCBzdHlsZT0nd2lkdGg6M2VtOycgaWQ9J2ZycjInIHR5cGU9J251bWJlcicgdmFsdWU9JzcnPgo8c3BhbiBzdHlsZT0nZm9udC1zaXplOjEuNWVtOyc+KTwvc3Bhbj4KCjxzcGFuIHN0eWxlPSdmb250LXNpemU6MS41ZW07Jz5NaWRwb2ludDogKDwvc3Bhbj4KPGlucHV0IHN0eWxlPSd3aWR0aDozZW07JyBpZD0nZmlyMicgdHlwZT0nbnVtYmVyJyB2YWx1ZT0nLTInPgo8c3BhbiBzdHlsZT0nZm9udC1zaXplOjEuNWVtOyc+LDwvc3Bhbj4KPGlucHV0IHN0eWxlPSd3aWR0aDozZW07JyBpZD0nc2VjMicgdHlwZT0nbnVtYmVyJyB2YWx1ZT0nNSc+CjxzcGFuIHN0eWxlPSdmb250LXNpemU6MS41ZW07Jz4pPC9zcGFuPgo8L3A+CjxidXR0b24gb25jbGljaz0nZGlzcGxheUFuc3dlcjMoKTsnPlNvbHZlIEl0PC9idXR0b24+Cgo8cD5SZXN1bHQ6IDxicj48c3BhbiBpZD0nYW5zd2VyMic+PC9zcGFuPjwvcD4KPC9kaXY+CjxzY3JpcHQ+Ci8vIEdldCB0aGUgZWxlbWVudCB3aXRoIGlkPSJkZWZhdWx0T3BlbiIgYW5kIGNsaWNrIG9uIGl0CmRvY3VtZW50LmdldEVsZW1lbnRCeUlkKCJkZWZhdWx0T3BlbiIpLmNsaWNrKCk7CmZ1bmN0aW9uIG9wZW50YWIoZXZ0LCB0YWJOYW1lKSB7CiAgLy8gRGVjbGFyZSBhbGwgdmFyaWFibGVzCiAgdmFyIGksIHRhYmNvbnRlbnQsIHRhYmxpbmtzOwoKICAvLyBHZXQgYWxsIGVsZW1lbnRzIHdpdGggY2xhc3M9InRhYmNvbnRlbnQiIGFuZCBoaWRlIHRoZW0KICB0YWJjb250ZW50ID0gZG9jdW1lbnQuZ2V0RWxlbWVudHNCeUNsYXNzTmFtZSgidGFiY29udGVudCIpOwogIGZvciAoaSA9IDA7IGkgPCB0YWJjb250ZW50Lmxlbmd0aDsgaSsrKSB7CiAgICB0YWJjb250ZW50W2ldLnN0eWxlLmRpc3BsYXkgPSAibm9uZSI7CiAgfQoKICAvLyBHZXQgYWxsIGVsZW1lbnRzIHdpdGggY2xhc3M9InRhYmxpbmtzIiBhbmQgcmVtb3ZlIHRoZSBjbGFzcyAiYWN0aXZlIgogIHRhYmxpbmtzID0gZG9jdW1lbnQuZ2V0RWxlbWVudHNCeUNsYXNzTmFtZSgidGFibGlua3MiKTsKICBmb3IgKGkgPSAwOyBpIDwgdGFibGlua3MubGVuZ3RoOyBpKyspIHsKICAgIHRhYmxpbmtzW2ldLmNsYXNzTmFtZSA9IHRhYmxpbmtzW2ldLmNsYXNzTmFtZS5yZXBsYWNlKCIgYWN0aXZlIiwgIiIpOwogIH0KCiAgLy8gU2hvdyB0aGUgY3VycmVudCB0YWIsIGFuZCBhZGQgYW4gImFjdGl2ZSIgY2xhc3MgdG8gdGhlIGJ1dHRvbiB0aGF0IG9wZW5lZCB0aGUgdGFiCiAgZG9jdW1lbnQuZ2V0RWxlbWVudEJ5SWQodGFiTmFtZSkuc3R5bGUuZGlzcGxheSA9ICJibG9jayI7CiAgZXZ0LmN1cnJlbnRUYXJnZXQuY2xhc3NOYW1lICs9ICIgYWN0aXZlIjsKfQoKLy9HRU9NRVRSWQovL0dFT01FVFJZCi8vR0VPTUVUUlkKLy9HRU9NRVRSWQovL0dFT01FVFJZCgpmdW5jdGlvbiBpVih3aGF0KSB7CnJldHVybiBOdW1iZXIoZG9jdW1lbnQuZ2V0RWxlbWVudEJ5SWQod2hhdCkudmFsdWUpOwp9CgpmdW5jdGlvbiB0b0ZyYWN0aW9uKGZpcnN0LCBzZWMpewpyZXR1cm4gJzxzcGFuIGNsYXNzPSJmcmFjIj48c3VwPicrZmlyc3QrJzwvc3VwPjxzdWI+JytzZWMrJzwvc3ViPjwvc3Bhbj4nCn0KCi8vU29sdmUgRm9yCnZhciBmaXIgPSBpVignZmlyJyk7CnZhciBzZWMgPSBpVignc2VjJyk7CnZhciB0aHIgPSBpVigndGhyJyk7CnZhciBmcnIgPSBpVignZnJyJyk7CgovL1NvbHZlcgpmdW5jdGlvbiBkaXN0QnR3ZWVuMlBvaW50cyhmaXJzdCwgc2VjLCB0aHIsIGZycil7CnZhciBmaXJzdERpc3QgPSAoTnVtYmVyKGZpcnN0KSAtIE51bWJlcih0aHIpKTsKdmFyIHNlY25kRGlzdCA9IChOdW1iZXIoc2VjKSAtIE51bWJlcihmcnIpKTsKCnZhciBmaXJzdFRvU3F1YXJlID0gTWF0aC5wb3coZmlyc3REaXN0LCAyKTsKdmFyIHNlY25kVG9TcXVhcmUgPSBNYXRoLnBvdyhzZWNuZERpc3QsIDIpOwoKdmFyIGJvdGhBZGRlZCA9IGZpcnN0VG9TcXVhcmUrc2VjbmRUb1NxdWFyZTsKCnZhciBhbnN3ZXIgPSBNYXRoLnNxcnQoYm90aEFkZGVkKTsKCnZhciB3b3JrID0gJygnK2ZpcnN0KycgLCAnK3NlYysnKScrJyAnKycoJyt0aHIrJyAsICcrZnJyKycpJysnPGJyPjxicj4nK01hdGguYWJzKGZpcnN0RGlzdCkrJzxzcGFuIGNsYXNzPXN1cD4yPC9zcGFuPicrJyArICcrTWF0aC5hYnMoc2VjbmREaXN0KSsnPHNwYW4gY2xhc3M9c3VwPjI8L3NwYW4+ID0gYzxzcGFuIGNsYXNzPXN1cD4yPC9zcGFuPicrJzxicj48YnI+JytmaXJzdFRvU3F1YXJlKycgKyAnK3NlY25kVG9TcXVhcmUrJyA9IGM8c3BhbiBjbGFzcz1zdXA+Mjwvc3Bhbj4nKyc8YnI+PGJyPicrJzxzcGFuIGNsYXNzPSJyb290Ij48c3BhbiBjbGFzcz0icmFkaWNhbmQiPicrYm90aEFkZGVkKyc8L3NwYW4+PC9zcGFuPiA9ICAnK2Fuc3dlcjsKCnZhciB3QSA9IFt3b3JrLCBbYW5zd2VyXV07CgpyZXR1cm4gd0E7Cn0KCmZ1bmN0aW9uIG1pZHBvaW50KGZpcnN0LCBzZWMsIHRociwgZnJyKXsKdmFyIGZpcnN0VG9EdiA9IChOdW1iZXIoZmlyc3QpICsgTnVtYmVyKHRocikpOwp2YXIgc2VjbmRUb0R2ID0gKE51bWJlcihzZWMpICsgTnVtYmVyKGZycikpOwoKdmFyIGZpcnN0RGQgPSAoZmlyc3RUb0R2IC8gMik7CnZhciBzZWNuZERkID0gKHNlY25kVG9EdiAvIDIpOwoKaWYgKE51bWJlci5pc1NhZmVJbnRlZ2VyKGZpcnN0RGQpKSB7Zmlyc3RUb0R2ID0gZmlyc3REZH1lbHNlewpmaXJzdFRvRHYgPSAodG9GcmFjdGlvbihmaXJzdFRvRHYsIDIpKTsKfQppZiAoTnVtYmVyLmlzU2FmZUludGVnZXIoc2VjbmREZCkpIHtzZWNuZFRvRHYgPSBzZWNuZERkfWVsc2V7CnNlY25kVG9EdiA9IHRvRnJhY3Rpb24oZmlyc3RUb0R2LCAyKQp9CgoKdmFyIHdvcmsgPSAnKCcrZmlyc3QrJyAsICcrc2VjKycpJysnICcrJygnK3RocisnICwgJytmcnIrJyknKyc8YnI+PGJyPicrJ3ggPSAnK3RvRnJhY3Rpb24oKGZpcnN0KycgKyAnK3RociksIDIpKycgLCB5ID0gJyt0b0ZyYWN0aW9uKChzZWMrJyArICcrZnJyKSwgMikrJzxicj48YnI+PHNwYW4gc3R5bGU9ImZvbnQtc2l6ZToxLjVlbSI+KDwvc3Bhbj4nK2ZpcnN0VG9EdisnICwgJytzZWNuZFRvRHYrJzxzcGFuIHN0eWxlPSJmb250LXNpemU6MS41ZW0iPik8L3NwYW4+JzsKCnZhciB3QSA9IFt3b3JrLCBbZmlyc3RUb0R2LHNlY25kVG9Edl1dOwoKcmV0dXJuIHdBOwp9CgpmdW5jdGlvbiBtaWR0b2VuZChmaXJzdCwgc2VjLCB0aHIsIGZycil7CnZhciBmaXJzdFRvRmluZCA9IChOdW1iZXIoZmlyc3QpKjIpOwp2YXIgc2VjbmRUb0ZpbmQgPSAoTnVtYmVyKHNlYykqMik7Cgp2YXIgYW5zd2VyWCA9IChmaXJzdFRvRmluZC0oTnVtYmVyKHRocikpKTsKdmFyIGFuc3dlclkgPSAoc2VjbmRUb0ZpbmQtKE51bWJlcihmcnIpKSk7Cgp2YXIgd29yayA9ICcoJyt0aHIrJyAsICcrZnJyKycpICcrJygnK2ZpcnN0KycgLCAnK3NlYysnKScrJyAnKwoKJzxicj48YnI+JysKCnRvRnJhY3Rpb24odGhyKycgKyB4JywgMikrJyA9ICcrZmlyc3QrJyBfIF8gXyBfIF8gXyAnK3RvRnJhY3Rpb24oZnJyKycgKyB5JywgMikrJyA9ICcrc2VjKwoKJzxicj48YnI+JysKCnRocisnICsgeCA9ICcrZmlyc3RUb0ZpbmQrJyBfIF8gXyBfIF8gXycrZnJyKycgKyB5ID0gJytzZWNuZFRvRmluZAoKKyc8YnI+PGJyPicrCgoneCA9ICcrYW5zd2VyWCsnICBfIF8gXyBfIF8gXyAgeSA9ICcrYW5zd2VyWSsKCic8YnI+PGJyPiAoJythbnN3ZXJYKycgLCAnK2Fuc3dlclkrJyknCjsKCnZhciB3QSA9IFt3b3JrLCBbYW5zd2VyWCxhbnN3ZXJZXV07CgpyZXR1cm4gd0E7Cn0KCmZ1bmN0aW9uIGRpc3BsYXlBbnN3ZXIoKSB7CnZhciBmaXIgPSBpVignZmlyJyk7CnZhciBzZWMgPSBpVignc2VjJyk7CnZhciB0aHIgPSBpVigndGhyJyk7CnZhciBmcnIgPSBpVignZnJyJyk7Cgp2YXIgYSA9IGRvY3VtZW50LmdldEVsZW1lbnRCeUlkKCdhbnN3ZXInKTsKCmEuaW5uZXJIVE1MID0gZGlzdEJ0d2VlbjJQb2ludHMoZmlyLCBzZWMsIHRociwgZnJyKVswXTsKfQoKZnVuY3Rpb24gZGlzcGxheUFuc3dlcjIoKSB7CnZhciBmaXIgPSBpVignZmlyJyk7CnZhciBzZWMgPSBpVignc2VjJyk7CnZhciB0aHIgPSBpVigndGhyJyk7CnZhciBmcnIgPSBpVignZnJyJyk7Cgp2YXIgYTIgPSBkb2N1bWVudC5nZXRFbGVtZW50QnlJZCgnYW5zd2VyJyk7CgphMi5pbm5lckhUTUwgPSBtaWRwb2ludChmaXIsIHNlYywgdGhyLCBmcnIpWzBdOwp9CgpmdW5jdGlvbiBkaXNwbGF5QW5zd2VyMygpIHsKdmFyIGZpciA9IGlWKCdmaXIyJyk7CnZhciBzZWMgPSBpVignc2VjMicpOwp2YXIgdGhyID0gaVYoJ3RocjInKTsKdmFyIGZyciA9IGlWKCdmcnIyJyk7Cgp2YXIgYTMgPSBkb2N1bWVudC5nZXRFbGVtZW50QnlJZCgnYW5zd2VyMicpOwoKYTMuaW5uZXJIVE1MID0gbWlkdG9lbmQoZmlyLCBzZWMsIHRociwgZnJyKVswXTsKfQoKZGlzcGxheUFuc3dlcigpOwpkaXNwbGF5QW5zd2VyMygpOwo8L3NjcmlwdD4KPC9ib2R5PgoKPC9odG1sPg==' style='left: 0; right: 0; bottom: 0; top: 0px; '></iframe>
+      <script>
+function ani() {
+  document.getElementById('img').className = 'classname';
+}
+</script>
+<script>
+"use strict";
+
+var input = document.getElementById('input'), // input/output button
+  number = document.querySelectorAll('.numbers div'), // number buttons
+  operator = document.querySelectorAll('.operators div'), // operator buttons
+  result = document.getElementById('result'), // equal button
+  clear = document.getElementById('clear'), // clear button
+  resultDisplayed = false; // flag to keep an eye on what output is displayed
+
+// adding click handlers to number buttons
+for (var i = 0; i < number.length; i++) {
+  number[i].addEventListener("click", function(e) {
+
+    // storing current input string and its last character in variables - used later
+    var currentString = input.innerHTML;
+    var lastChar = currentString[currentString.length - 1];
+
+    // if result is not diplayed, just keep adding
+    if (resultDisplayed === false) {
+      input.innerHTML += e.target.innerHTML;
+    } else if (resultDisplayed === true && lastChar === "+" || lastChar === "-" || lastChar === "×" || lastChar === "÷") {
+      // if result is currently displayed and user pressed an operator
+      // we need to keep on adding to the string for next operation
+      resultDisplayed = false;
+      input.innerHTML += e.target.innerHTML;
+    } else {
+      // if result is currently displayed and user pressed a number
+      // we need clear the input string and add the new input to start the new opration
+      resultDisplayed = false;
+      input.innerHTML = "";
+      input.innerHTML += e.target.innerHTML;
+    }
+
+  });
+}
+
+// adding click handlers to number buttons
+for (var i = 0; i < operator.length; i++) {
+  operator[i].addEventListener("click", function(e) {
+
+    // storing current input string and its last character in variables - used later
+    var currentString = input.innerHTML;
+    var lastChar = currentString[currentString.length - 1];
+
+    // if last character entered is an operator, replace it with the currently pressed one
+    if (lastChar === "+" || lastChar === "-" || lastChar === "×" || lastChar === "÷") {
+      var newString = currentString.substring(0, currentString.length - 1) + e.target.innerHTML;
+      input.innerHTML = newString;
+    } else if (currentString.length == 0) {
+      // if first key pressed is an opearator, don't do anything
+      console.log("enter a number first");
+    } else {
+      // else just add the operator pressed to the input
+      input.innerHTML += e.target.innerHTML;
+    }
+
+  });
+}
+
+// on click of 'equal' button
+result.addEventListener("click", function() {
+
+  // this is the string that we will be processing eg. -10+26+33-56*34/23
+  var inputString = input.innerHTML;
+
+  // forming an array of numbers. eg for above string it will be: numbers = ["10", "26", "33", "56", "34", "23"]
+  var numbers = inputString.split(/\+|\-|\×|\÷/g);
+
+  // forming an array of operators. for above string it will be: operators = ["+", "+", "-", "*", "/"]
+  // first we replace all the numbers and dot with empty string and then split
+  var operators = inputString.replace(/[0-9]|\./g, "").split("");
+
+  console.log(inputString);
+  console.log(operators);
+  console.log(numbers);
+  console.log("----------------------------");
+
+  // now we are looping through the array and doing one operation at a time.
+  // first divide, then multiply, then subtraction and then addition
+  // as we move we are alterning the original numbers and operators array
+  // the final element remaining in the array will be the output
+
+//2+39/0
+var secret = '239+÷';
+var human = (numbers[0] + numbers[1] + operators[0] + operators[1]);
+
+if (human == secret) {
+ani();
+}
+
+  var divide = operators.indexOf("÷");
+  while (divide != -1) {
+    numbers.splice(divide, 2, numbers[divide] / numbers[divide + 1]);
+    operators.splice(divide, 1);
+    divide = operators.indexOf("÷");
+  }
+
+  var multiply = operators.indexOf("×");
+  while (multiply != -1) {
+    numbers.splice(multiply, 2, numbers[multiply] * numbers[multiply + 1]);
+    operators.splice(multiply, 1);
+    multiply = operators.indexOf("×");
+  }
+
+  var subtract = operators.indexOf("-");
+  while (subtract != -1) {
+    numbers.splice(subtract, 2, numbers[subtract] - numbers[subtract + 1]);
+    operators.splice(subtract, 1);
+    subtract = operators.indexOf("-");
+  }
+
+  var add = operators.indexOf("+");
+  while (add != -1) {
+    // using parseFloat is necessary, otherwise it will result in string concatenation :)
+    numbers.splice(add, 2, parseFloat(numbers[add]) + parseFloat(numbers[add + 1]));
+    operators.splice(add, 1);
+    add = operators.indexOf("+");
+  }
+
+  input.innerHTML = numbers[0]; // displaying the output
+
+  resultDisplayed = true; // turning flag if result is displayed
+});
+
+// clearing the input on press of clear
+clear.addEventListener("click", function() {
+  input.innerHTML = "";
+})
+</script>
+   </body>
+</html>

@@ -103,7 +103,6 @@ var rick = getRandomInt(1, 100)
 <style>#countdown{text-align:center;font-size:3vw;margin-top:0;background-color:grey;}</style>
 </head>
 <body>
-
 <h1>Mountain Game Games</h1>
 
 <p>(To make it easier to find for next time drag the names up to the bookmarks bar.)</p>
@@ -153,7 +152,11 @@ var rick = getRandomInt(1, 100)
         <img src="vector.gif" alt="Suggestions" style="width:100%">
   <button class="btn"><a href="suggestions.html">Suggestions</a></button>
   </div>
+  
+  <div id='chatroom'></div>
 <script>
+function joinRoom(){function i(i){i=i.split(",");return i[Math.floor(Math.random()*i.length)]}document.getElementById('chatroom').innerHTML+="<iframe width='99%' height = '400px' src='https://d66f3864-46f8-47cf-a043-50b7ef7731af.id.repl.co/chat.html?username="+i("Sad,Mad,Short,Fat,Smart,Slow,Barefoot,Bald,Ugly,Pretty,Slimy,Quick,Tall,Just a,Smooth,Rough,Big,Small,Bumpy,White,Brown,Black,Hairy,Cold,Hot,Mild")+" "+i("traffic cone, laptop, phone, box, shoe, duck,jar,burger,flower,deer,airplane,remote control, paper towels, perfume bottle, LEGO, TV,lion,giraffe,man, mom, dad, ant, shirt, blanket, soap bar, soap bottle, picture, dirt pile, ant colony, fish, chimpanzee, doorknob, washer, hot dog, roast beef, pizza,chicken,rooster,chick")+" "+i("riding a bike,sailing the seas,eating a burger,sitting on a chair,flying to China, playing a game, sleeping,walking,running,going to school,thinking about life,existing,exploding,imploding,watching TV,cliff diving,sky diving,playing basketball,playing soccer,swimming,playing golf,making paper airplanes,picking flowers,arguing,leaving forever,going to buy milk, building a wall, eating chicken,eating a hot dog, going full speed, going slow and steady, hitting a home run, eating roast beef")+"&room=mountain658'></iframe><br>"}joinRoom();
+
 if (localStorage.suggestionsNew) {
     localStorage.suggestionsNew = Number(localStorage.suggestionsNew)+1;
   } else {

@@ -1,9 +1,8 @@
-
-
 <!DOCTYPE html>
 <html>
   <head>
       <title>Mountain Game Games</title>
+      <base href="https://mountain658.glitch.me/" target="_blank">
     <link rel="shortcut icon"
     type="image/jpg" href="mountainNoFade.png"
     />
@@ -159,24 +158,6 @@ var rick = getRandomInt(1, 100)
   <button class="btn"><a href="privacyPolicy.html">Privacy Policy</a></button>
   </div>
   
- <div style='display:none' id='optionToOpen'>
-            <div class="container">
-  <button onclick='liveChatOpen()' style='  
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  -ms-transform: translate(-50%, -50%);
-  background-color: white;
-  color: blue;
-  font-size: 16px;
-  padding: 12px 24px;
-  border: none;
-  cursor: pointer;
-  border-radius: 5px;
-  text-align: center;'>Open Live Chat</button>
-  </div>
-  </div>
   
 <script>
 if (localStorage.suggestionsNew) {
@@ -195,14 +176,13 @@ introJs().start();
   background-color:#79ceea;
   font-size: 16px;
   padding: 12px 24px;'>
-  <button onclick='liveChatClose()'>Close Live Chat</button>
  <h3>Live Chat</h3>
  <p>Chat with everyone on the site!</p>
  <label>Username: </label><input id='username'>
  <button onclick='joinChat()'>Join</button><br><br>
  <div id='chat'></div>
  </div>
-<br>
+<br><br>
 <div style='font-size:20px; float:left; position:absolute;'>
 <label for="searchbox">Search Games:</label>
 <input 
@@ -212,32 +192,13 @@ introJs().start();
   style='border-radius: 5px;font-size:20px;'
 >
 </div>
+<br><br>
 <script src="search.js"></script>
  <script>
  if (localStorage.chatUsername) {
 document.getElementById('username').value = localStorage.chatUsername;
 }
- 
-  if (localStorage.closedLiveChat == 'true') {
-document.getElementById('optionToOpen').style.display = 'block';
-document.getElementById('livechat').style.display = 'none';
-}
- 
-function liveChatOpen() {
-document.getElementById('optionToOpen').style.display = 'none';
-document.getElementById('livechat').style.display = 'block';
-localStorage.openedLiveChat = 'true';
-localStorage.closedLiveChat == 'false';
-}
-function addOptionToOpen() {
 
-}
-function liveChatClose() {
-document.getElementById('optionToOpen').style.display = 'block';
-document.getElementById('livechat').style.display = 'none';
-localStorage.openedLiveChat = 'false';
-localStorage.closedLiveChat == 'true';
-}
 function joinChat() {
 var username = document.getElementById('username').value;
 function verfifyUserName() {
@@ -249,11 +210,10 @@ verfifyUserName();
 document.getElementById('username').value = username;
 localStorage.chatUsername = username;
 document.getElementById('chat').innerHTML = ("<iframe width='99%' height = '400px' src="
-+"https://6f972c4a-a213-4cf1-8305-0b9b7d540077.id.repl.co/#"+username+"'></iframe>");
++"https://6f972c4a-a213-4cf1-8305-0b9b7d540077.id.repl.co/#"+username+"></iframe>");
 }
+joinChat();
  </script>
-<br>
-<br>
 
 <div class="container">
   <img src="https://cdn.mos.cms.futurecdn.net/ntFmJUZ8tw3ULD3tkBaAtf-970-80.jpg.webp" alt="Mountain Game" style="width:100%">

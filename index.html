@@ -1,3 +1,5 @@
+
+
 <!DOCTYPE html>
 <html>
   <head>
@@ -139,7 +141,8 @@ var rick = getRandomInt(1, 100)
   
 </div>
 </div>
-<div>
+
+<div style="display: grid;grid-template-columns: 1fr 1fr 1fr 1fr 1fr;">
  <div class="container">
   <img src="other.png" alt="Others" style="width:100%">
   <button class="btn"><a href="Others">Others</a></button>
@@ -152,11 +155,30 @@ var rick = getRandomInt(1, 100)
         <img src="vector.gif" alt="Suggestions" style="width:100%">
   <button class="btn"><a href="suggestions.html">Suggestions</a></button>
   </div>
+          <div class="container">
+  <button class="btn"><a href="privacyPolicy.html">Privacy Policy</a></button>
+  </div>
   
-  <div id='chatroom'></div>
+ <div style='display:none' id='optionToOpen'>
+            <div class="container">
+  <button onclick='liveChatOpen()' style='  
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  background-color: white;
+  color: blue;
+  font-size: 16px;
+  padding: 12px 24px;
+  border: none;
+  cursor: pointer;
+  border-radius: 5px;
+  text-align: center;'>Open Live Chat</button>
+  </div>
+  </div>
+  
 <script>
-function joinRoom(){function i(i){i=i.split(",");return i[Math.floor(Math.random()*i.length)]}document.getElementById('chatroom').innerHTML+="<iframe width='99%' height = '400px' src='https://d66f3864-46f8-47cf-a043-50b7ef7731af.id.repl.co/chat.html?username="+i("Sad,Mad,Short,Fat,Smart,Slow,Barefoot,Bald,Ugly,Pretty,Slimy,Quick,Tall,Just a,Smooth,Rough,Big,Small,Bumpy,White,Brown,Black,Hairy,Cold,Hot,Mild")+" "+i("traffic cone, laptop, phone, box, shoe, duck,jar,burger,flower,deer,airplane,remote control, paper towels, perfume bottle, LEGO, TV,lion,giraffe,man, mom, dad, ant, shirt, blanket, soap bar, soap bottle, picture, dirt pile, ant colony, fish, chimpanzee, doorknob, washer, hot dog, roast beef, pizza,chicken,rooster,chick")+" "+i("riding a bike,sailing the seas,eating a burger,sitting on a chair,flying to China, playing a game, sleeping,walking,running,going to school,thinking about life,existing,exploding,imploding,watching TV,cliff diving,sky diving,playing basketball,playing soccer,swimming,playing golf,making paper airplanes,picking flowers,arguing,leaving forever,going to buy milk, building a wall, eating chicken,eating a hot dog, going full speed, going slow and steady, hitting a home run, eating roast beef")+"&room=mountain658'></iframe><br>"}joinRoom();
-
 if (localStorage.suggestionsNew) {
     localStorage.suggestionsNew = Number(localStorage.suggestionsNew)+1;
   } else {
@@ -166,13 +188,21 @@ if (localStorage.suggestionsNew) {
 introJs().start();
   }
 </script>
-  
-        <div class="container">
-  <button class="btn"><a href="privacyPolicy.html">Privacy Policy</a></button>
-  </div>
  </div> 
-<br><br><br><br><br><br><br><br>
 
+ 
+ <div id='livechat' style='  
+  background-color:#79ceea;
+  font-size: 16px;
+  padding: 12px 24px;'>
+  <button onclick='liveChatClose()'>Close Live Chat</button>
+ <h3>Live Chat</h3>
+ <p>Chat with everyone on the site!</p>
+ <label>Username: </label><input id='username'>
+ <button onclick='joinChat()'>Join</button><br><br>
+ <div id='chat'></div>
+ </div>
+<br>
 <div style='font-size:20px; float:left; position:absolute;'>
 <label for="searchbox">Search Games:</label>
 <input 
@@ -183,6 +213,45 @@ introJs().start();
 >
 </div>
 <script src="search.js"></script>
+ <script>
+ if (localStorage.chatUsername) {
+document.getElementById('username').value = localStorage.chatUsername;
+}
+ 
+  if (localStorage.closedLiveChat == 'true') {
+document.getElementById('optionToOpen').style.display = 'block';
+document.getElementById('livechat').style.display = 'none';
+}
+ 
+function liveChatOpen() {
+document.getElementById('optionToOpen').style.display = 'none';
+document.getElementById('livechat').style.display = 'block';
+localStorage.openedLiveChat = 'true';
+localStorage.closedLiveChat == 'false';
+}
+function addOptionToOpen() {
+
+}
+function liveChatClose() {
+document.getElementById('optionToOpen').style.display = 'block';
+document.getElementById('livechat').style.display = 'none';
+localStorage.openedLiveChat = 'false';
+localStorage.closedLiveChat == 'true';
+}
+function joinChat() {
+var username = document.getElementById('username').value;
+function verfifyUserName() {
+if (username == '') {username = 'User'}
+if (username == undefined) {username = 'User'}
+if (username == null) {username = 'User'}
+}
+verfifyUserName();
+document.getElementById('username').value = username;
+localStorage.chatUsername = username;
+document.getElementById('chat').innerHTML = ("<iframe width='99%' height = '400px' src="
++"https://6f972c4a-a213-4cf1-8305-0b9b7d540077.id.repl.co/#"+username+"'></iframe>");
+}
+ </script>
 <br>
 <br>
 

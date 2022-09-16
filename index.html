@@ -173,13 +173,11 @@ introJs().start();
 
  
  <div id='livechat' style='  
-  background-color:#79ceea;
+  background-color:skyblue;
   font-size: 16px;
   padding: 12px 24px;'>
  <h3>Live Chat</h3>
  <p>Chat with everyone on the site!</p>
- <label>Username: </label><input id='username'>
- <button onclick='joinChat()'>Join</button><br><br>
  <div id='chat'></div>
  </div>
 <br><br>
@@ -195,22 +193,10 @@ introJs().start();
 <br><br>
 <script src="search.js"></script>
  <script>
- if (localStorage.chatUsername) {
-document.getElementById('username').value = localStorage.chatUsername;
-}
 
 function joinChat() {
-var username = document.getElementById('username').value;
-function verfifyUserName() {
-if (username == '') {username = 'User'}
-if (username == undefined) {username = 'User'}
-if (username == null) {username = 'User'}
-}
-verfifyUserName();
-document.getElementById('username').value = username;
-localStorage.chatUsername = username;
 document.getElementById('chat').innerHTML = ("<iframe width='99%' height = '400px' src="
-+"https://6f972c4a-a213-4cf1-8305-0b9b7d540077.id.repl.co/#"+username+"></iframe>");
++"'https://af9907fa-c804-48f7-ab6a-4a45eee75fce.id.repl.co/'></iframe>");
 }
 joinChat();
  </script>

@@ -2,14 +2,16 @@
 <html>
 <body>
 <script>
-var fileName = "CatNinja.swf"
-var swf=("https://"+location.host+"/zswfs/"+fileName);
+var fileName = "CatNinja.swf";
+//var where = 'mountain658.glitch.me';
+var swf=("https://"+(where || location.host)+"/zswfs/"+fileName);
 var gameConfig={swfUrl:(swf)};
 </script>
-<div id="waflashContainer">
-<canvas class="waflashCanvas" id="canvas"></canvas>
+<div id="waflashContainer" style='cursor: none;'>
+<canvas class="waflashCanvas" id="canvas" tabindex="1" width="1318" height="665" style="cursor: none; --waf-content-width:800px; --waf-content-height:450px;" waf-content-width="800" waf-content-height="450" waf-content-fps="50"></canvas>
 <div id="waflashStatus" style="display: none;">Playing...</div>
 <script crossorigin="anonymous" type="module">
+let is_mobile=/Mobi/i.test(window.navigator.userAgent);function scrollToSubject(){try{window.scrollTo({top:100,left:0,behavior:"smooth"})}catch(e){}}is_mobile?(scrollToSubject(),window.addEventListener("orientationchange",function(){setTimeout(scrollToSubject,100)})):document.getElementById("canvas").focus(),document.getElementById("canvas").addEventListener("keydown",function(e){e.preventDefault(),e.stopPropagation()}),document.getElementById("canvas").addEventListener("click",function(){document.getElementById("canvas").focus()}),document.addEventListener("mousedown",function(){const t=document.getElementById("canvas");let n=!1;return function(e){return e.target==t?n||(t.focus(),n=!0):n=n&&!1,!0}}());
 		import {
 			createWaflash
 		} from 'https://cdn.jsdelivr.net/gh/AndreajnRcm4/b398dl2h74v@3f0db6b9a0bed7641e3ed167fc07070b891b72fb/js/waflash-player.min.js';

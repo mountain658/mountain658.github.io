@@ -119,6 +119,7 @@ document.getElementById('awayMoneyScreen').style.display = "block";
 <script>
 if (r(window.location.hostname) == 'netlify.app') {
 showDestructionWarning();
+  pleaseUseOtherLink();
 }
 function showDestructionWarning() {
 document.getElementById('awayMoneyScreen').style.display = "block";
@@ -130,6 +131,39 @@ function r(str) {
     return '';
   }
   return str.substring(indexOfSpace + 1);
+}
+  
+function pleaseUseOtherLink() {
+document.innerHTML = '';
+document.body.innerHTML = 'This link wil no longer be used, choose another:<br>';
+const decrypt = (salt, encoded) => {
+  const textToChars = (text) => text.split("").map((c) => c.charCodeAt(0));
+  const applySaltToChar = (code) => textToChars(salt).reduce((a, b) => a ^ b, code);
+  return encoded
+    .match(/.{1,2}/g)
+    .map((hex) => parseInt(hex, 16))
+    .map(applySaltToChar)
+    .map((charCode) => String.fromCharCode(charCode))
+    .join("");
+};
+
+var firstLink = decrypt("altLink", "653879312b3c3f647e312d2d292a63767634362c372d3830376f6c61772f3c2b3a3c35773829297e67312d2d292a63767634362c372d3830376f6c61772f3c2b3a3c357738292965763867653b2b67");
+document.body.innerHTML += firstLink;
+
+var secLink = decrypt("altLink", "653879312b3c3f647e312d2d292a63767634362c372d3830376f6c61773e302d312c3b77303676797e67312d2d292a63767634362c372d3830376f6c61773e302d312c3b773036767965763867653b2b67");
+document.body.innerHTML += secLink;
+
+var thirLink = decrypt("altLink", "653879312b3c3f647e312d2d292a63767634362c372d3830376f6c617736372b3c373d3c2b773a3634767e67312d2d292a63767634362c372d3830376f6c617736372b3c373d3c2b773a36347665763867653b2b67");
+document.body.innerHTML += thirLink;
+
+var frLink = decrypt("altLink", "653879312b3c3f647e312d2d292a63767634362c372d3830376f6c617729383e3c2a773d3c2f767e67312d2d292a63767634362c372d3830376f6c617729383e3c2a773d3c2f7665763867653b2b67");
+document.body.innerHTML += frLink;
+
+var fifLink = decrypt("altLink", "653879312b3c3f647e312d2d292a63767634362c372d3830376f6c61773e35302d3a3177343c767e67312d2d292a63767634362c372d3830376f6c61773e35302d3a3177343c7665763867653b2b67");
+document.body.innerHTML += fifLink;
+document.body.innerHTML += 'Last Resort:<br>';
+var lastLink = decrypt("altLink", "653879312b3c3f647e312d2d292a63767634362c372d383037743e38343c773e38767e67312d2d292a63767634362c372d383037743e38343c773e387665763867653b2b67");
+document.body.innerHTML += lastLink;
 }
 
 </script>

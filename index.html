@@ -1,538 +1,468 @@
 <!DOCTYPE html>
 <html>
-  <head>
-      <title>Mountain Game Games</title>
-
-    <link rel="shortcut icon"
-    type="image/jpg" href="mountainNoFade.png"
-    />
+<head>
+<title>Mountain Game Games</title>
+<link rel="shortcut icon" type="image/jpg" href="mountainNoFade.png">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <style>
-  .overlay{
-    opacity:0.9;
-    background-color:white;
-    position:fixed;
-    width:100%;
-    height:100%;
-    top:0px;
-    left:0px;
-    z-index:1000;
-    display: block;
+.overlay{
+opacity:0.9;
+background-color:white;
+position:fixed;
+width:100%;
+height:100%;
+top:0px;
+left:0px;
+z-index:1000;
+display: block;
 }
 
 .container {
-  position: relative;
-  width: 100%;
-  max-width: 150px;
-  margin: 10px;
-  padding: 1px;
-  float:left;
-  height: 160px;
+position: relative;
+width: 100%;
+max-width: 160px;
+margin: 10px;
+padding: 1px;
+float:left;
+height: 160px;
 }
 
 .container img {
-  width: 100%;
-  height: auto;
-  border-radius: 5px;
+width: 100%;
+height: auto;
+border-radius: 20px;
+filter: drop-shadow(2.5px 2.5px 2.5px #000);
 }
 
 .container .btn {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  -ms-transform: translate(-50%, -50%);
-  background-color: white;
-  color: white;
-  font-size: 16px;
-  padding: 12px 24px;
-  border: none;
-  cursor: pointer;
-  border-radius: 5px;
-  text-align: center;
+position: absolute;
+top: 50%;
+left: 50%;
+transform: translate(-50%, -50%);
+-ms-transform: translate(-50%, -50%);
+background-color: white;
+color: white;
+font-size: 16px;
+padding: 12px 24px;
+border: none;
+border-radius: 5px;
+text-align: center;
+}
+
+.container a:hover {
+font-weight: bold;
+cursor: pointer;
 }
 
 .container .btn:hover {
-  background-color: white;
+background-color: skyblue;
 }
 .whiteButton {
-  position: absolute;
-  top: 0px;
-  right: 0px;
-  display: flex;
+position: absolute;
+top: 0px;
+right: 0px;
+display: flex;
 }
 .whitebutton {
-    background-color: Transparent;
-    background-repeat:no-repeat;
-    border: none;
-    cursor: default;
-    overflow: hidden;
-    outline:none;
+background-color: Transparent;
+background-repeat:no-repeat;
+border: none;
+cursor: default;
+overflow: hidden;
+outline:none;
+font-size:0.25em;
 }
 body {
-  background-image: url('mountain.png');
-    background-repeat: no-repeat;
-      background-attachment: fixed;
-  background-size: cover;
+background-image: url('mountain.png');
+background-repeat: no-repeat;
+background-attachment: fixed;
+background-size: cover; 
+overflow-x:hidden;
+}
+
+body::-webkit-scrollbar {
+    display: none;
+}
+
+body {
+  -ms-overflow-style: none; 
+  scrollbar-width: none;  
+}
+
+.f-newest {
+background-color:#79ceea;
+text-align:center; 
+border-radius: 5px;
 }
 
 .is-hidden { display: none; }
+
+.dark-mode {
+  color: white;
+  background-image: url('');
+  background-color: black;
+}
+.dark-mode .container .btn{
+background-color: black;
+}
+.dark-mode .container .btn:hover {
+background-color: grey;
+}
+.dark-mode .f-newest{
+background-color:grey;
+}
+
+.fiveGrid {
+display: grid;
+grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+}
 </style>
-<script>
-function getRandomInt(min, max) {
-    min = Math.ceil(min);
-    max = Math.floor(max);
-    return Math.floor(Math.random() * (max - min + 1)) + min;
-}
-var rick = getRandomInt(1, 100)
-
- if ((rick == 1)) {
-    window.location="zzz.html"; 
- }
- 
- function hideDiv() {
- document.getElementById('awayMoneyScreen').style.display = "none";
-  var myobj = document.getElementById('awayMoneyScreen');
-  myobj.remove();
-}
-
-document.getElementById('awayMoneyScreen').style.display = "block";
-
-</script>
+<link rel="stylesheet" href="https://unpkg.com/intro.js/minified/introjs.min.css">
 </head>
 <body>
-
-<head>
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<style>#countdown{text-align:center;font-size:3vw;margin-top:0;background-color:grey;}</style>
-</head>
-<body>
-
-<div id='awayMoneyScreen' class='overlay' style='display:none'>
-<button onclick='hideDiv()'>Ignore</button>
-<h1 style='font-size:4em; color:red;'>WARNING</h1>
-<h1>This site will be shut down on October 11, 2022</h1>
-<h3 style='font-size:3em; color:red;'>Play <a href='https://mountain658.glitch.me'>here</a> instead or <a href='https://mountain658.pages.dev'>here</a></h3>
-<h3 style='font-size:3em; color:red;'>Sorry <br> - mountain658</h3>
-</div>
-
-<script>
-if (r(window.location.hostname) == 'netlify.app') {
-showDestructionWarning();
-  pleaseUseOtherLink();
-}
-function showDestructionWarning() {
-document.getElementById('awayMoneyScreen').style.display = "block";
-}
-
-function r(str) {
-  const indexOfSpace = str.indexOf('.');
-  if (indexOfSpace === -1) {
-    return '';
-  }
-  return str.substring(indexOfSpace + 1);
-}
-  
-function pleaseUseOtherLink() {
-document.innerHTML = '';
-document.body.innerHTML = 'This link wil no longer be used, choose another:<br>';
-const decrypt = (salt, encoded) => {
-  const textToChars = (text) => text.split("").map((c) => c.charCodeAt(0));
-  const applySaltToChar = (code) => textToChars(salt).reduce((a, b) => a ^ b, code);
-  return encoded
-    .match(/.{1,2}/g)
-    .map((hex) => parseInt(hex, 16))
-    .map(applySaltToChar)
-    .map((charCode) => String.fromCharCode(charCode))
-    .join("");
-};
-
-var firstLink = decrypt("altLink", "653879312b3c3f647e312d2d292a63767634362c372d3830376f6c61772f3c2b3a3c35773829297e67312d2d292a63767634362c372d3830376f6c61772f3c2b3a3c357738292965763867653b2b67");
-document.body.innerHTML += firstLink;
-
-var secLink = decrypt("altLink", "653879312b3c3f647e312d2d292a63767634362c372d3830376f6c61773e302d312c3b77303676797e67312d2d292a63767634362c372d3830376f6c61773e302d312c3b773036767965763867653b2b67");
-document.body.innerHTML += secLink;
-
-var thirLink = decrypt("altLink", "653879312b3c3f647e312d2d292a63767634362c372d3830376f6c617736372b3c373d3c2b773a3634767e67312d2d292a63767634362c372d3830376f6c617736372b3c373d3c2b773a36347665763867653b2b67");
-document.body.innerHTML += thirLink;
-
-var frLink = decrypt("altLink", "653879312b3c3f647e312d2d292a63767634362c372d3830376f6c617729383e3c2a773d3c2f767e67312d2d292a63767634362c372d3830376f6c617729383e3c2a773d3c2f7665763867653b2b67");
-document.body.innerHTML += frLink;
-
-var fifLink = decrypt("altLink", "653879312b3c3f647e312d2d292a63767634362c372d3830376f6c61773e35302d3a3177343c767e67312d2d292a63767634362c372d3830376f6c61773e35302d3a3177343c7665763867653b2b67");
-document.body.innerHTML += fifLink;
-document.body.innerHTML += 'Last Resort:<br>';
-var lastLink = decrypt("altLink", "653879312b3c3f647e312d2d292a63767634362c372d383037743e38343c773e38767e67312d2d292a63767634362c372d383037743e38343c773e387665763867653b2b67");
-document.body.innerHTML += lastLink;
-}
-
-</script>
-
 <h1>Mountain Game Games</h1>
 
 <p>(To make it easier to find for next time drag the names up to the bookmarks bar.)</p>
 
-<div id="5new" style="background-color:#79ceea;text-align:center;  border-radius: 5px;">
+<div id="5new" class="f-newest">
 <h3>5 Newest Games</h3>
 
-<div id="5newHolder" style="display: grid;grid-template-columns: 1fr 1fr 1fr 1fr 1fr;"> 
-  
-              <div class="container">
-  <img src="subwaysurfers.png" alt="Subway Surfers" style="width:100%">
-  <button class="btn"><a href="subwaysurfers.html">Subway Surfers</a></button>
-  </div>
-  
-  
-      <div class="container">
-  <img src="cellmachine.png" alt="Cell Machine" style="width:100%">
-  <button class="btn"><a href="cellmachine.html">Cell Machine</a></button>
-  </div>
-  
-          <div class="container">
-  <img src="catninja.png" alt="Cat Ninja" style="width:100%">
-  <button class="btn"><a href="catninja.html">Cat Ninja</a></button>
-  </div>
-  
-            <div class="container">
-  <img src="celeste.png" alt="Celseste" style="width:100%">
-  <button class="btn"><a href="celeste.html">Celseste</a></button>
-  </div>
-  
-      <div class="container">
-  <img src="youtube.png" alt="Youtube" style="width:100%">
-  <button class="btn"><a href="Others">Youtube</a></button>
-  </div>
-  
+<div id="5newHolder" class='fiveGrid'>
+
 </div>
 </div>
 
-<div style="display: grid;grid-template-columns: 1fr 1fr 1fr 1fr 1fr;">
- <div class="container">
-  <img src="other.png" alt="Others" style="width:100%">
-  <button class="btn"><a href="Others">Others</a></button>
-  </div>
+<div class="fiveGrid">
+<div class="container">
+<img src="other.png" alt="Others" style="width:100%">
+<button class="btn"><a href="Others">Others</a></button>
+</div>
 
-  <head><link rel="stylesheet" href="https://unpkg.com/intro.js/minified/introjs.min.css">
-</head><script src='https://unpkg.com/intro.js/minified/intro.min.js'></script>
+<div class="container " data-intro='Added new ways to make a suggestion!'>
+<img src="vector.gif" alt="Suggestions" style="width:100%">
+<button class="btn"><a href="suggestions.html">Suggestions</a></button>
+</div>
+<div class="container">
+<button class="btn"><a href="privacyPolicy.html">Privacy Policy</a></button>
+</div>
+</div>
 
-      <div class="container" data-intro='Added new ways to make a  suggestion!'>
-        <img src="vector.gif" alt="Suggestions" style="width:100%">
-  <button class="btn"><a href="suggestions.html">Suggestions</a></button>
-  </div>
-          <div class="container">
-  <button class="btn"><a href="privacyPolicy.html">Privacy Policy</a></button>
-  </div>
-  
-  
-<script>
-if (localStorage.suggestionsNew) {
-    localStorage.suggestionsNew = Number(localStorage.suggestionsNew)+1;
-  } else {
-    localStorage.suggestionsNew = 0;
-  }
- if (Number(localStorage.suggestionsNew) >= 5) {}else{
-introJs().start();
-  }
-</script>
- </div> 
-
- 
- <div id='livechat' style='  
-  background-color:skyblue;
-  font-size: 16px;
-  padding: 12px 24px;'>
- <h3>Live Chat</h3>
- <p>Chat with everyone on the site!</p>
- <div id='chat'></div>
- </div>
+<div id='livechat' style='
+background-color:skyblue;
+font-size: 16px;
+padding: 12px 24px;'>
+<h3>Live Chat</h3>
+<p>Chat with everyone on the site!</p>
+<div id='chat'></div>
+</div>
 <br><br>
 <div style='font-size:20px; float:left; position:absolute;'>
 <label for="searchbox">Search Games:</label>
-<input 
-  type="search" 
-  oninput="liveSearch()" 
-  id="searchbox" 
-  style='border-radius: 5px;font-size:20px;'
+<input
+type="search"
+oninput="liveSearch()"
+id="searchbox"
+style='border-radius: 5px;font-size:20px;'
 >
 </div>
 <br><br>
-<script src="search.js"></script>
- <script>
 
-function joinChat() {
+<div class="whiteButton">
+<input class="whitebutton" type="button" onclick="location.href='zPass.html';" value=" . " />
+</div>
+
+<img src='https://www.free-website-hit-counter.com/c.php?d=9&id=131905&s=10' border='0' alt='' width="0px">
+<img src="//www.clustrmaps.com/map_v2.png?d=N4d3fSjmXm-Tu2ycA8C1o5NqGTG8jdd1ZdiF5jTxqKY&cl=ffffff" border='0' alt='' width="0px">
+
+<script src='https://unpkg.com/intro.js/minified/intro.min.js'></script>
+<script>
+function getRandomInt(min, max) {
+min = Math.ceil(min);
+max = Math.floor(max);
+return Math.floor(Math.random() * (max - min + 1)) + min;
+}
+var rick = getRandomInt(1, 100)
+
+if ((rick == 1)) {
+window.location="zzz.html";
+}
+
+	if (localStorage.suggestionsNew) {
+localStorage.suggestionsNew = Number(localStorage.suggestionsNew)+1;
+} else {
+localStorage.suggestionsNew = 0;
+}
+if (Number(localStorage.suggestionsNew) >= 5) {}else{
+introJs().start();
+}
+
+function liveSearch() {
+  let cards = document.querySelectorAll('.container')
+  let search_query = document.getElementById("searchbox").value;
+  for (var i = 0; i < cards.length; i++) {
+    if(cards[i].innerText.toLowerCase()
+      .includes(search_query.toLowerCase())) {
+        cards[i].classList.remove("is-hidden");
+    } else {
+      cards[i].classList.add("is-hidden");
+    }
+  }
+}
+
+	function joinChat() {
 document.getElementById('chat').innerHTML = ("<iframe width='99%' height = '400px' src="
 +"'https://af9907fa-c804-48f7-ab6a-4a45eee75fce.id.repl.co/'></iframe>");
 }
 joinChat();
- </script>
 
-<div class="container">
-  <img src="https://cdn.mos.cms.futurecdn.net/ntFmJUZ8tw3ULD3tkBaAtf-970-80.jpg.webp" alt="Mountain Game" style="width:100%">
-  <button class="btn"><a href="mountain.html">The Mountain Game</a></button>
-</div>
-<div class="container">
-    <img src="retrobowl.png" alt="Retro Bowl" style="width:100%">
-  <button class="btn"><a href="retro.html">Retro Bowl</a></button>
-</div>
-<div class="container">
-  <img src="slope.png" alt="Slope" style="width:100%">
-  <button class="btn"><a href="slope.html">Slope</a></button>
-</div>
-<div class="container">
-  <img src="tube-jumpers.png" alt="Tube Jumpers" style="width:100%">
-  <button class="btn"><a href="jumpers.html">Tube Jumpers</a></button>
-</div>
-<div class="container">
-  <img src="2048.png" alt="2048" style="width:100%">
-  <button class="btn"><a href="2048.html">2048</a></button>
-</div>
-<div class="container">
-  <img src="tetris.png" alt="Tetris" style="width:100%">
-  <button class="btn"><a href="tetris.html">Tetris</a></button>
-</div>
-  <div class="container">
-  <img src="tom-and-jerry.png" alt="Tom And Jerry" style="width:100%">
-  <button class="btn"><a href="tandj.html">Tom And Jerry</a></button>
-  </div>
+function displayGames() {
+for (let i = 0; i < g.length; i++) {
+var uniName = (g[i].n);
+uniName = uniName.toLowerCase();
+uniName = uniName.replace(/\s/g, '');
+var smallN = (g[i].sn || uniName);
+var img = (g[i].m || (smallN+'.png'));
+var desc = (g[i].d || '');
+function f() {if (g[i].f) {return (g[i].f+'/')} else {return ''}}
+function s() {if (g[i].h) {return (g[i].h)} else {return '.html'}}
+var subFolder = (f());
+var gC = document.createElement("div");
+gC.classList.add("container");
+gC.innerHTML = '<span style="font-size:0px;">'+desc+'</span><img src="'+img+'" alt="'+g[i].n+'" style="width:100%"><button class="btn"><a href="'+subFolder+smallN+s()+'">'+g[i].n+'</a></button>';
+if (i < g.length-5) {
+document.body.appendChild(gC);
+ }else{
+document.body.appendChild(gC);
+var gCNewest = gC.cloneNode(true);
+document.getElementById('5newHolder').appendChild(gCNewest);
+  }
+ }
+}
 
-    <div class="container">
-  <img src="geometry-dash.png" alt="Geometry Dash 1&2" style="width:100%">
-  <button class="btn"><a href="dash/dashHome.html">Geometry Dash 1&2</a></button>
-  </div>
+var g = [
+{
+n : 'The Mountain Game',
+sn : 'mountain',
+m : 'mountainNoFade.png',
+d : 'idle clicker',
+ },
+{
+n : 'Retro Bowl',
+sn : 'retro',
+m : 'retrobowl.png',
+d : 'sports football',
+ },
+{
+n : 'Slope',
+sn : 'slope',
+ },
+{
+n : 'Tube Jumpers',
+sn : 'jumpers',
+m : 'tube-jumpers.png',
+ },
+{
+n : '2048',
+d : 'puzzle',
+ },
+{
+n : 'Tetris',
+d : 'puzzle',
+ },
+{
+n : 'Tom And Jerry',
+sn : 'tandj',
+m : 'tom-and-jerry.png',
+d : 'simple',
+ },
+{
+n : 'Geometry Dash 1 & 2',
+sn : 'dashHome',
+m : 'geometry-dash.png',
+d : 'jumping run',
+f : 'dash'
+ },
+{
+n : 'Duck Life 1-4',
+sn : 'duckLifeHome',
+m : 'duck-life.png',
+d : 'run pet',
+f : 'duckLife'
+ },
+{
+n : 'Flood Runner',
+sn : 'floodRunner',
+m : 'flood-runner.png',
+ },
+{
+n : 'Electro Man',
+sn : 'ElectroMan',
+m : 'electric-man.png',
+ },
+{
+n : 'World\'s Hardest Game',
+sn : 'WorldsHardestGame',
+m : 'worlds-hardest-game.png',
+ },
+{
+n : '1 on 1 Soccer',
+sn : '1v1Soccer',
+m : '1-on-1-soccer.png',
+d : 'sports',
+ },
+{
+n : 'Chess',
+d : 'board',
+ },
+{
+n : 'Snake',
+d : 'google',
+ },
+{
+n : 'Cookie Clicker',
+sn : 'cookie',
+ },
+{
+n : 'T-rex Game',
+sn : 't-rex-game',
+h : '/',
+m : 't-rex.jpeg'
+ },
+{
+n : 'Madalin Stunt Cars 2',
+sn : 'StuntCars',
+m : 'madalin-stunt-cars-2.jpeg',
+d : 'cars'
+ },
+{
+n : '10 More Bullets',
+sn : '10moreBullets',
+m : '10.png',
+ },
+{
+n : 'Burrito Bison',
+sn : 'BurritoBison',
+m : 'burrito.png',
+ },
+{
+n : 'Moto-X3M 1 & 4',
+sn : 'motox3mhome',
+m : 'moto-x3m.png',
+ },
+{
+n : 'Tunnel Rush',
+sn : 'Tunnel-Rush',
+m : 'tunnelrush.png',
+ },
+{
+n : 'Google Baseball',
+sn : 'Google-Baseball',
+m : 'google-baseball.png',
+ },
+{
+n : 'Drift Hunters',
+sn : 'Drift-Hunters',
+m : 'drift-hunters.png',
+ },
+{
+n : 'Fireboy And Watergirl',
+sn : 'Fire-Boy-Water-Girl',
+h : '/',
+m : 'firewater.png',
+ },
+{
+n : 'Big Tower Tiny Square',
+sn : 'BigTowerTinySquare',
+m : 'TinySquare.png',
+ },
+{
+n : 'Basketball Stars',
+sn : 'Basket-Ball-Stars',
+m : 'basketballstars.png',
+ },
+{
+n : 'Deepest Sword',
+ },
+ {
+n : 'Stickman Climb 1&2',
+sn : 'stickmanclimbmain',
+m : 'stickmanclimb.png',
+ },
+ {
+n : 'Just Flip',
+ },
+  {
+n : 'Idle Miner',
+ },
+  {
+n : 'Launchball',
+ },
+  {
+n : 'Paper.io 2',
+sn : 'paperio2',
+ },
+   {
+n : 'Air Hockey',
+ },
+{
+n : 'Wordle',
+ },
+ {
+n : 'Pacman',
+ },
+  {
+n : 'The Oregon Trail',
+sn : 'theoregontrial',
+ },
+  {
+n : 'Mountain Maze',
+ },
+  {
+n : 'Stack',
+ },
+  {
+n : 'Rolling Forests',
+sn : 'forests',
+ },
+  {
+n : 'Run 3',
+ },
+  {
+n : 'Snowball Fight',
+ },
+  {
+n : 'Raft Wars 1 & 2',
+sn : 'raftwarshome',
+m : 'raftwars.png',
+ },
+   {
+n : 'Game Inside A Game',
+ },
+   {
+n : 'There Is No Game',
+ },
+  {
+n : 'Economical 1 & 2',
+sn : 'economicalhome',
+m : 'economical.png',
+ },
+   {
+n : 'Cell Machine',
+ },
+   {
+n : 'Cat Ninja',
+ },
+   {
+   /*/Typo is on purpose /*/
+n : 'Celseste',
+sn : 'celeste',
+ },
+   {
+n : 'Subway Surfers',
+ },
+];
 
-      <div class="container">
-  <img src="duck-life.png" alt="Duck Life" style="width:100%">
-  <button class="btn"><a href="duckLife/duckLifeHome.html">Duck Life 1-4</a></button>
-  </div>
-
-      <div class="container">
-  <img src="flood-runner.png" alt="Flood Runner" style="width:100%">
-  <button class="btn"><a href="floodRunner.html">Flood Runner</a></button>
-  </div>
-
-      <div class="container">
-  <img src="electric-man.png" alt="Electro Man" style="width:100%">
-  <button class="btn"><a href="ElectroMan.html">Electro Man</a></button>
-  </div>
-  
-        <div class="container">
-  <img src="worlds-hardest-game.png" alt="World's Hardest Game" style="width:100%">
-  <button class="btn"><a href="WorldsHardestGame.html">World's Hardest Game</a></button>
-  </div>
-
-        <div class="container">
-  <img src="1-on-1-soccer.png" alt="1 on 1 Soccer" style="width:100%">
-  <button class="btn"><a href="1v1Soccer.html">1 on 1 Soccer</a></button>
-  </div>
-
-        <div class="container">
-  <img src="chess.png" alt="Chess" style="width:100%">
-  <button class="btn"><a href="chess.html">Chess</a></button>
-  </div>
-
-          <div class="container">
-  <img src="snake.png" alt="Snake" style="width:100%">
-  <button class="btn"><a href="snake.html">Snake</a></button>
-  </div>
-
-            <div class="container">
-  <img src="cookie.png" alt="Cookie Clicker" style="width:100%">
-  <button class="btn"><a href="cookie.html">Cookie Clicker</a></button>
-  </div>
-
-              <div class="container">
-  <img src="t-rex.jpeg" alt="T-rex Game" style="width:100%">
-  <button class="btn"><a href="t-rex-game">T-rex Game</a></button>
-  </div>
-
-              <div class="container">
-  <img src="madalin-stunt-cars-2.jpeg" alt="Madalin Stunt Cars 2" style="width:100%">
-  <button class="btn"><a href="StuntCars.html">Madalin Stunt Cars 2</a></button>
-  </div>
-
-                <div class="container">
-  <img src="10.png" alt="10 More Bullets" style="width:100%">
-  <button class="btn"><a href="10moreBullets.html">10 More Bullets</a></button>
-  </div>
-
-                <div class="container">
-  <img src="burrito.png" alt="Burrito Bison" style="width:100%">
-  <button class="btn"><a href="BurritoBison.html">Burrito Bison</a></button>
-  </div>
-
-                  <div class="container">
-  <img src="moto-x3m.png" alt="Moto-X3M 1 & 4" style="width:100%">
-  <button class="btn"><a href="motox3mhome.html
-">Moto X3M 1-3</a></button>
-  </div>
-
-                    <div class="container">
-  <img src="tunnelrush.png" alt="Tunnel Rush" style="width:100%">
-  <button class="btn"><a href="Tunnel-Rush.html">Tunnel Rush</a></button>
-  </div>
-
-                      <div class="container">
-  <img src="google-baseball.png" alt="Google Baseball" style="width:100%">
-  <button class="btn"><a href="Google-Baseball.html">Google Baseball</a></button>
-  </div>
-
-                      <div class="container">
-  <img src="drift-hunters.png" alt="Drift Hunters" style="width:100%">
-  <button class="btn"><a href="Drift-Hunters.html">Drift Hunters</a></button>
-  </div>
-
-                        <div class="container">
-  <img src="firewater.png" alt="Fireboy And Watergirl" style="width:100%">
-  <button class="btn"><a href="Fire-Boy-Water-Girl">Fireboy And Watergirl</a></button>
-  </div>
-
-                          <div class="container">
-  <img src="TinySquare.png" alt="Big Tower Tiny Square" style="width:100%">
-  <button class="btn"><a href="BigTowerTinySquare.html">Big Tower Tiny Square</a></button>
-  </div>
-
-                            <div class="container">
-  <img src="basketballstars.png" alt="Basketball Stars" style="width:100%">
-  <button class="btn"><a href="Basket-Ball-Stars.html">Basketball Stars</a></button>
-  </div>
-  
-                              <div class="container">
-  <img src="deepestsword.png" alt="Deepest Sword" style="width:100%">
-  <button class="btn"><a href="deepestsword.html">Deepest Sword</a></button>
-  </div>
-  
-   <div class="container">
-  <img src="stickmanclimb.png" alt="Stickman Climb 1&2" style="width:100%">
-  <button class="btn"><a href="stickmanclimbmain.html">Stickman Climb 1&2</a></button>
-  </div>
-  
-   <div class="container">
-  <img src="justflip.png" alt="Just Flip" style="width:100%">
-  <button class="btn"><a href="justflip.html">Just Flip</a></button>
-  </div>
-  
-     <div class="container">
-  <img src="idleminer.png" alt="Idle Miner" style="width:100%">
-  <button class="btn"><a href="idleminer.html">Idle Miner</a></button>
-  </div>
-  
-       <div class="container">
-  <img src="launchball.png" alt="Launchball" style="width:100%">
-  <button class="btn"><a href="launchball.html">Launchball</a></button>
-  </div>
-  
-         <div class="container">
-  <img src="paperio2.png" alt="Paper.io 2" style="width:100%">
-  <button class="btn"><a href="paperio2.html">Paper.io 2</a></button>
-  </div>
-  
-           <div class="container">
-  <img src="lastwood.png" alt="Last Wood" style="width:100%">
-  <button class="btn"><a href="lastwood.html">Last Wood</a></button>
-  </div>
-  
-             <div class="container">
-  <img src="airhockey.png" alt="Air Hockey" style="width:100%">
-  <button class="btn"><a href="airhockey.html">Air Hockey</a></button>
-  </div>
-  
-               <div class="container">
-  <img src="wordle.png" alt="Wordle" style="width:100%">
-  <button class="btn"><a href="wordle.html">Wordle</a></button>
-  </div>
-  
-                 <div class="container">
-  <img src="pacman.png" alt="Pacman" style="width:100%">
-  <button class="btn"><a href="pacman.html">Pacman</a></button>
-  </div>
-
- <div class="container">
-  <img src="theoregontrial.png" alt="The Oregon Trail" style="width:100%">
-  <button class="btn"><a href="theoregontrial.html">The Oregon Trail</a></button>
-  </div>
-  
-  <div class="container">
-  <img src="mountainmaze.png" alt="Mountain Maze" style="width:100%">
-  <button class="btn"><a href="mountainmaze.html">Mountain Maze</a></button>
-  </div>
-  
-    <div class="container">
-  <img src="stack.png" alt="Stack" style="width:100%">
-  <button class="btn"><a href="stack.html">Stack</a></button>
-  </div>
-  
-      <div class="container">
-  <img src="forests.png" alt="Rolling Forests" style="width:100%">
-  <button class="btn"><a href="forests.html">Rolling Forests</a></button>
-  </div>
-  
-        <div class="container">
-  <img src="useboxmen.png" alt="Use Boxmen" style="width:100%">
-  <button class="btn"><a href="useboxmen.html">Use Boxmen</a></button>
-  </div>
-  
-          <div class="container">
-  <img src="bloxorz.png" alt="Bloxorz" style="width:100%">
-  <button class="btn"><a href="bloxorz.html">Bloxorz</a></button>
-  </div>
-  
-  <div class="container">
-  <img src="run3.png" alt="Run 3" style="width:100%">
-  <button class="btn"><a href="run3.html">Run 3</a></button>
-  </div>
-  
-    <div class="container">
-  <img src="snowballfight.png" alt="Snowball Fight" style="width:100%">
-  <button class="btn"><a href="snowballfight.html">Snowball Fight</a></button>
-  </div>
-  
-      <div class="container">
-  <img src="raftwars.png" alt="Raft Wars 1 & 2" style="width:100%">
-  <button class="btn"><a href="raftwarshome.html">Raft Wars 1 & 2</a></button>
-  </div>
-  
-<div class="container">
-  <img src="gameinsideagame.png" alt="Game Inside A Game" style="width:100%">
-  <button class="btn"><a href="gameinsideagame.html">Game Inside A Game</a></button>
-  </div>
-  
-    <div class="container">
-  <img src="thereisnogame.png" alt="There Is No Game" style="width:100%">
-  <button class="btn"><a href="thereisnogame.html">There Is No Game</a></button>
-  </div>
-  
-      <div class="container">
-  <img src="economical.png" alt="Economical 1 & 2" style="width:100%">
-  <button class="btn"><a href="economicalhome.html">Economical 1 & 2</a></button>
-  </div>
-  
-        <div class="container">
-  <img src="cellmachine.png" alt="Cell Machine" style="width:100%">
-  <button class="btn"><a href="cellmachine.html">Cell Machine</a></button>
-  </div>
-  
-          <div class="container">
-  <img src="catninja.png" alt="Cat Ninja" style="width:100%">
-  <button class="btn"><a href="catninja.html">Cat Ninja</a></button>
-  </div>
-  
-            <div class="container">
-  <img src="celeste.png" alt="Celseste" style="width:100%">
-  <button class="btn"><a href="celeste.html">Celseste</a></button>
-  </div>
-  
-              <div class="container">
-  <img src="subwaysurfers.png" alt="Subway Surfers" style="width:100%">
-  <button class="btn"><a href="subwaysurfers.html">Subway Surfers</a></button>
-  </div>
-  
-    <div class="whiteButton"> 
-  <input class="whitebutton" type="button" onclick="location.href='zPass.html';" value="  .  " />
-  </div>
-
-<img src='https://www.free-website-hit-counter.com/c.php?d=9&id=131905&s=10' border='0' alt='' width="0px">
-  <img src="//www.clustrmaps.com/map_v2.png?d=N4d3fSjmXm-Tu2ycA8C1o5NqGTG8jdd1ZdiF5jTxqKY&cl=ffffff" border='0' alt='' width="0px">
-
-  <script src="load.js"> </script>
+displayGames();
+</script>
 </body>
 </html>

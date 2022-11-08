@@ -1,10 +1,9 @@
-<!DOCTYPE html>
-<html>
-<script src="https://cdn01.jotfor.ms/static/prototype.forms.js" type="text/javascript"></script>
-<script src="https://cdn02.jotfor.ms/static/jotform.forms.js?3.3.33055" type="text/javascript"></script>
+<script src="https://cdn01.jotfor.ms/static/prototype.forms.js?3.3.36963" type="text/javascript"></script>
+<script src="https://cdn02.jotfor.ms/static/jotform.forms.js?3.3.36963" type="text/javascript"></script>
 <script defer src="https://cdnjs.cloudflare.com/ajax/libs/punycode/1.4.1/punycode.js"></script>
 <script type="text/javascript">	JotForm.newDefaultTheme = true;
 	JotForm.extendsNewTheme = false;
+	JotForm.singleProduct = false;
 	JotForm.newPaymentUIForNewCreatedForms = true;
 	JotForm.newPaymentUI = true;
 	JotForm.clearFieldOnHide="disable";
@@ -18,14 +17,14 @@ if (window.JotForm && JotForm.accessible) $('input_5').setAttribute('tabindex',0
 	/*INIT-END*/
 	});
 
-   JotForm.prepareCalculationsOnTheFly([null,{"name":"heading","qid":"1","text":"Suggestions","type":"control_head"},{"name":"submit2","qid":"2","text":"Suggest","type":"control_button"},null,{"description":"","name":"email","qid":"4","subLabel":"example@example.com","text":"Email","type":"control_email"},{"description":"","name":"suggestion","qid":"5","subLabel":"Suggest a game, broken game, or any change you would like to see on my site.","text":"Suggestion","type":"control_textbox"}]);
+   JotForm.prepareCalculationsOnTheFly([null,{"name":"heading","qid":"1","text":"Suggestions","type":"control_head"},{"name":"submit2","qid":"2","text":"Suggest","type":"control_button"},null,{"description":"","name":"email","qid":"4","subLabel":"example@example.com","text":"Email","type":"control_email"},{"description":"","name":"suggestion","qid":"5","subLabel":"Suggest a game, broken game, or any change you would like to see on my site.","text":"Suggestion","type":"control_textbox"},{"description":"","name":"whatAre","qid":"6","text":"What are you suggesting?","type":"control_radio"}]);
    setTimeout(function() {
-JotForm.paymentExtrasOnTheFly([null,{"name":"heading","qid":"1","text":"Suggestions","type":"control_head"},{"name":"submit2","qid":"2","text":"Suggest","type":"control_button"},null,{"description":"","name":"email","qid":"4","subLabel":"example@example.com","text":"Email","type":"control_email"},{"description":"","name":"suggestion","qid":"5","subLabel":"Suggest a game, broken game, or any change you would like to see on my site.","text":"Suggestion","type":"control_textbox"}]);}, 20); 
+JotForm.paymentExtrasOnTheFly([null,{"name":"heading","qid":"1","text":"Suggestions","type":"control_head"},{"name":"submit2","qid":"2","text":"Suggest","type":"control_button"},null,{"description":"","name":"email","qid":"4","subLabel":"example@example.com","text":"Email","type":"control_email"},{"description":"","name":"suggestion","qid":"5","subLabel":"Suggest a game, broken game, or any change you would like to see on my site.","text":"Suggestion","type":"control_textbox"},{"description":"","name":"whatAre","qid":"6","text":"What are you suggesting?","type":"control_radio"}]);}, 20); 
 </script>
 <style type="text/css">@media print{.form-section{display:inline!important}.form-pagebreak{display:none!important}.form-section-closed{height:auto!important}.page-section{position:initial!important}}</style>
 <link type="text/css" rel="stylesheet" href="https://cdn01.jotfor.ms/themes/CSS/5e6b428acc8c4e222d1beb91.css?themeRevisionID=5f7ed99c2c2c7240ba580251"/>
-<link type="text/css" rel="stylesheet" href="https://cdn02.jotfor.ms/css/styles/payment/payment_styles.css?3.3.33055" />
-<link type="text/css" rel="stylesheet" href="https://cdn03.jotfor.ms/css/styles/payment/payment_feature.css?3.3.33055" />
+<link type="text/css" rel="stylesheet" href="https://cdn02.jotfor.ms/css/styles/payment/payment_styles.css?3.3.36963" />
+<link type="text/css" rel="stylesheet" href="https://cdn03.jotfor.ms/css/styles/payment/payment_feature.css?3.3.36963" />
 <style type="text/css" id="form-designer-style">
     /* Injected CSS Code */
 /*PREFERENCES STYLE*/
@@ -720,7 +719,7 @@ div.form-header-group.header-large {
   <input type="hidden" id="JWTContainer" value="" />
   <input type="hidden" id="cardinalOrderNumber" value="" />
   <div role="main" class="form-all">
-    <link type="text/css" rel="stylesheet" media="all" href="https://cdn.jotfor.ms/wizards/languageWizard/custom-dropdown/css/lang-dd.css?3.3.33055" />
+    <link type="text/css" rel="stylesheet" media="all" href="https://cdn.jotfor.ms/wizards/languageWizard/custom-dropdown/css/lang-dd.css?3.3.36963" />
     <div class="cont">
       <input type="text" id="input_language" name="input_language" style="display:none" />
       <div class="language-dd" id="langDd" style="display:none">
@@ -734,7 +733,7 @@ div.form-header-group.header-large {
         </ul>
       </div>
     </div>
-    <script type="text/javascript" src="https://cdn.jotfor.ms/js/formTranslation.v2.js?3.3.33055"></script>
+    <script type="text/javascript" src="https://cdn.jotfor.ms/js/formTranslation.v2.js?3.3.36963"></script>
     <style>
       .form-all:before { background: none;}
     </style>
@@ -748,6 +747,36 @@ div.form-header-group.header-large {
             <div id="subHeader_1" class="form-subHeader">
               Suggestions about anything you want me to add.
             </div>
+          </div>
+        </div>
+      </li>
+      <li class="form-line jf-required" data-type="control_radio" id="id_6">
+        <label class="form-label form-label-top form-label-auto" id="label_6" for="input_6">
+          What are you suggesting?
+          <span class="form-required">
+            *
+          </span>
+        </label>
+        <div id="cid_6" class="form-input-wide jf-required" data-layout="full">
+          <div class="form-single-column" role="group" aria-labelledby="label_6" data-component="radio">
+            <span class="form-radio-item" style="clear:left">
+              <span class="dragger-item">
+              </span>
+              <input type="radio" aria-describedby="label_6" class="form-radio validate[required]" id="input_6_0" name="q6_whatAre" value="New Game" required="" />
+              <label id="label_input_6_0" for="input_6_0"> New Game </label>
+            </span>
+            <span class="form-radio-item" style="clear:left">
+              <span class="dragger-item">
+              </span>
+              <input type="radio" aria-describedby="label_6" class="form-radio validate[required]" id="input_6_1" name="q6_whatAre" value="Broken Game" required="" />
+              <label id="label_input_6_1" for="input_6_1"> Broken Game </label>
+            </span>
+            <span class="form-radio-item" style="clear:left">
+              <span class="dragger-item">
+              </span>
+              <input type="radio" aria-describedby="label_6" class="form-radio validate[required]" id="input_6_2" name="q6_whatAre" value="New Feture" required="" />
+              <label id="label_input_6_2" for="input_6_2"> New Feture </label>
+            </span>
           </div>
         </div>
       </li>
@@ -809,6 +838,5 @@ for (var i = 0; i < all_spc.length; i++)
 }
   </script>
 </form>
-<script src="https://cdn.jotfor.ms//js/vendor/smoothscroll.min.js?v=3.3.33055"></script>
-<script src="https://cdn.jotfor.ms//js/errorNavigation.js?v=3.3.33055"></script>
-</html>
+<script src="https://cdn.jotfor.ms//js/vendor/smoothscroll.min.js?v=3.3.36963"></script>
+<script src="https://cdn.jotfor.ms//js/errorNavigation.js?v=3.3.36963"></script>

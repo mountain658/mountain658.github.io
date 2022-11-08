@@ -15919,7 +15919,7 @@ window.onload=function()
 				LoadLang('loc/'+lang+'.js?v='+Game.version,function(){
 					var launch=function(){
 						Game.Launch();
-						if (top!=self) alert('Wrong Link');
+						if (false) alert('Wrong Link');
 						else
 						{
 							console.log('[=== '+choose([

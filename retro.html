@@ -2,18 +2,50 @@
 <html>
   <head>
       <title>Retro Bowl</title>
-    <link rel="shortcut icon" type="image/jpg" href="retrobowl.png"/>
+    <link rel="shortcut icon" type="image/jpg" 
+    href="retrobowl.png"/>
   </head>
 <body onload='focus()'>
+<style>
+html, body{
+width: 100%;
+height: 100%;
+}
+</style>
 <script src="load.js"></script>
-         <a href="/" style='font-size: 2vw;'>Back To Home Page</a>
-         <button onclick="openFullscreen('518929564')" style='font-size: 2vw;'>Fullscreen Mode</button>      
-<iframe style='height: 95vh; width: 95vw;' scrolling="no" frameborder="0" id="518929564" allowtransparency="true" 
-        src="https://debbiewatermanphd.com/uploads/5/5/6/7/5567194/custom_themes/230188292910318641/files/rb1.html"></iframe>
+<a href="/" style='font-size: 1.25rem;'>Back To Home Page</a>
+<button onclick="openFullscreen('518929564')" style='font-size: 1.25rem;'>Fullscreen Mode</button>     
+<br>
+<div id='servers'>
+
+</div>
+
+<h3>Playing On Server: <span id='currentServer'></span></h3>
+
+<iframe style='height: 95vh; width: 95vw;' frameborder="0" id="518929564" allowtransparency="true" 
+        src=""></iframe>
+<br>
+<script>
+document.getElementById('518929564').src='https://debbiewatermanphd.com/uploads/5/5/6/7/5567194/custom_themes/230188292910318641/files/rb1.html';
+document.getElementById('currentServer').innerHTML = '1';
+
+const links = [['https://debbiewatermanphd.com/uploads/5/5/6/7/5567194/custom_themes/230188292910318641/files/rb1.html', 'Old Version'], 
+['https://962b3c82-da73-4819-afc0-70683afd7ded.id.repl.co/','Newest Version']];
+
+links.forEach(server);
+
+function server(item, index) {
+window[("s"+(index+1))] = function(){
+document.getElementById('518929564').src= item[0];
+document.getElementById('currentServer').innerHTML = (index+1);
+document.getElementById('518929564').focus();
+ }
+document.getElementById('servers').innerHTML += "<button style='font-size: 1rem;' onclick="+("s"+(index+1))+"()>"+item[1]+"</button>";
+}
+</script>
 <script src="fullScreen.js"></script>
 <script>
 function focus() {document.getElementById('518929564').focus();}
 </script>
 </body>
 </html>
-

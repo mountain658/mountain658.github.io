@@ -160,15 +160,12 @@ style='border-radius: 5px;font-size:20px;'
 <img src="//www.clustrmaps.com/map_v2.png?d=N4d3fSjmXm-Tu2ycA8C1o5NqGTG8jdd1ZdiF5jTxqKY&cl=ffffff" border='0' alt='' width="0px">
 
 <script src='https://unpkg.com/intro.js/minified/intro.min.js'></script>
+<script src='jelly.js'></script>
 <script>
 function getRandomInt(min, max) {
 min = Math.ceil(min);
 max = Math.floor(max);
 return Math.floor(Math.random() * (max - min + 1)) + min;
-}
-
-function jelly() {
-["https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js","https://cdn.jsdelivr.net/npm/matter-js@0.17.1/build/matter.min.js","https://sc420.github.io/jellify-ur-website/js/jellify.js"].forEach(e=>{const t=document.getElementsByTagName("head")[0],s=document.createElement("script");s.src=e,t.appendChild(s)});
 }
 
 var rick = getRandomInt(1, 100)

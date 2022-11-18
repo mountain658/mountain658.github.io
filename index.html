@@ -108,7 +108,12 @@ grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
 <h1>Mountain Game Games</h1>
 
 <p>(To make it easier to find for next time drag the names up to the bookmarks bar.)</p>
+<div class="whiteButton">
+<input class="whitebutton" type="button" onclick="location.href='zPass.html';" value=" . " />
+</div>
 
+<img style='position:fixed' src='https://www.free-website-hit-counter.com/c.php?d=9&id=131905&s=10' border='0' alt='' width="0px">
+<img style='position:fixed' src="//www.clustrmaps.com/map_v2.png?d=N4d3fSjmXm-Tu2ycA8C1o5NqGTG8jdd1ZdiF5jTxqKY&cl=ffffff" border='0' alt='' width="0px">
 <div id="5new" class="f-newest">
 <h3>5 Newest Games</h3>
 
@@ -141,24 +146,13 @@ padding: 12px 24px;'>
 <div id='chat'></div>
 </div>
 <br><br>
-<div style='font-size:20px; float:left; position:absolute;'>
+
+<div style='font-size:20px'>
 <label for="searchbox">Search Games:</label>
-<input
-type="search"
-oninput="liveSearch()"
-id="searchbox"
-style='border-radius: 5px;font-size:20px;'
->
-</div>
-<br><br>
-
-<div class="whiteButton">
-<input class="whitebutton" type="button" onclick="location.href='zPass.html';" value=" . " />
+<input type="search" oninput="liveSearch()" id="searchbox" style='border-radius: 5px;font-size:20px;'>
 </div>
 
-<img src='https://www.free-website-hit-counter.com/c.php?d=9&id=131905&s=10' border='0' alt='' width="0px">
-<img src="//www.clustrmaps.com/map_v2.png?d=N4d3fSjmXm-Tu2ycA8C1o5NqGTG8jdd1ZdiF5jTxqKY&cl=ffffff" border='0' alt='' width="0px">
-
+<div id='games'></div>
 <script src='https://unpkg.com/intro.js/minified/intro.min.js'></script>
 <script src='jelly.js'></script>
 <script>
@@ -255,9 +249,9 @@ var gC = document.createElement("div");
 gC.classList.add("container");
 gC.innerHTML = '<span style="font-size:0px;">'+desc+'</span><img src="'+img+'" alt="'+g[i].n+'" style="width:100%"><button class="btn"><a href="'+subFolder+smallN+s()+'">'+g[i].n+'</a></button>';
 if (i < g.length-5) {
-document.body.appendChild(gC);
+document.getElementById('games').appendChild(gC);
  }else{
-document.body.appendChild(gC);
+document.getElementById('games').appendChild(gC);
 var gCNewest = gC.cloneNode(true);
 document.getElementById('5newHolder').appendChild(gCNewest);
   }

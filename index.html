@@ -168,8 +168,28 @@ max = Math.floor(max);
 return Math.floor(Math.random() * (max - min + 1)) + min;
 }
 
-var rick = getRandomInt(1, 100)
-var jellyMaybe = getRandomInt(1, 50)
+
+function flipFlop() {
+(function(){['', '-ms-', '-webkit-', '-o-', '-moz-'].map(function(prefix){Array.prototype.slice.call(document.querySelectorAll('img')).map(function(el){el.style[prefix + 'transform'] = 'rotate(180deg)';});});}())
+}
+
+
+function tilt() {
+(function(){['', '-ms-', '-webkit-', '-o-', '-moz-'].map(function(prefix){Array.prototype.slice.call(document.querySelectorAll('div,h1,iframe,p,span,img,a')).map(function(el){el.style[prefix + 'transform'] = 'rotate('+ (function(){if (Math.random()>0.5){return '-'}return ''})() + (Math.floor(Math.random() * 25) - 1) + 'deg)';});});}())
+}
+
+function flyGames() {
+(function(){
+var R=0,x1=.1,y1=.05,x2=.25,y2=.24,x3=1.6,y3=.24,x4=300,y4=200,x5=300,y5=200,DI=document.getElementsByClassName("container"),DIL=DI.length;function A(){for(i=0;i-DIL;i++){DIS=DI[i].style;DIS.width='150px';DIS.position='fixed';DIS.left=(Math.sin(R*x1+i*x2+x3)*x4+x5)+"px";DIS.top=(Math.cos(R*y1+i*y2+y3)*y4+y5)+"px"}R++}setInterval(A,30);
+})();
+}
+
+function hehehe() {
+var rick = getRandomInt(1, 150);
+var jellyMaybe = getRandomInt(1, 100);
+var flipFlopMaybe = getRandomInt(1, 125);
+var tiltMaybe = getRandomInt(1, 175);
+var flyGamesMaybe = getRandomInt(1, 1);
 
 if ((rick == 1)) {
 window.location="zzz.html";
@@ -177,7 +197,23 @@ window.location="zzz.html";
 	
 if ((jellyMaybe == 1)) {
 jelly();
-alert('Jelly!')
+}
+
+if ((flipFlopMaybe == 1)) {
+flipFlop();
+}
+
+if ((flipFlopMaybe == 1)) {
+flipFlop();
+}
+
+if ((tiltMaybe == 1)) {
+tilt();
+ }
+ 
+ if ((flyGamesMaybe == 1)) {
+flyGames();
+ }
 }
 
 	if (localStorage.suggestionsNew) {
@@ -489,6 +525,7 @@ n : 'Basket Random',
 ];
 
 displayGames();
+hehehe();
 </script>
 </body>
 </html>

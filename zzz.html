@@ -1,69 +1,36 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta name="viewport" content="width=device-width, initial-scale=1">
-</head>
-<body onload="openFullscreen();">
-
-<video width="100%" onload="openFullscreen();" controls id="myvideo" >
-  <source src="zzz.mp4" type="video/mp4">
-  Your browser does not support the video tag.
-</video>
-
-<script>
-var elem = document.getElementById("myvideo");
-function openFullscreen() {
-  if (elem.requestFullscreen) {
-    elem.requestFullscreen();
-  } else if (elem.webkitRequestFullscreen) { /* Safari */
-    elem.webkitRequestFullscreen();
-  } else if (elem.msRequestFullscreen) { /* IE11 */
-    elem.msRequestFullscreen();
-  }
-  elem.play();
+<style>
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
 }
-openFullscreen();
-openFullscreen();
-openFullscreen();
-openFullscreen();
-openFullscreen();
-openFullscreen();
-openFullscreen();
-openFullscreen();
-openFullscreen();
-openFullscreen();
-openFullscreen();
-openFullscreen();
-openFullscreen();
-openFullscreen();
-openFullscreen();
-openFullscreen();
-openFullscreen();
-openFullscreen();
-openFullscreen();
-openFullscreen();
-openFullscreen();
-openFullscreen();
-openFullscreen();
-openFullscreen();
-openFullscreen();
-openFullscreen();
-openFullscreen();
-setInterval(function(){ 
 
-openFullscreen();
-
-}, 1);
-</script>
+img {
+    width: 100vw;
+    height: auto;
+    max-width: none;
+    max-height: 100vh;
+    object-fit: contain;
+}
+</style>
+</head>
+<body>
+<audio id="rick" src="zzz.mp3" preload="auto"></audio>
+<img id="getRick" width="auto" height="auto" src="zzz.gif" onload='playSound()'>
 <script>
-var seconds = 7;
+var seconds = 5;
 setTimeout('Redirect()', (seconds*1000));
-function Redirect() 
-{  
+function Redirect() {  
     alert('Get Rick-Rolled');
-    window.location="/"; 
+    window.location=".."; 
 } 
 
+function playSound() {
+document.getElementById('rick').play();
+}
 </script>
 </body>
 </html>

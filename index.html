@@ -3,60 +3,26 @@
 <head>
 <title>Mountain Game Games</title>
 <link rel="shortcut icon" href="mountainNoFade.png">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<style>
-.overlay{
-opacity:0.9;
-background-color:white;
-position:fixed;
-width:100%;
-height:100%;
-top:0px;
-left:0px;
-z-index:1000;
-display: block;
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <style>
+body {
+background-image: url(mountain.png);
+background-position: center center;
+background-repeat:no-repeat;
+background-attachment: fixed;
+background-size: cover; 
 }
 
-.container {
-position: relative;
-width: 100%;
-max-width: 160px;
-margin: 10px;
-padding: 1px;
-float:left;
-height: 160px;
+body::-webkit-scrollbar {
+    display: none;
 }
 
-.container img {
-width: 100%;
-height: auto;
-border-radius: 20px;
-filter: drop-shadow(2.5px 2.5px 2.5px #000);
+body {
+  -ms-overflow-style: none; 
+  scrollbar-width: none;  
 }
 
-.container .btn {
-position: absolute;
-top: 50%;
-left: 50%;
-transform: translate(-50%, -50%);
--ms-transform: translate(-50%, -50%);
-background-color: white;
-color: white;
-font-size: 16px;
-padding: 12px 24px;
-border: none;
-border-radius: 5px;
-text-align: center;
-}
-
-.container a:hover {
-font-weight: bold;
-cursor: pointer;
-}
-
-.container .btn:hover {
-background-color: skyblue;
-}
 .whiteButton {
 position: absolute;
 top: 0px;
@@ -72,70 +38,193 @@ overflow: hidden;
 outline:none;
 font-size:0.25em;
 }
-body {
-background-image: url('mountain.png');
-background-repeat: no-repeat;
-background-attachment: fixed;
-background-size: cover; 
-overflow-x:hidden;
-}
 
-body::-webkit-scrollbar {
-    display: none;
-}
-
-body {
-  -ms-overflow-style: none; 
-  scrollbar-width: none;  
+.blueContainer {
+background-color:#79ceea;
+text-align:center; 
+border-radius: 10px;
 }
 
 .f-newest {
-background-color:#79ceea;
-text-align:center; 
 border-radius: 5px;
+text-align:center; 
+overflow-x: scroll;
 }
-
-.is-hidden { display: none; }
 
 .fiveGrid {
 display: grid;
+text-align:center; 
 grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
 }
-</style>
-<link rel="stylesheet" href="https://unpkg.com/intro.js/minified/introjs.min.css">
+  
+	.text-center {
+	  text-align: center;
+	}
+  
+	.game-link {
+	  height: 200px;
+	  width: 150px;
+      margin: 5px;
+	}
+  
+	.game-tile {
+	  background-color: white;
+	  height: 200px;
+	  width: 150px;
+	  border-radius: 30px;
+	  -webkit-animation: scale-down-center 0.1s both;
+	  animation: scale-down-center 0.1s both;
+	}
+  
+	.game-tile:hover {
+	  -webkit-animation: scale-up-center 0.1s both;
+	  animation: scale-up-center 0.1s both;
+      font-weight: bold;
+      cursor: pointer;
+	}
+    
+	.game-tile:hover .game-title{
+      font-size: bold;
+      cursor: pointer;
+	}
+  
+	@-webkit-keyframes scale-up-center {
+	  0% {
+		-webkit-transform: scale(1);
+		transform: scale(1);
+	  }
+  
+	  100% {
+		-webkit-transform: scale(1.1);
+		transform: scale(1.1);
+	  }
+	}
+  
+	@-webkit-keyframes scale-down-center {
+	  0% {
+		-webkit-transform: scale(1.1);
+		transform: scale(1.1);
+	  }
+  
+	  100% {
+		-webkit-transform: scale(1);
+		transform: scale(1);
+	  }
+	}
+  
+	.game-icon {
+	  border-radius: 15px;
+	  width: 150px;
+	  height: 150px;
+	}
+  
+	.game-title {
+	  font-size: 15px;
+	  text-align: center;
+	}
+  
+	.flex-container {
+	  display: flex;
+	  flex-direction: row;
+	  order: 0;
+	  flex-grow: 0;
+	  flex-wrap: wrap;
+	}
+  
+	.container {
+	  padding: 10px;
+	}
+  
+	#searchQuery {
+	  width: calc(50% + 100px);
+	  border: 3px solid #ddd;
+	  border-radius: 10px;
+      margin: 10px;
+      padding: 5px;
+	}
+  h2 {
+   width: 100%; 
+   margin: 10px 0 20px; 
+  } 
+
+  h2 span { 
+    padding:0 10px; 
+  }
+  .topcorner{
+  position:absolute;
+  top:10;
+  right:15;
+  }
+  </style>
 </head>
 <body>
-<h1>Mountain Game Games</h1>
-
-<p>(To make it easier to find for next time drag the names up to the bookmarks bar.)</p>
-<div class="whiteButton">
-<input class="whitebutton" type="button" onclick="location.href='zPass.html';" value=" . " />
-</div>
-
-<img style='position:fixed' src='https://www.free-website-hit-counter.com/c.php?d=9&id=131905&s=10' border='0' alt='' width="0px">
-<img style='position:fixed' src="//www.clustrmaps.com/map_v2.png?d=N4d3fSjmXm-Tu2ycA8C1o5NqGTG8jdd1ZdiF5jTxqKY&cl=ffffff" border='0' alt='' width="0px">
+  <script>
+function startSearch() {
+  var input, filter, ul, li, a, i;
+  input = document.getElementById("searchQuery");
+  filter = input.value.toUpperCase();
+  ul = document.getElementById("search");
+  li = ul.getElementsByTagName("a");
+  for (i = 0; i < li.length; i++) {
+    a = li[i].getElementsByTagName("h1")[0];
+    if (a.innerHTML.toUpperCase().indexOf(filter) > -1) {
+      li[i].style.display = "";
+    } else {
+      li[i].style.display = "none";
+    }
+  }
+}
+  </script>
+  <h1>Mountain Game Games</h1>
+    <div id="search">
+    
+  <div>
+  <section>
+   <div class="blueContainer">
+<h3><span>5 Newest Games</span></h3>
 <div id="5new" class="f-newest">
-<h3>5 Newest Games</h3>
-
-<div id="5newHolder" class='fiveGrid'>
-
-</div>
+<div id="5newHolder" class='fiveGrid'></div>
 </div>
 
-<div class="fiveGrid">
-<div class="container">
-<img src="other.png" alt="Others" style="width:100%">
-<button class="btn"><a href="Others">Others</a></button>
 </div>
+  </section>
+</div>
+  
+  <div class="flex-container">
+	<section>
+   <div class="flex-container">
 
-<div class="container " data-intro='Added new ways to make a suggestion!'>
-<img src="vector.gif" alt="Suggestions" style="width:100%">
-<button class="btn"><a href="suggestions.html">Suggestions</a></button>
+  <a href="Others"class="game-link container">	
+  <div class="game-tile">	
+  <img class="game-icon" src="other.png" alt="Others" loading="lazy">
+  <h1 class="game-title">Others</h1> 	
+  </div>
+  </a>
+  
+  <a href="suggestions.html"class="game-link container">	
+  <div class="game-tile">	
+  <img class="game-icon" src="vector.gif" alt="Suggestions" loading="lazy">
+  <h1 class="game-title">Suggestions</h1> 	
+  </div>
+  </a>
+  
+  <a href="privacyPolicy.html"class="game-link container">	
+  <div class="game-tile">	
+    <img class="game-icon" src="privacypolicy.png" alt="Suggestions" loading="lazy">
+  <h1 class="game-title">Privacy Policy</h1> 	
+  </div>
+  </a>
+  
+  <a href="javascript:" onclick="randomGame(this);" class="game-link container">	
+  <div class="game-tile">	
+    <img class="game-icon" src="random.png" alt="Suggestions" loading="lazy">
+  <h1 class="game-title">Random Game</h1> 	
+  </div>
+  </a>
+  
 </div>
-<div class="container">
-<button class="btn"><a href="privacyPolicy.html">Privacy Policy</a></button>
-</div>
-</div>
+  </section>
+   </div>  
 
 <div id='livechat' style='
 background-color:skyblue;
@@ -145,17 +234,39 @@ padding: 12px 24px;'>
 <p>Chat with everyone on the site!</p>
 <div id='chat'></div>
 </div>
-<br><br>
 
-<div style='font-size:20px'>
-<label for="searchbox">Search Games:</label>
-<input type="search" oninput="liveSearch()" id="searchbox" style='border-radius: 5px;font-size:20px;'>
+<div class="whiteButton">
+<input class="whitebutton" type="button" onclick="location.href='zPass.html';" value=" . " />
 </div>
 
-<div id='games'></div>
+    <div>
+<label for="searchQuery">Search Games:</label>
+    <input type="search" id="searchQuery" onload="startSearch()" onkeyup="startSearch()" title="Search" autofocus="">
+  </div>
+
+  <section>
+  
+  <div id="games" class="flex-container"></div>
+
+  </section>
+
+   </div>
+   
+<img src='https://www.free-website-hit-counter.com/c.php?d=9&id=131905&s=10' border='0' alt='' width="0px">
+<img src="//www.clustrmaps.com/map_v2.png?d=N4d3fSjmXm-Tu2ycA8C1o5NqGTG8jdd1ZdiF5jTxqKY&cl=ffffff" border='0' alt='' width="0px">
+
 <script src='https://unpkg.com/intro.js/minified/intro.min.js'></script>
 <script src='jelly.js'></script>
 <script>
+function choose(arr) {return arr[Math.floor(Math.random()*arr.length)];}
+
+function randomGame(replace) {
+var randomGame = choose(document.getElementsByClassName("games"));
+var getRandom = randomGame.cloneNode(true);
+replace.innerHTML = '';
+replace.replaceWith(getRandom);
+}
+
 function getRandomInt(min, max) {
 min = Math.ceil(min);
 max = Math.floor(max);
@@ -169,12 +280,12 @@ function flipFlop() {
 
 
 function tilt() {
-(function(){['', '-ms-', '-webkit-', '-o-', '-moz-'].map(function(prefix){Array.prototype.slice.call(document.querySelectorAll('div,h1,iframe,p,span,img,a')).map(function(el){el.style[prefix + 'transform'] = 'rotate('+ (function(){if (Math.random()>0.5){return '-'}return ''})() + (Math.floor(Math.random() * 25) - 1) + 'deg)';});});}())
+(function(){['', '-ms-', '-webkit-', '-o-', '-moz-'].map(function(prefix){Array.prototype.slice.call(document.querySelectorAll('h1,iframe,p,span,img,a')).map(function(el){el.style[prefix + 'transform'] = 'rotate('+ (function(){if (Math.random()>0.5){return '-'}return ''})() + (Math.floor(Math.random() * 25) - 1) + 'deg)';});});}())
 }
 
 function flyGames() {
 (function(){
-var R=0,x1=.1,y1=.05,x2=.25,y2=.24,x3=1.6,y3=.24,x4=300,y4=200,x5=300,y5=200,DI=document.getElementsByClassName("container"),DIL=DI.length;function A(){for(i=0;i-DIL;i++){DIS=DI[i].style;DIS.width='150px';DIS.position='fixed';DIS.left=(Math.sin(R*x1+i*x2+x3)*x4+x5)+"px";DIS.top=(Math.cos(R*y1+i*y2+y3)*y4+y5)+"px"}R++}setInterval(A,30);
+var R=0,x1=.1,y1=.05,x2=.25,y2=.24,x3=1.6,y3=.24,x4=300,y4=200,x5=300,y5=200,DI=document.getElementsByClassName("games"),DIL=DI.length;function A(){for(i=0;i-DIL;i++){DIS=DI[i].style;DIS.width='150px';DIS.position='fixed';DIS.left=(Math.sin(R*x1+i*x2+x3)*x4+x5)+"px";DIS.top=(Math.cos(R*y1+i*y2+y3)*y4+y5)+"px"}R++}setInterval(A,30);
 })();
 }
 
@@ -206,6 +317,7 @@ flyGames();
  }
 }
 
+function suggestNew() {
 	if (localStorage.suggestionsNew) {
 localStorage.suggestionsNew = Number(localStorage.suggestionsNew)+1;
 } else {
@@ -213,26 +325,18 @@ localStorage.suggestionsNew = 0;
 }
 if (Number(localStorage.suggestionsNew) >= 5) {}else{
 introJs().start();
-}
-
-function liveSearch() {
-  let cards = document.querySelectorAll('.container')
-  let search_query = document.getElementById("searchbox").value;
-  for (var i = 0; i < cards.length; i++) {
-    if(cards[i].innerText.toLowerCase()
-      .includes(search_query.toLowerCase())) {
-        cards[i].classList.remove("is-hidden");
-    } else {
-      cards[i].classList.add("is-hidden");
-    }
-  }
+ }
 }
 
 	function joinChat() {
 document.getElementById('chat').innerHTML = ("<iframe width='99%' height = '400px' src="
 +"'https://50db9992-8128-4ea6-b56c-ed425ab84e8e.id.repl.co/'></iframe>");
 }
+
+function startSite() {
 joinChat();
+suggestNew();
+}
 
 function displayGames() {
 for (let i = 0; i < g.length; i++) {
@@ -245,9 +349,13 @@ var desc = (g[i].d || '');
 function f() {if (g[i].f) {return (g[i].f+'/')} else {return ''}}
 function s() {if (g[i].h) {return (g[i].h)} else {return '.html'}}
 var subFolder = (f());
-var gC = document.createElement("div");
+var gC = document.createElement("a");
+gC.classList.add("game-link");
 gC.classList.add("container");
-gC.innerHTML = '<span style="font-size:0px;">'+desc+'</span><img src="'+img+'" alt="'+g[i].n+'" style="width:100%"><button class="btn"><a href="'+subFolder+smallN+s()+'">'+g[i].n+'</a></button>';
+gC.classList.add("games");
+
+gC.innerHTML = '<div class="game-tile"><span style="font-size:0px;position:fixed">'+desc+'</span><div><img class="game-icon" src="'+img+'" loading="lazy" alt="'+g[i].n+'"></div><h1 class="game-title">'+g[i].n+'</h1></div>';
+gC.href = subFolder+smallN+s();
 if (i < g.length-5) {
 document.getElementById('games').appendChild(gC);
  }else{
@@ -515,7 +623,8 @@ n : 'Basket Random',
 ];
 
 displayGames();
+startSite();
 hehehe();
 </script>
-</body>
-</html>
+   </body>
+  </html>

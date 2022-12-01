@@ -1,19 +1,16 @@
 <!DOCTYPE html>
 <html>
-  <head>
-      <title></title>
-    <link rel="shortcut icon" type="image/jpg" 
-    href=""/>
-  </head>
+<head>
+<title></title>
+<link rel="shortcut icon" href=""/>
+</head>
 <body onload='focus()'>
-<script src="load.js"></script>
-         <a href="/" style='font-size: 2vw;'>Back To Home Page</a>
-         <button onclick="openFullscreen('518929564')" style='font-size: 2vw;'>Fullscreen Mode</button>      
-<iframe style='height: 95vh; width: 95vw;' scrolling="no" frameborder="0" id="518929564" allowtransparency="true" 
+<a href=".." style='font-size: 1.5rem;'>Back To Home Page</a>
+<button onclick="openFullscreen('518929564')" style='font-size: 1.5rem;'>Fullscreen Mode</button>
+<iframe style='height: 100vh; width: calc(100vw - 2rem);' scrolling="no" frameborder="0" id="main" allowtransparency="true" 
         src="z.html"></iframe>
 <script src="fullScreen.js"></script>
-<script>
-function focus() {document.getElementById('518929564').focus();}
-</script>
+<script src="load.js"></script>
+<script>function focus() {document.getElementById('518929564').focus();}</script>
 </body>
 </html>

@@ -155,6 +155,41 @@ grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
   top:10;
   right:15;
   }
+  .chat{
+background-color:skyblue;
+font-size: 16px;
+padding: 12px 24px;
+  }
+  
+@media (prefers-color-scheme: dark) {
+  body {
+    color: #eee;
+    background: #121212;
+  }
+  body a {
+    color: #809fff;
+  }
+ .game-tile {
+	  background-color: #292929;
+  }
+  .whitebutton {
+  color: #eee;
+  }
+  .blueContainer {
+background-color:#191919;
+ }
+ .chat { 
+background-color:#383838; 
+ }
+  #searchQuery {
+color: #eee;
+background-color:#383838;  
+border: 3px solid #292929;
+  }
+    img {
+    filter: brightness(.9) contrast(1);
+  }
+}  
   </style>
 </head>
 <body>
@@ -226,10 +261,7 @@ function startSearch() {
   </section>
    </div>  
 
-<div id='livechat' style='
-background-color:skyblue;
-font-size: 16px;
-padding: 12px 24px;'>
+<div id='livechat' class='chat'>
 <h3>Live Chat</h3>
 <p>Chat with everyone on the site!</p>
 <div id='chat'></div>
@@ -241,7 +273,7 @@ padding: 12px 24px;'>
 
     <div>
 <label for="searchQuery">Search Games:</label>
-    <input type="search" id="searchQuery" onload="startSearch()" onkeyup="startSearch()" title="Search" autofocus="">
+    <input type="search" id="searchQuery" onload="startSearch()" onkeyup="startSearch()" title="Search" autocomplete='off'>
   </div>
 
   <section>

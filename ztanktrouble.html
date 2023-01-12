@@ -1,0 +1,14 @@
+<html>
+<head>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/AndreajnRcm4/b398dl2h74v@9a23fbb2373d743a564873251cbb57736ebc1f73/style.css">
+</head>
+<body>
+<div id="waflashContainer">
+<canvas class="waflashCanvas" id="canvas" tabindex="1"></canvas>
+<div id="waflashStatus" style="display: none;"></div>
+<script crossorigin="anonymous" type="module">
+document.getElementById("canvas").focus(),document.getElementById("canvas").addEventListener("keydown",function(e){e.preventDefault(),e.stopPropagation()}),document.getElementById("canvas").addEventListener("click",function(){document.getElementById("canvas").focus()}),document.addEventListener("mousedown",function(){const t=document.getElementById("canvas");let n=!1;return function(e){return e.target==t?n||(t.focus(),n=!0):n=n&&!1,!0}}());import{createWaflash}from'https://cdn.jsdelivr.net/gh/AndreajnRcm4/b398dl2h74v@9a23fbb2373d743a564873251cbb57736ebc1f73/js/waflash-player.min.js';createWaflash("https://cdn.jsdelivr.net/gh/UndercoverMoose/flashgames@6a11175e9c021f8359d626300aa73e16ef9c6ebd/games/tank-trouble.swf",{});
+</script>
+</div>
+</body>
+</html>

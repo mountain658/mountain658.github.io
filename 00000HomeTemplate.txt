@@ -1,101 +1,239 @@
-
 <!DOCTYPE html>
 <html>
-  <head>
-      <title></title>
-    <link rel="shortcut icon"
-    type="image/jpg" href="mountainNoFade.png"
-    />
-  </head>
 <head>
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<style>
-.container {
-  position: relative;
-  width: 100%;
-  max-width: 150px;
-}
-
-.container img {
-  width: 100%;
-  height: auto;
-}
-
-.container .btn {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  -ms-transform: translate(-50%, -50%);
-  background-color: white;
-  color: white;
-  font-size: 16px;
-  padding: 12px 24px;
-  border: none;
-  cursor: pointer;
-  border-radius: 5px;
-  text-align: center;
-}
-
-.container .btn:hover {
-  background-color: white;
-}
-.whiteButton {
-  position: absolute;
-  top: 0px;
-  right: 0px;
-  display: flex;
-}
-.whitebutton {
-    background-color: Transparent;
-    background-repeat:no-repeat;
-    border: none;
-    cursor: default;
-    overflow: hidden;
-    outline:none;
-}
+<title> - Mountain Game Games</title>
+<link rel="shortcut icon" href="mountainNoFade.png">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <style>
 body {
-  background-image: url('mountain.png');
-    background-repeat: no-repeat;
-      background-attachment: fixed;
-  background-size: cover;
+background-image: url(mountain.png);
+background-position: center center;
+background-repeat:no-repeat;
+background-attachment: fixed;
+background-size: cover; 
 }
-</style>
+
+body::-webkit-scrollbar {
+    display: none;
+}
+
+body {
+  -ms-overflow-style: none; 
+  scrollbar-width: none;  
+}
+
+.whiteButton {
+position: absolute;
+top: 0px;
+right: 0px;
+display: flex;
+}
+	  
+.whitebutton {
+background-color: Transparent;
+background-repeat:no-repeat;
+border: none;
+cursor: default;
+overflow: hidden;
+outline:none;
+font-size:0.25em;
+}
+
+.blueContainer {
+background-color:#79ceea;
+text-align:center; 
+border-radius: 10px;
+}
+
+.f-newest {
+border-radius: 5px;
+text-align:center; 
+overflow-x: scroll;
+}
+
+.fiveGrid {
+display: grid;
+text-align:center; 
+grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+}
+  
+	.text-center {
+	  text-align: center;
+	}
+  
+	.game-link {
+	  height: 200px;
+	  width: 150px;
+      margin: 5px;
+	}
+  
+	.game-tile {
+	  background-color: white;
+	  height: 200px;
+	  width: 150px;
+	  border-radius: 30px;
+	  -webkit-animation: scale-down-center 0.1s both;
+	  animation: scale-down-center 0.1s both;
+	}
+  
+	.game-tile:hover {
+	  -webkit-animation: scale-up-center 0.1s both;
+	  animation: scale-up-center 0.1s both;
+      font-weight: bold;
+      cursor: pointer;
+	}
+    
+	.game-tile:hover .game-title{
+      font-size: bold;
+      cursor: pointer;
+	}
+  
+	@-webkit-keyframes scale-up-center {
+	  0% {
+		-webkit-transform: scale(1);
+		transform: scale(1);
+	  }
+  
+	  100% {
+		-webkit-transform: scale(1.1);
+		transform: scale(1.1);
+	  }
+	}
+  
+	@-webkit-keyframes scale-down-center {
+	  0% {
+		-webkit-transform: scale(1.1);
+		transform: scale(1.1);
+	  }
+  
+	  100% {
+		-webkit-transform: scale(1);
+		transform: scale(1);
+	  }
+	}
+  
+	.game-icon {
+	  border-radius: 15px;
+	  width: 150px;
+	  height: 150px;
+	}
+  
+	.game-title {
+	  font-size: 15px;
+	  text-align: center;
+	}
+  
+	.flex-container {
+	  display: flex;
+	  flex-direction: row;
+	  order: 0;
+	  flex-grow: 0;
+	  flex-wrap: wrap;
+	}
+  
+	.container {
+	  padding: 10px;
+	}
+  
+	#searchQuery {
+	  width: calc(50% + 100px);
+	  border: 3px solid #ddd;
+	  border-radius: 10px;
+      margin: 10px;
+      padding: 5px;
+	}
+  h2 {
+   width: 100%; 
+   margin: 10px 0 20px; 
+  } 
+
+  h2 span { 
+    padding:0 10px; 
+  }
+  .topcorner{
+  position:absolute;
+  top:10;
+  right:15;
+  }
+  .chat{
+background-color:skyblue;
+font-size: 16px;
+padding: 12px 24px;
+  }
+  
+@media (prefers-color-scheme: dark) {
+  body {
+    color: #eee;
+    background: #121212;
+  }
+  body a {
+    color: #809fff;
+  }
+ .game-tile {
+	  background-color: #292929;
+  }
+  .whitebutton {
+  color: #eee;
+  }
+  .blueContainer {
+background-color:#191919;
+ }
+ .chat { 
+background-color:#383838; 
+ }
+  #searchQuery {
+color: #eee;
+background-color:#383838;  
+border: 3px solid #292929;
+  }
+    img {
+    filter: brightness(.9) contrast(1);
+  }
+}  
+  </style>
 </head>
 <body>
-  <h1>Home</h1>
-<label for="searchbox">Search</label>
-<input 
-  type="search" 
-  oninput="liveSearch()" 
-  id="searchbox" 
->
-<script src="search.js"></script>
-<br>
-<br>
-       <br>
-       <br>
-       
-   <div class="container">
-  <img src="Docs.png" alt="Docs" style="width:100%">
-  <button class="btn"><a href="docs.html">Collaborative Docs</a></button>
+  <h1> - Mountain Game Games</h1>
+<a href='..' style="font-size:1.25rem;">Back To Home Page</a>
+    <div>
+<label for="searchQuery">Search:</label>
+    <input type="search" id="searchQuery" onload="startSearch()" onkeyup="startSearch()" title="Search" autocomplete='off'>
   </div>
+    <div id="search">
+  <div class="flex-container">
+	<section>
+   <div class="flex-container">
 
-<br>
-<br>
-
-
-      <div class="container">
-  <button class="btn"><a href="suggestions.html">Suggestions</a></button>
+  <a href="example.com"class="game-link container">	
+  <div class="game-tile">	
+  <img class="game-icon" src="example.com/example.png" alt="Collaborative Docs" loading="lazy">
+  <h1 class="game-title">example.com</h1> 	
   </div>
-        <div class="container">
-                   <a href="/"
-       style="position:absolute;width;50px;height: 50px;left:20px;top: 50px;" >Back To Home Page</a>
-       </div>
-    <div class="whiteButton"> 
-  <input class="whitebutton" type="button" onclick="location.href='/zPass.html';" value="  .  " />
-  </div>
-        <script>
+  </a>
+  
+</div>
+  </section>
+   </div>
+    </div>
+   
+  <script>
+function startSearch() {
+  var input, filter, ul, li, a, i;
+  input = document.getElementById("searchQuery");
+  filter = input.value.toUpperCase();
+  ul = document.getElementById("search");
+  li = ul.getElementsByTagName("a");
+  for (i = 0; i < li.length; i++) {
+    a = li[i].getElementsByTagName("h1")[0];
+    if (a.innerHTML.toUpperCase().indexOf(filter) > -1) {
+      li[i].style.display = "";
+    } else {
+      li[i].style.display = "none";
+    }
+  }
+}
+
 loadTitle();
 function  loadTitle(){
     if (localStorage.Titlesave) {
@@ -110,6 +248,6 @@ function  loadIcon(){
 changeFavicon(localStorage.Iconsave);
  }
 }
-</script>
+  </script>
 </body>
 </html>

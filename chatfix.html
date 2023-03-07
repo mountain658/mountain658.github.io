@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Join Chat</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
+</head>
+
+<body>
+<ul class="nav justify-content-center">
+  <li class="nav-item">
+  </li>
+</ul>
+<div class="container pt-3">
+ <br>
+  <div class="jumbotron">
+   <ul id="form-control" style='max-height: 200px;overflow-y:scroll;'>
+
+   </ul>
+   <h3>Temporary Chat <br>(Other one is very broken)</h3>
+    <form id="form">
+     <div class="form-group">
+      <label for="input">Username: </label>
+      <input type="text" class="form-control" id="input" aria-describedby="messageH" required placeholder="Type Your Username" maxlength="16"><br>
+      <button type="submit" class="btn btn-primary">Join</button><br>
+
+      <div class="fixed-bottom" id='active'>
+      </div>
+     </div>
+    </form>
+  </div>
+</div> 
+<script>
+
+    const messageForm = document.getElementById('form');
+    const textInput = document.getElementById('input');
+    
+     if (localStorage.chatUsername) {
+textInput.value = localStorage.chatUsername;
+}
+
+    messageForm.addEventListener('submit', function(e) {
+        e.preventDefault();
+        if (textInput.value) {
+        localStorage.chatUsername = textInput.value;
+            document.write("<iframe style='border:0;position:fixed;width:100vw;height:100vh;' src="
++"https://6f972c4a-a213-4cf1-8305-0b9b7d540077.id.repl.co/#"+textInput.value+"></iframe>");
+        }
+    });
+</script>
+</body>
+
+</html>

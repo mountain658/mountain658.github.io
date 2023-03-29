@@ -1,0 +1,13 @@
+{
+"companyName": "Juicy Beast Studio",
+"productName": "Burrito Bison",
+"dataUrl": "burrito-bison-ll.data.unityweb",
+"asmCodeUrl": "burrito-bison-ll.asm.code.unityweb",
+"asmMemoryUrl": "burrito-bison-ll.asm.memory.unityweb",
+"asmFrameworkUrl": "burrito-bison-ll.asm.framework.unityweb",
+"TOTAL_MEMORY": 536870912,
+"graphicsAPI": ["WebGL 2.0", "WebGL 1.0"],
+"webglContextAttributes": {"preserveDrawingBuffer": false},
+"splashScreenStyle": "Dark",
+"backgroundColor": "#000000"
+}

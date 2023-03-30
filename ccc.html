@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html>
   <head>
@@ -341,7 +342,14 @@ title.classList.add("fw-normal");
 
 var mainCont = document.createElement("div");
 
+var currentStream;
+
 close.onclick = function(){
+if (currentStream) {
+currentStream.getVideoTracks().forEach(function(track) {
+track.stop();
+});
+}
 full.style.display = "none";
 full.remove();
 };
@@ -369,6 +377,7 @@ var constraints = {
 
 /* Stream it to video element */
 navigator.mediaDevices.getUserMedia(constraints).then(function success(stream) {
+  currentStream = stream;
   video.style.display = "block";
   video.srcObject = stream;
   askForCam.innerHTML = "<i class='fa fa-camera'></i> Take Picture";
@@ -382,6 +391,9 @@ navigator.mediaDevices.getUserMedia(constraints).then(function success(stream) {
    img.src = dataURL;
     askForCam.innerHTML = "<i class='fa fa-send'></i> Send Picture";
      askForCam.onclick = function(){
+     stream.getVideoTracks().forEach(function(track) {
+    track.stop();
+    });
        full.style.display = "none";
        full.remove();
        callback(img.src);

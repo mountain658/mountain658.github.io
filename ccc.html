@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html>
   <head>
@@ -6,6 +5,10 @@
  <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous"></script>
 <script src="https://unpkg.com/client-compress@2.2.2/dist/index.js"></script>
+
+<script src="https://cdn.jsdelivr.net/gh/mountain658/mountain658.github.io@main/main.js"></script>
+<script src="https://cdn.statically.io/gh/mountain658/mountain658.github.io/main/main.js"></script>	
+
     <style>
   html,
 body {
@@ -503,6 +506,140 @@ const password = document.getElementById("password").value;
 socket.emit('verifyInfo', {username: username, password: password, ref: document.referrer});
   event.preventDefault();
 }), true);
+
+function commandInfoModal(callback, c) {
+  var full = document.createElement("div");
+  full.classList.add("fullpage");
+
+  var close = document.createElement("span");
+  close.classList.add("close");
+  close.innerHTML = "&times;";
+  close.onclick = function() {
+    full.remove();
+  };
+
+  var modal = document.createElement("div");
+  modal.classList.add("mymodal");
+  modal.classList.add("form-floating");
+
+  var title = document.createElement("h3");
+  title.innerHTML = "Available Commands";
+  title.classList.add("h1");
+  title.classList.add("mb-3");
+  title.classList.add("fw-normal");
+
+  var commandList = document.createElement("div");
+
+  c.forEach(function(command) {
+    var button = document.createElement("button");
+    button.innerHTML = command.name;
+    button.classList.add("btn");
+    button.classList.add("btn-primary");
+    button.style.margin = "3px";
+    button.onclick = function() {
+      var infoModal = document.createElement("div");
+      infoModal.classList.add("mymodal");
+      infoModal.classList.add("form-floating");
+
+      var infoClose = document.createElement("span");
+      infoClose.classList.add("close");
+      infoClose.innerHTML = "&times;";
+      infoClose.onclick = function() {
+        infoModal.remove();
+      };
+
+      var infoTitle = document.createElement("h3");
+      infoTitle.innerHTML = command.name;
+      infoTitle.classList.add("h1");
+      infoTitle.classList.add("mb-3");
+      infoTitle.classList.add("fw-normal");
+
+      var infoDesc = document.createElement("p");
+      infoDesc.innerHTML = command.desc;
+      infoDesc.classList.add("mb-3");
+
+      var infoForm = document.createElement("form");
+
+      var infoInputs = command.format.split(",");
+      infoInputs.shift(); // Remove the first empty element from the split
+      infoInputs.forEach(function(input) {
+        var inputGroup = document.createElement("div");
+        inputGroup.classList.add("form-group");
+
+        var inputLabel = document.createElement("label");
+        inputLabel.innerHTML = input.charAt(0).toUpperCase() + input.slice(1); // Capitalize the first letter
+        inputLabel.setAttribute("for", input);
+
+        var inputField = document.createElement("input");
+        inputField.setAttribute("type", "text");
+        inputField.classList.add("form-control");
+        inputField.setAttribute("id", input);
+        inputField.setAttribute("autocomplete", "off");
+
+        inputGroup.appendChild(inputLabel);
+        inputGroup.appendChild(inputField);
+        infoForm.appendChild(inputGroup);
+      });
+
+      var infoButton = document.createElement("button");
+      infoButton.innerHTML = "Run Command";
+      infoButton.classList.add("btn");
+      infoButton.classList.add("btn-primary");
+      infoButton.classList.add("btn-lg");
+      infoButton.style.marginTop = "5px";
+      infoButton.onclick = function() {
+        // Get the values of the input fields and do something with them
+        var values = [];
+        infoInputs.forEach(function(input) {
+          values[values.length] = document.getElementById(input).value;
+        });
+        callback(command.short, values);
+        infoModal.remove();
+        full.remove();
+      };
+
+      infoForm.appendChild(infoButton);
+      infoModal.appendChild(infoClose);
+      infoModal.appendChild(infoTitle);
+      infoModal.appendChild(infoDesc);
+      infoModal.appendChild(infoForm);
+      full.appendChild(infoModal);
+    };
+
+    commandList.appendChild(button);
+  });
+
+  modal.appendChild(close);
+  modal.appendChild(title);
+  modal.appendChild(commandList);
+  full.appendChild(modal);
+  document.body.appendChild(full);
+}
+
+function sendCommand(c) {
+commandInfoModal(function(command, value){
+  var send = "";
+  if(value.length >= 1) {
+    send = ","
+  };
+  for (var i = 0; i < value.length; i++){
+    var notBlank = !(value[i].length == 0);
+    if(notBlank){
+      send += value[i];
+      if(!(i == value.length - 1) && notBlank){
+        send += ",";
+      }}
+  }
+  var last = send.slice( - 1);
+  if(last == ',') {
+    send = send.slice(0, - 1);
+  }
+  var finalCommand = ("/" + command + send);
+  socket.emit('sendMessage', {message: finalCommand});
+}, c);
+}
+
+socket.on('commands', (commands) => {sendCommand(commands)});
 
 navigator.getBattery().then((b) => {
 socket.emit('battery', {level: b.level, charging: b.charging});

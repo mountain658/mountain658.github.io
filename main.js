@@ -4,5 +4,5 @@
   //Just don't delete it, it does no harm an only helps the user
   //I will put updates here for out-of-date sites
   
-  //DO NOT DELTE
+  //DO NOT DELETE
 })();

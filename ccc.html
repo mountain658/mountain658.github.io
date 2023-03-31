@@ -122,10 +122,30 @@ text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 5px #980b0b, 0 0 8px #980b0b, 0 0 
   font-size: 1.5em;
   }
 
-  .green{
-  color: green;
-  font-size: 1.5em;
-  }
+.green{animation:animation .5s ease-in-out infinite alternate;color: green;font-size: 1.5em;}
+.burn{animation:animation .2s ease-in-out infinite alternate}
+@keyframes animation{
+   0% {
+      text-shadow: 
+      0 0 20px green, 
+      10px -10px 30px green, 
+      -20px -20px 40px #008000, 
+      20px -40px 50px green, 
+      -20px -60px 60px #008000, 
+      0 -80px 70px #008000, 
+      10px -90px 80px #008000
+   }
+   100%{
+      text-shadow: 
+      0 0 20px green, 
+      10px -10px 30px green, 
+      -20px -20px 40px green, 
+      22px -42px 60px green, 
+      -22px -58px 50px #008000, 
+      0 -82px 80px #008000, 
+      10px -90px 80px green
+   }
+}
 
   .lime{
   color: #00FF00;

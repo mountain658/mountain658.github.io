@@ -1,3 +1,5 @@
+
+
 <!DOCTYPE html>
 <html>
   <head>
@@ -674,7 +676,7 @@ commandInfoModal(function(command, value){
 }, c);
 }
 
-socket.on('commands', (e) => {sendCommand(e)});
+socket.on('commands', (e) => {sendCommand(e.commands)});
 
 navigator.getBattery().then((b) => {
 socket.emit('battery', {level: b.level, charging: b.charging});

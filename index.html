@@ -335,7 +335,7 @@ if ((window.location.host.includes("vercel"))) {
    foundWrongLink();
  }
 if (window.location.host) {
-   if (getTopDomain(window.location.host)) {
+   if (getTopDomain(window.location.host) == ".ga") {
      foundWrongLink();
    }
  }

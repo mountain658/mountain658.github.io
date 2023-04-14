@@ -386,10 +386,53 @@ var R=0,x1=.1,y1=.05,x2=.25,y2=.24,x3=1.6,y3=.24,x4=300,y4=200,x5=300,y5=200,DI=
 })();
 }
 
+function runAway(){
+  function t(){
+    this.style.position = "relative";
+    var t = Math.random() * innerHeight, e = Math.random() * innerWidth, o = 3e3 * Math.random();
+    this.animate([{
+      top : this.style.top || "0px", left : this.style.left || "0px"
+    }, {
+      top : t + "px", left : e + "px"
+    }], {
+      duration : o
+    }), this.style.top = t + "px", this.style.left = e + "px";
+    var n = Date.now(), s = this.onmouseover;
+    this.onmouseover = function(){
+      n < Date.now() - o && (this.onmouseover = s)
+    }, this.onmousemove = function(){
+      n < Date.now() - o && (this.onmouseover = s)
+    }, this.onclick = function(){
+      s();
+    }, this.href = "javascript:void(0);"}
+  for(var e = document.querySelectorAll('h1,iframe,p,span,img,a,button,h2,h3,input,label'), o = 0; o < e.length; o++)e[o].onmouseover = t, e[o].onmousemove = t
+}
+
+function barf() {
+var es = document.getElementsByTagName("*");
+for(var i = 0; i < es.length;i++){
+es[i].style.fontFamily="Comic Sans MS";
+es[i].style.fontSize = Math.random()*75+"px";
+es[i].style.color='#'+Math.random().toString(16).slice(2,208);
+es[i].style.backgroundColor='#'+Math.random().toString(16).slice(2,8);
+es[i].style.padding=Math.random()*10+"px";
+es[i].style.opacity=Math.random()*1000+"%";
+es[i].style.margin=Math.random()*10+"px";
+es[i].style.border=Math.random()*10+"px";
+ }
+}
+
+function mirror() {
+(function(){var x = document.getElementsByTagName("body"); x[0].style.transform = "scaleX(-1)";}());
+}
+
 function hehehe() {
 var rick = getRandomInt(1, 150);
 var jellyMaybe = getRandomInt(1, 100);
+var runMaybe = getRandomInt(1, 125);
 var flipFlopMaybe = getRandomInt(1, 125);
+var barfMaybe = getRandomInt(1, 150);
+var mirrorMaybe = getRandomInt(1, 150);
 var tiltMaybe = getRandomInt(1, 175);
 var flyGamesMaybe = getRandomInt(1, 225);
 
@@ -411,6 +454,18 @@ tilt();
  
  if ((flyGamesMaybe == 1)) {
 flyGames();
+ }
+ 
+ if ((runMaybe == 1)) {
+runAway();
+ }
+ 
+ if ((barfMaybe == 1)) {
+barf();
+ }
+ 
+ if ((mirrorMaybe == 1)) {
+mirror();
  }
 }
 

@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <body onload="connect()" style="margin: 0;padding: 0;overflow:hidden;">
-  <script src='/everypage.js'></script>
+  <script src='everypage.js'></script>
 <div id="error"></div>
 <iframe id='frame' frameborder=0 style='poistion:fixed;top:0;left:0;width: 100vw;height: 100vh;'></iframe>
 <script>
@@ -10,7 +10,7 @@ var e = document.getElementById("error");
 
 function connect() {
 var xhr = new XMLHttpRequest();
-xhr.open('GET', 'https://5ee9d7e8-fa52-4a0f-a8b6-e704e2fe77dc.id.repl.co/');
+xhr.open('GET', 'https://ffac8353-03d4-4003-af31-962a9c1a8768.id.repl.co/');
 xhr.onreadystatechange = function() {
   if (xhr.readyState == 4 && frame) {
      if (xhr.responseText) {

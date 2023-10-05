@@ -1,3 +1,5 @@
+
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -182,7 +184,12 @@ border-radius:50px;
 @media (prefers-color-scheme: dark) {
   body {
     color: #eee;
-    background: #121212;
+    background-image: url(mountainDark.png);
+    background-position: center center;
+    background-repeat:no-repeat;
+    background-attachment: fixed;
+    background-size: cover; 
+    filter: brightness(.9) contrast(1);
   }
   body a {
     color: #809fff;
@@ -203,9 +210,6 @@ background-color:#383838;
 color: #eee;
 background-color:#383838;  
 border: 3px solid #292929;
-  }
-   img {
-    filter: brightness(.9) contrast(1);
   }
   .close{
 background-color:#323232;
@@ -359,10 +363,37 @@ function fullPage(e){
 function choose(arr) {return arr[Math.floor(Math.random()*arr.length)];}
 
 function randomGame(replace) {
-var randomGame = choose(document.getElementsByClassName("games"));
-var getRandom = randomGame.cloneNode(true);
-replace.innerHTML = '';
-replace.replaceWith(getRandom);
+  var toSwitch = replace;
+  var games = Array.from(document.getElementsByClassName("games"));
+
+  var int = 50;
+  var delay = 1;
+  var lastRandomIndex;
+
+  for (var i = 0; i < 20; i++) {
+    setTimeout(switchGame, int * (i + delay));
+    delay *= 1.2;
+  }
+
+  function switchGame() {
+    var availableGames = games.filter(function(game) {
+      return game !== toSwitch;
+    });
+
+    var randomIndex;
+    if (availableGames.length > 1) {
+      do {
+        randomIndex = Math.floor(Math.random() * availableGames.length);
+      } while (randomIndex === lastRandomIndex);
+    } else {
+      randomIndex = 0;
+    }
+
+    var getRandom = availableGames[randomIndex].cloneNode(true);
+    toSwitch.replaceWith(getRandom);
+    toSwitch = getRandom;
+    lastRandomIndex = randomIndex;
+  }
 }
 
 function getRandomInt(min, max) {

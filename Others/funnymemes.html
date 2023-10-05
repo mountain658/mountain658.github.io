@@ -1,10 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Funny Memes</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/viewerjs/1.11.1/viewer.min.css">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Funny Memes</title>
+<script src="https://cdn.jsdelivr.net/npm/tsparticles-confetti@2.12.0/tsparticles.confetti.bundle.min.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/viewerjs/1.11.1/viewer.min.css">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/viewerjs/1.11.1/viewer.min.js"></script>
 <script>
 //nameIntro.js
@@ -13,686 +14,719 @@ window.nameIntro=function e(t){let l=Object.assign({},{display:"YOUR NAME HERE",
 //keyNext.js
 window.keyNext=function(c){c=Object.assign({class:"",keys:["n"],onEnd:function(){}},c);let i=0;function t(e,n){let t=e+1;return t>=n.length&&(t=0),t}function e(e){var n;c.keys.includes(e.key)&&!e.repeat&&(n=document.getElementsByClassName(c.class),e=t(i,n),function(e){const n=document.getElementsByClassName(c.class);e=t(Array.prototype.indexOf.call(n,e),n),n[e].scrollIntoView({behavior:"smooth",block:"start",inline:"nearest"})}(n[i]),i=e,0===i&&c.onEnd())}function n(){const n=document.getElementsByClassName(c.class);let t=null,o=Number.MAX_VALUE;for(let e=0;e<n.length;e++){var l=n[e].getBoundingClientRect(),s=Math.max(document.documentElement.clientHeight,window.innerHeight);l.bottom<0||0<=l.top-s||(l=Math.abs(l.top))<o&&(t=n[e],o=l)}null!==t&&(i=Array.prototype.indexOf.call(n,t))}return document.addEventListener("keydown",e),window.addEventListener("scroll",n),{destroy:function(){document.removeEventListener("keydown",e),window.removeEventListener("scroll",n)}}};
 </script>
-    <style>
-      body {
-        background-color: #d3ebfd;
-        font-family: Arial, sans-serif;
-        font-size: 16px;
-        margin: 0;
-        padding: 0;
-      }
+<style>
+body {
+background-color: #d3ebfd;
+font-family: Arial, sans-serif;
+font-size: 16px;
+margin: 0;
+padding: 0;
+}
 
-      .container {
-        max-width: 100%;
-        margin: 0 auto;
-        padding: 16px;
-      }
+.container {
+max-width: 100%;
+margin: 0 auto;
+padding: 16px;
+}
 
-      .input-group {
-        display: flex;
-        margin-bottom: 16px;
-      }
+.input-group {
+display: flex;
+margin-bottom: 16px;
+}
 
-      .input-group label {
-        font-weight: bold;
-        margin-right: 8px;
-      }
+.input-group label {
+font-weight: bold;
+margin-right: 8px;
+}
 
-      .input-group input {
-        flex: 1;
-        padding: 8px;
-        border: 1px solid #ccc;
-        border-radius: 4px;
-        font-size: 16px;
-      }
+.input-group input {
+flex: 1;
+padding: 8px;
+border: 1px solid #ccc;
+border-radius: 4px;
+font-size: 16px;
+}
 
-      .button {
-        padding: 8px 16px;
-        border: none;
-        border-radius: 4px;
-        font-size: 16px;
-        font-weight: bold;
-        color: #fff;
-        background-color: #0079d3;
-        cursor: pointer;
-        margin: 5px;
-      }
+.button {
+padding: 8px 16px;
+border: none;
+border-radius: 4px;
+font-size: 16px;
+font-weight: bold;
+color: #fff;
+background-color: #0079d3;
+cursor: pointer;
+margin: 5px;
+}
 
-      .button:hover {
-        background-color: #005f9e;
-      }
+.button:hover {
+background-color: #005f9e;
+}
 
-      .button:disabled {
-        opacity: 0.5;
-        cursor: not-allowed;
-      }
+.button:disabled {
+opacity: 0.5;
+cursor: not-allowed;
+}
 
-      .meme {
-        margin-bottom: 16px;
-        padding: 16px;
-        border: 1px solid #ccc;
-        border-radius: 4px;
-        background-color: #a8d9ff;
-      }
+.meme {
+margin-bottom: 16px;
+padding: 16px;
+border: 1px solid #ccc;
+border-radius: 4px;
+background-color: #a8d9ff;
+}
 
-      .meme-title {
-        margin: 0;
-        font-size: 24px;
-      }
+.meme-title {
+margin: 0;
+font-size: 24px;
+}
 
-      .meme-title a {
-        color: #0079d3;
-        text-decoration: none;
-      }
+.meme-title a {
+color: #0079d3;
+text-decoration: none;
+}
 
-      .meme-title a:hover {
-        text-decoration: underline;
-      }
+.meme-title a:hover {
+text-decoration: underline;
+}
 
-      .meme-body {
-        display: flex;
-        align-items: center;
-        margin-top: 16px;
-      }
+.meme-body {
+display: flex;
+align-items: center;
+margin-top: 16px;
+}
 
 .meme-image {
-  max-height: 200px;
-  max-width: 100%;
-  display: flex;
+max-height: 200px;
+max-width: 100%;
+display: flex;
 }
 
 .meme-image img {
-  max-height: 200px;
-  max-width: 100%;
-} 
+max-height: 200px;
+max-width: 100%;
+}
 
 /* Modal container */
 .modal-container {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(0, 0, 0, 0.5);
-  display: flex;
-  justify-content: center;
-  align-items: center;
+position: fixed;
+top: 0;
+left: 0;
+width: 100%;
+height: 100%;
+background-color: rgba(0, 0, 0, 0.5);
+display: flex;
+justify-content: center;
+align-items: center;
 }
 
 /* Modal content */
 .modal-content {
-  background-color: white;
-  padding: 20px;
-  max-width: 80%;
-  max-height: 80%;
-  overflow-y: auto;
-  position: relative;
+background-color: white;
+padding: 20px;
+max-width: 80%;
+max-height: 80%;
+overflow-y: auto;
+position: relative;
 }
 
 /* Close button */
 .close-button {
-  position: absolute;
-  top: 0;
-  right: 0;
-  font-size: 2rem;
-  background-color: transparent;
-  border: none;
-  cursor: pointer;
-  padding: 5px;
-  color: #333;
-  outline: none;
+position: absolute;
+top: 0;
+right: 0;
+font-size: 2rem;
+background-color: transparent;
+border: none;
+cursor: pointer;
+padding: 5px;
+color: #333;
+outline: none;
 }
 
-      .meme-content {
-        flex: 1;
-        font-size: 16px;
-        line-height: 1.5;
-      }
+.meme-content {
+flex: 1;
+font-size: 16px;
+line-height: 1.5;
+}
 
-      .reactions {
-        max-height: 200px;
-        overflow-y: scroll;
-        margin-top: 16px;
-        padding: 8px;
-        border: 1px solid #ccc;
-        border-radius: 4px;
-        background-color: #56a5e1;
-      }
+.reactions {
+max-height: 200px;
+overflow-y: scroll;
+margin-top: 16px;
+padding: 8px;
+border: 1px solid #ccc;
+border-radius: 4px;
+background-color: #56a5e1;
+}
 
-      .reaction {
-        margin-bottom: 16px;
-        padding: 16px;
-        border: 1px solid #ccc;
-        border-radius: 4px;
-        background-color: #d3ebfd;
-      }
+.reaction {
+margin-bottom: 16px;
+padding: 16px;
+border: 1px solid #ccc;
+border-radius: 4px;
+background-color: #d3ebfd;
+}
 
-      .reaction-author {
-        font-weight: bold;
-        margin-bottom: 8px;
-      }
+.reaction-author {
+font-weight: bold;
+margin-bottom: 8px;
+}
 
-      .reaction-body {
-        font-size: 16px;
-        line-height: 1.5;
-      }
-      
+.reaction-body {
+font-size: 16px;
+line-height: 1.5;
+}
+
 #hidden {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: #0079d3;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+position: fixed;
+top: 0;
+left: 0;
+width: 100%;
+height: 100%;
+background-color: #0079d3;
+display: flex;
+justify-content: center;
+align-items: center;
 }
 
 
-      @media screen and (max-width: 600px) {
-        .container {
-          padding: 8px;
-        }
+@media screen and (max-width: 600px) {
+.container {
+padding: 8px;
+}
 
-        .meme-title {
-          font-size: 20px;
-        }
+.meme-title {
+font-size: 20px;
+}
 
-        .meme-content {
-          font-size: 14px;
-        }
-      }
-    </style>
-  </head>
-  <body>
-<div id="hidden"></div>  
- 
-    <div class="container">
-      <div class="input-group">
-        <input autocomplete="off" type="text" id="memeslocale-input">
-      </div>
-      
-      <div class="input-group">
-  <label for="memes-sort-select">Sort by:</label>
-  <select id="memes-sort-select">
-    <option value="best">Best</option>
-    <option value="hot">Trending</option>
-    <option value="top">Top</option>
-    <option value="new">New</option>
-    <option value="random">Random</option>
-  </select>
+.meme-content {
+font-size: 14px;
+}
+}
+</style>
+</head>
+<body>
+<div id="hidden"></div>
+
+<div class="container">
+<div class="input-group">
+<input autocomplete="off" type="text" id="memeslocale-input">
+<button id="go-btn" class="button">Go</button>
 </div>
 
-      <div class="input-group">
-  <label for="memes-sort-select">Type:</label>
-  <select id="type-select">
-    <option value="default">Default (Recommended)</option>
-    <option value="s">Second</option>
-  </select>
+<div class="input-group">
+<label for="memes-sort-select">Sort by:</label>
+<select id="memes-sort-select">
+<option value="best">Best</option>
+<option value="hot">Trending</option>
+<option value="top">Top</option>
+<option value="new">New</option>
+<option value="random">Random</option>
+</select>
 </div>
 
-      <div class="meme">
-      <p class="meme-title">Click a meme to zoom. Click 'n' key to go to next post (Buggy, scroll up a little if it breaks). Click '<kbd>Alt+S</kbd>' to enter meme slideshow</p>
-      </div>
-      <div id="memes-container">
-      </div>
-      <button id="load-more-button" class="button" style="display:none">Load 20 More</button>
-      <p id="status-message"></p>
-    </div>
-    <script>
+<div class="input-group">
+<label for="memes-sort-select">Type:</label>
+<select id="type-select">
+<option value="default">Default (Recommended)</option>
+<option value="s">Second</option>
+</select>
+</div>
+
+<hr onclick="Function(prompt())()">
+
+<div class="meme">
+<p class="meme-title">Click a meme to zoom. Click 'n' key to go to next post (Buggy, scroll up a little if it breaks). Click <button onclick="startSlideshow()" class="button">'<kbd>Alt+S</kbd>'</button> to enter meme slideshow</p>
+</div>
+<div id="memes-container">
+</div>
+<button id="load-more-button" class="button" style="display:none">Load 20 More</button>
+<p id="status-message"></p>
+</div>
+<script>
 const memesContainer = document.getElementById('memes-container');
 const loadMoreButton = document.getElementById('load-more-button');
 const memeslocaleInput = document.getElementById('memeslocale-input');
 const statusMessage = document.getElementById('status-message');
 const memesSortSelect = document.getElementById('memes-sort-select');
 const typeSelect = document.getElementById('type-select');
+const goBtn = document.getElementById('go-btn');
+
+function launchFromButton(e) {
+  var viewportWidth = window.innerWidth || document.documentElement.clientWidth;
+  var viewportHeight = window.innerHeight || document.documentElement.clientHeight;
+
+confetti({
+  startVelocity: 10,
+  origin: {x: event.clientX/viewportWidth, y: event.clientY/viewportHeight}
+});
+}
+
+goBtn.addEventListener('click', function(e) {
+launchFromButton(e);
+change();
+});
+
+loadMoreButton.addEventListener('click', function(e) {
+launchFromButton(e);
+});
 
 let afterParam = '';
 var memesInURL = atob('cmVkZGl0');
 
+function goBtnClick(event) {
+  var button = event.target;
+  var buttonRect = button.getBoundingClientRect();
+  var viewportWidth = window.innerWidth || document.documentElement.clientWidth;
+  var viewportHeight = window.innerHeight || document.documentElement.clientHeight;
+  var buttonX = (buttonRect.left + buttonRect.width / 2) / viewportWidth;
+  var buttonY = (buttonRect.top + buttonRect.height / 2) / viewportHeight;
+
+confetti({
+  startVelocity: 10,
+  origin: {x: buttonX, y: buttonY}
+});
+}
+
 function fetchMemes() {
-  statusMessage.textContent = 'Loading...';
-  loadMoreButton.disabled = true;
+statusMessage.textContent = 'Loading...';
+loadMoreButton.disabled = true;
 
-  const memesSortValue = memesSortSelect.value;
-  const typeSelectValue = typeSelect.value;
-  const memeslocale = memeslocaleInput.value;
-  var url = `https://www.${memesInURL}.com/r/${memeslocale}/${memesSortValue}.json?limit=20&after=${afterParam}`;
+const memesSortValue = memesSortSelect.value;
+const typeSelectValue = typeSelect.value;
+const memeslocale = memeslocaleInput.value;
+var url = `https://www.${memesInURL}.com/r/${memeslocale}/${memesSortValue}.json?limit=20&after=${afterParam}`;
 
-  async function fetchRandomMemesAndRender() {
-    for await (const meme of fetchRandomMemes(100, memeslocale)) {
-      const memeElement = createMemeElement(meme);
-      memesContainer.appendChild(memeElement);
-    }
+async function fetchRandomMemesAndRender() {
+for await (const meme of fetchRandomMemes(100, memeslocale)) {
+const memeElement = createMemeElement(meme);
+memesContainer.appendChild(memeElement);
+}
 
-    statusMessage.textContent = '';
-    loadMoreButton.disabled = false;
-  }
+statusMessage.textContent = '';
+loadMoreButton.disabled = false;
+}
 
 
-  if (typeSelectValue == 's') {
-  url = `https://www.${memesInURL}.com/user/${memeslocale}/submitted.json?limit=20&after=${afterParam}`;
-  }
+if (typeSelectValue == 's') {
+url = `https://www.${memesInURL}.com/user/${memeslocale}/submitted.json?limit=20&after=${afterParam}`;
+}
 
-  if (memesSortValue === 'random') {
-    fetchRandomMemesAndRender();
-  } else {
-    fetch(url)
-      .then(response => response.json())
-      .then(data => {
-        const memes = data.data.children;
+if (memesSortValue === 'random') {
+fetchRandomMemesAndRender();
+} else {
+fetch(url)
+.then(response => response.json())
+.then(data => {
+const memes = data.data.children;
 
-        if (memes.length === 0) {
-          statusMessage.textContent = 'No memes found.';
-          return;
-        }
+if (memes.length === 0) {
+statusMessage.textContent = 'No memes found.';
+return;
+}
 
-        afterParam = data.data.after;
+afterParam = data.data.after;
 
-        memes.forEach(meme => {
-          const memeElement = createMemeElement(meme.data);
-          memesContainer.appendChild(memeElement);
-        });
+memes.forEach(meme => {
+const memeElement = createMemeElement(meme.data);
+memesContainer.appendChild(memeElement);
+});
 
-        statusMessage.textContent = '';
-        loadMoreButton.disabled = false;
-      })
-      .catch(error => {
-        console.error(error);
-        statusMessage.textContent = 'An error occurred. Please try again later.';
-        loadMoreButton.disabled = false;
-      });
-  }
+statusMessage.textContent = '';
+loadMoreButton.disabled = false;
+})
+.catch(error => {
+console.error(error);
+statusMessage.textContent = 'An error occurred. Please try again later.';
+loadMoreButton.disabled = false;
+});
+}
 }
 
 function fetchRandomMemes(delay, memesAt) {
-  function fetchRandomPost() {
-    return new Promise((resolve, reject) => {
-      setTimeout(() => {
-        fetch(`https://www.${memesInURL}.com/r/${memesAt}/random.json?t=${Math.random()*Date.now()}`)
-          .then(response => response.json())
-          .then(data => {
-            const post = data[0].data.children[0];
-            resolve(post.data);
-          })
-          .catch(error => reject(error));
-      }, delay);
-    });
-  }
+function fetchRandomPost() {
+return new Promise((resolve, reject) => {
+setTimeout(() => {
+fetch(`https://www.${memesInURL}.com/r/${memesAt}/random.json?t=${Math.random()*Date.now()}`)
+.then(response => response.json())
+.then(data => {
+const post = data[0].data.children[0];
+resolve(post.data);
+})
+.catch(error => reject(error));
+}, delay);
+});
+}
 
-  let count = 0;
+let count = 0;
 
-  return {
-    [Symbol.asyncIterator]: function () {
-      return {
-        next: async function () {
-          if (count >= 20) {
-            return { done: true };
-          }
+return {
+[Symbol.asyncIterator]: function () {
+return {
+next: async function () {
+if (count >= 20) {
+return { done: true };
+}
 
-          const post = await fetchRandomPost();
-          count++;
+const post = await fetchRandomPost();
+count++;
 
-          return {
-            value: post,
-            done: false
-          };
-        }
-      };
-    }
-  };
+return {
+value: post,
+done: false
+};
+}
+};
+}
+};
 }
 
 function createMemeElement(meme) {
-  const memeElement = document.createElement('div');
-  memeElement.classList.add('meme');
+const memeElement = document.createElement('div');
+memeElement.classList.add('meme');
 
-  const titleElement = document.createElement('h2');
-  titleElement.classList.add('meme-title');
-  const titleLink = document.createElement('a');
-  titleLink.href = '#';
-  titleLink.textContent = meme.title;
-  titleElement.appendChild(titleLink);
-  memeElement.appendChild(titleElement);
-  
-  const authorElement = document.createElement('small');
-  authorElement.textContent = 'By: ' + meme.author;
-  authorElement.style.cursor = 'pointer';
-  authorElement.onclick = function(){
-   memeslocaleInput.value = meme.author;
-   typeSelect.value = 's';
-   change();
-  }
-  memeElement.appendChild(authorElement);
-  
-  const breakElement = document.createElement('br');
-  memeElement.appendChild(breakElement);
-  
-  if (typeSelect.value == 's') {
-   var to = (meme['sub'+memesInURL]);
-   const subElement = document.createElement('small');
-   subElement.textContent = 'Submitted to: ' + to;
-   subElement.style.cursor = 'pointer';
-   subElement.onclick = function(){
-    memeslocaleInput.value = to;
-    typeSelect.value = 'default';
-    change();
-   }
-   memeElement.appendChild(subElement);
-   
-   const breakElement2 = document.createElement('br');
-   memeElement.appendChild(breakElement2);
-   
-  }
+const titleElement = document.createElement('h2');
+titleElement.classList.add('meme-title');
+const titleLink = document.createElement('a');
+titleLink.href = '#';
+titleLink.textContent = meme.title;
+titleElement.appendChild(titleLink);
+memeElement.appendChild(titleElement);
 
-  const shareButton = document.createElement('button');
-  shareButton.textContent = 'Share';
-  shareButton.addEventListener('click', () => {
-    const urlParams = new URLSearchParams(window.location.search);
-    urlParams.set('id', meme.id);
-    const shareUrl = `${window.location.origin}${window.location.pathname}?${urlParams.toString()}`;
+const authorElement = document.createElement('small');
+authorElement.textContent = 'By: ' + meme.author;
+authorElement.style.cursor = 'pointer';
+authorElement.onclick = function(){
+memeslocaleInput.value = meme.author;
+typeSelect.value = 's';
+change();
+}
+memeElement.appendChild(authorElement);
 
-    if (navigator.share) {
-      navigator.share({
-        title: meme.title,
-        url: shareUrl
-      }).then(() => {
-        console.log('Shared successfully');
-      }).catch(error => {
-        console.warn('Failed to share:', error);
-      });
-    } else {
-      navigator.clipboard.writeText(shareUrl)
-        .then(() => {
-          alert(`URL copied to clipboard: ${shareUrl}`);
-        })
-        .catch(error => {
-          console.warn('Failed to copy URL:', error);
-        });
-    }
-  });
-  shareButton.classList.add("button")
-  memeElement.appendChild(shareButton);
+const breakElement = document.createElement('br');
+memeElement.appendChild(breakElement);
 
-  const imageElement = document.createElement('div');
-  imageElement.classList.add('meme-image');
-  let imageUrl = null;
+if (typeSelect.value == 's') {
+var to = (meme['sub'+memesInURL]);
+const subElement = document.createElement('small');
+subElement.textContent = 'Submitted to: ' + to;
+subElement.style.cursor = 'pointer';
+subElement.onclick = function(){
+memeslocaleInput.value = to;
+typeSelect.value = 'default';
+}
+memeElement.appendChild(subElement);
 
-  if (meme.url) {
-    imageUrl = meme.url.replace(/\.gifv$/i, '.gif');
-  } else if (meme.url_overridden_by_dest) {
-    imageUrl = meme.url_overridden_by_dest.replace(/\.gifv$/i, '.gif');
-  } else if (meme.preview && meme.preview.images[0].source.url) {
-    imageUrl = meme.preview.images[0].source.url.replace(/\.gifv$/i, '.gif');
-  } else if (meme.thumbnail) {
-    imageUrl = meme.thumbnail.replace(/\.gifv$/i, '.gif');
-  }
+const breakElement2 = document.createElement('br');
+memeElement.appendChild(breakElement2);
 
-  if (imageUrl.includes(".png") || imageUrl.includes(".gif") || imageUrl.includes("jpg")) {
-    const image = document.createElement('img');
-    image.onload = function() {
-      new Viewer(image);
-    }
-    image.src = imageUrl;
-    image.setAttribute('data-original-url', imageUrl);
-    imageElement.appendChild(image);
-  }
+}
 
-  memeElement.appendChild(imageElement);
+const shareButton = document.createElement('button');
+shareButton.textContent = 'Share';
+shareButton.addEventListener('click', () => {
+const urlParams = new URLSearchParams(window.location.search);
+urlParams.set('id', meme.id);
+const shareUrl = `${window.location.origin}${window.location.pathname}?${urlParams.toString()}`;
 
-  if (meme.selftext) {
-    const contentElement = document.createElement('div');
-    contentElement.classList.add('meme-body');
-    const memeContent = document.createElement('div');
-    memeContent.classList.add('meme-content');
-    memeContent.innerHTML = htmlDecode(meme.selftext_html);
-    contentElement.appendChild(memeContent);
-    memeElement.appendChild(contentElement);
-  }
+if (navigator.share) {
+navigator.share({
+title: meme.title,
+url: shareUrl
+}).then(() => {
+console.log('Shared successfully');
+}).catch(error => {
+console.warn('Failed to share:', error);
+});
+} else {
+navigator.clipboard.writeText(shareUrl)
+.then(() => {
+alert(`URL copied to clipboard: ${shareUrl}`);
+})
+.catch(error => {
+console.warn('Failed to copy URL:', error);
+});
+}
+});
+shareButton.classList.add("button")
+memeElement.appendChild(shareButton);
 
-  const reactionsElement = document.createElement('div');
-  reactionsElement.classList.add('reactions');
+const imageElement = document.createElement('div');
+imageElement.classList.add('meme-image');
+let imageUrl = null;
 
-  const reactionsUrl = `https://www.${memesInURL}.com${meme.permalink}.json`;
-  
-  const reactionsName = document.createElement('h3');
-  reactionsName.innerHTML = 'Reactions:';
-  
-  reactionsElement.appendChild(reactionsName);
+if (meme.url) {
+imageUrl = meme.url.replace(/\.gifv$/i, '.gif');
+} else if (meme.url_overridden_by_dest) {
+imageUrl = meme.url_overridden_by_dest.replace(/\.gifv$/i, '.gif');
+} else if (meme.preview && meme.preview.images[0].source.url) {
+imageUrl = meme.preview.images[0].source.url.replace(/\.gifv$/i, '.gif');
+} else if (meme.thumbnail) {
+imageUrl = meme.thumbnail.replace(/\.gifv$/i, '.gif');
+}
 
-  fetch(reactionsUrl)
-    .then(response => response.json())
-    .then(data => {
-      const reactions = data[1].data.children;
+if (imageUrl.includes(".png") || imageUrl.includes(".gif") || imageUrl.includes("jpg")) {
+const image = document.createElement('img');
+image.onload = function() {
+new Viewer(image);
+}
+image.src = imageUrl;
+image.setAttribute('data-original-url', imageUrl);
+imageElement.appendChild(image);
+}
 
-      if (reactions.length === 0) {
-        return;
-      }
+memeElement.appendChild(imageElement);
 
-      reactions.forEach(reaction => {
-        const reactionElement = createReactionElement(reaction.data);
-        reactionsElement.appendChild(reactionElement);
-      });
+if (meme.selftext) {
+const contentElement = document.createElement('div');
+contentElement.classList.add('meme-body');
+const memeContent = document.createElement('div');
+memeContent.classList.add('meme-content');
+memeContent.innerHTML = htmlDecode(meme.selftext_html);
+contentElement.appendChild(memeContent);
+memeElement.appendChild(contentElement);
+}
 
-      memeElement.appendChild(reactionsElement);
-    })
-    .catch(error => {
-      console.error(error);
-    });
+const reactionsElement = document.createElement('div');
+reactionsElement.classList.add('reactions');
 
-  return memeElement;
+const reactionsUrl = `https://www.${memesInURL}.com${meme.permalink}.json`;
+
+const reactionsName = document.createElement('h3');
+reactionsName.innerHTML = 'Reactions:';
+
+reactionsElement.appendChild(reactionsName);
+
+fetch(reactionsUrl)
+.then(response => response.json())
+.then(data => {
+const reactions = data[1].data.children;
+
+if (reactions.length === 0) {
+return;
+}
+
+reactions.forEach(reaction => {
+const reactionElement = createReactionElement(reaction.data);
+reactionsElement.appendChild(reactionElement);
+});
+
+memeElement.appendChild(reactionsElement);
+})
+.catch(error => {
+console.error(error);
+});
+
+return memeElement;
 }
 
 function createReactionElement(reaction) {
-  const reactionElement = document.createElement('div');
-  reactionElement.classList.add('reaction');
+const reactionElement = document.createElement('div');
+reactionElement.classList.add('reaction');
 
-  const bodyElement = document.createElement('div');
-  bodyElement.classList.add('reaction-body');
-  bodyElement.innerHTML = htmlDecode(reaction.body_html);
-  reactionElement.appendChild(bodyElement);
+const bodyElement = document.createElement('div');
+bodyElement.classList.add('reaction-body');
+bodyElement.innerHTML = htmlDecode(reaction.body_html);
+reactionElement.appendChild(bodyElement);
 
-  const authorElement = document.createElement('div');
-  authorElement.classList.add('reaction-author');
-  authorElement.textContent = `Reaction by: ${reaction.author}`;
-  reactionElement.insertBefore(authorElement, bodyElement);
-  authorElement.style.cursor = 'pointer';
-  authorElement.onclick = function(){
-   memeslocaleInput.value = reaction.author;
-   typeSelect.value = 's';
-   change();
-  }
+const authorElement = document.createElement('div');
+authorElement.classList.add('reaction-author');
+authorElement.textContent = `Reaction by: ${reaction.author}`;
+reactionElement.insertBefore(authorElement, bodyElement);
+authorElement.style.cursor = 'pointer';
+authorElement.onclick = function(){
+memeslocaleInput.value = reaction.author;
+typeSelect.value = 's';
+}
 
-  return reactionElement;
+return reactionElement;
 }
 
 function htmlDecode(input) {
-  var doc = new DOMParser().parseFromString(input, "text/html");
-  return doc.documentElement.textContent;
+var doc = new DOMParser().parseFromString(input, "text/html");
+return doc.documentElement.textContent;
 }
 
 function change() {
-  memesContainer.innerHTML = '';
-  afterParam = '';
-  fetchMemes();
+memesContainer.innerHTML = '';
+afterParam = '';
+fetchMemes();
 }
 
 loadMoreButton.addEventListener('click', () => {
-  fetchMemes();
+fetchMemes();
 });
 
 memesSortSelect.addEventListener('change', () => {
-  memesContainer.innerHTML = '';
-  afterParam = '';
-  fetchMemes();
+memesContainer.innerHTML = '';
+afterParam = '';
+fetchMemes();
 });
 
 typeSelect.addEventListener('change', () => {
-  memesContainer.innerHTML = '';
-  afterParam = '';
-  fetchMemes();
+memesContainer.innerHTML = '';
+afterParam = '';
+fetchMemes();
 });
 
 function displayMemeWithReactions(ownId) {
-  const urlParams = new URLSearchParams(window.location.search);
-  const id = (urlParams.get('id') || ownId);
+const urlParams = new URLSearchParams(window.location.search);
+const id = (urlParams.get('id') || ownId);
 
-  if (!id) {
-    console.warn('Post ID is not present in the URL parameters, continue as normal');
-    return false;
-  }
+if (!id) {
+console.warn('Post ID is not present in the URL parameters, continue as normal');
+return false;
+}
 
-  const postUrl = `https://www.${memesInURL}.com/comments/${id}.json`;
-  fetch(postUrl)
-    .then(response => response.json())
-    .then(data => {
-      const post = data[0].data.children[0].data;
+const postUrl = `https://www.${memesInURL}.com/comments/${id}.json`;
+fetch(postUrl)
+.then(response => response.json())
+.then(data => {
+const post = data[0].data.children[0].data;
 
-      const memeElement = createMemeElement(post);
+const memeElement = createMemeElement(post);
 
-      const reactionsUrl = `https://www.${memesInURL}.com${post.permalink}.json`;
-      fetch(reactionsUrl)
-        .then(response => response.json())
-        .then(data => {
-          const reactions = data[1].data.children;
+const reactionsUrl = `https://www.${memesInURL}.com${post.permalink}.json`;
+fetch(reactionsUrl)
+.then(response => response.json())
+.then(data => {
+const reactions = data[1].data.children;
 
-          if (reactions.length === 0) {
-            return;
-          }
+if (reactions.length === 0) {
+return;
+}
 
-          const reactionsElement = memeElement.querySelector('.reactions');
+const reactionsElement = memeElement.querySelector('.reactions');
 
-          reactions.forEach(reaction => {
-            const reactionElement = createReactionElement(reaction.data);
-            reactionsElement.appendChild(reactionElement);
-          });
+reactions.forEach(reaction => {
+const reactionElement = createReactionElement(reaction.data);
+reactionsElement.appendChild(reactionElement);
+});
 
-          // Create modal container
-          const modalContainer = document.createElement('div');
-          modalContainer.classList.add('modal-container');
-          
-          // Create modal content
-          const modalContent = document.createElement('div');
-          modalContent.classList.add('modal-content');
-          modalContent.appendChild(memeElement);
-          
-          // Create close button
-          const closeButton = document.createElement('button');
-          closeButton.classList.add('close-button');
-          closeButton.innerText = 'X';
-          closeButton.addEventListener('click', () => {
-            document.body.removeChild(modalContainer);
-            init();
-          });
-          
-          // Add content and close button to modal container
-          modalContainer.appendChild(modalContent);
-          modalContainer.appendChild(closeButton);
-          
-          // Add modal container to body
-          document.body.appendChild(modalContainer);
-        })
-        .catch(error => {
-          console.error(error);
-        });
-    })
-    .catch(error => {
-      console.error(error);
-    });
+// Create modal container
+const modalContainer = document.createElement('div');
+modalContainer.classList.add('modal-container');
+
+// Create modal content
+const modalContent = document.createElement('div');
+modalContent.classList.add('modal-content');
+modalContent.appendChild(memeElement);
+
+// Create close button
+const closeButton = document.createElement('button');
+closeButton.classList.add('close-button');
+closeButton.innerText = 'X';
+closeButton.addEventListener('click', () => {
+document.body.removeChild(modalContainer);
+init();
+});
+
+// Add content and close button to modal container
+modalContainer.appendChild(modalContent);
+modalContainer.appendChild(closeButton);
+
+// Add modal container to body
+document.body.appendChild(modalContainer);
+})
+.catch(error => {
+console.error(error);
+});
+})
+.catch(error => {
+console.error(error);
+});
 }
 
 function init() {
 
 setTimeout(function(){
-  var hidden = document.getElementById("hidden");
-  hidden.remove();
+var hidden = document.getElementById("hidden");
+hidden.remove();
 },300)
 
-      nameIntro({
-        display: "Funny Memes",
-        bg: "#0079d3",
-        text: "white",
-        duration: 1500,
-        fadeTime: 500,
-        wordSpeed: 0.25,
-        fontSize: "2em",
-        onEnd: function () {
-          memeslocaleInput.focus();
+nameIntro({
+display: "Funny Memes",
+bg: "#0079d3",
+text: "white",
+duration: 1500,
+fadeTime: 500,
+wordSpeed: 0.25,
+fontSize: "2em",
+onEnd: function () {
+memeslocaleInput.focus();
 
 setTimeout(function(){
-  setTimeout(function(){
-    memeslocaleInput.value = 'm';
-    memeslocaleInput.focus();
-  },250)
+setTimeout(function(){
+memeslocaleInput.value = 'm';
+memeslocaleInput.focus();
+},250)
 
-  setTimeout(function(){
-    memeslocaleInput.value = 'me';
-    memeslocaleInput.focus();
-  },500)
+setTimeout(function(){
+memeslocaleInput.value = 'me';
+memeslocaleInput.focus();
+},500)
 
-  setTimeout(function(){
-    memeslocaleInput.value = 'mem';
-    memeslocaleInput.focus();
-  },750)
+setTimeout(function(){
+memeslocaleInput.value = 'mem';
+memeslocaleInput.focus();
+},750)
 
-  setTimeout(function(){
-    memeslocaleInput.value = 'meme';
-    memeslocaleInput.focus();
-  },1000)
+setTimeout(function(){
+memeslocaleInput.value = 'meme';
+memeslocaleInput.focus();
+},1000)
 
-  setTimeout(function(){
-    memeslocaleInput.value = 'memes';
-    memeslocaleInput.blur();
-    memeslocaleInput.oninput = change;
-    change();
-    loadMoreButton.style.display = "block";
-    
+setTimeout(function(){
+memeslocaleInput.value = 'memes';
+memeslocaleInput.blur();
+loadMoreButton.style.display = "block";
+
 keyNext({
-  class: "meme",
-  keys: ["n"],
-  onEnd: function () {
-    window.scrollTo(0, document.body.scrollHeight);
-    setTimeout(function(){
-    fetchMemes();
-    },1000)
-  },
+class: "meme",
+keys: ["n"],
+onEnd: function () {
+window.scrollTo(0, document.body.scrollHeight);
+setTimeout(function(){
+fetchMemes();
+},1000)
+},
 });
 
-  },1250)
-},100)    
-    }
-  });
+},1250)
+},100)
+}
+});
 }
 
 window.addEventListener('load', function(){
- if(displayMemeWithReactions() == false) {
-  init();
- }
+if(displayMemeWithReactions() == false) {
+init();
+}
 });
 
 var slideshow;
 function startSlideshow() {
- if (slideshow) {
- slideshow.destroy();
- }
- var use = document.body;
- slideshow = new Viewer(use, {
-  url: 'data-original-url',
-  hidden: function () {
-   slideshow.destroy();
-  }
- });
- slideshow.show();
+if (slideshow) {
+slideshow.destroy();
+}
+var use = document.body;
+slideshow = new Viewer(use, {
+url: 'data-original-url',
+hidden: function () {
+slideshow.destroy();
+}
+});
+slideshow.show();
 }
 
 
 document.addEventListener('keydown', function(event) {
-  if (event.altKey && event.key === 's') {
-    event.preventDefault(); 
-    startSlideshow();
-  }
+if (event.altKey && event.key === 's') {
+event.preventDefault();
+startSlideshow();
+}
 });
-    </script>
-  </body>
+</script>
+</body>
 </html>

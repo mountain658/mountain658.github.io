@@ -1,23 +1,44 @@
 <!DOCTYPE html>
 <html>
-  <head>
+<head>
+<title>Drift Hunters</title>
+<link rel="shortcut icon" href="drift-hunters.png">
+<script src="everypage.js"></script>
+</head>
+<body onload='focus()'>
+<a href=".." style='font-size: 1.5rem;'>Back To Home Page</a>
+<button onclick="openFullscreen('main')" style='font-size: 1.5rem;'>Fullscreen Mode</button>
+<div height='5%'>
+<button onclick='s1()'>Server 1</button>
+<button onclick='s2()'>Server 2</button>
+<button onclick='s3()'>Server 3</button>
+<h3>Playing On Server: <span id='currentServer'></span></h3>
+</div>
+<br>
+<iframe style='height: calc(100vh - 1.5rem); width: calc(100vw - 2rem);' allow="fullscreen" allowfullscreen scrolling="no" frameborder="0" id="main" allowtransparency="true" src=""></iframe>
+<script>
+var main = document.getElementById('main')
+main.src='./g/drifthunters/index.html';
+document.getElementById('currentServer').innerHTML = '1';
 
-      <title>Drift Hunters</title>
-      <script src='/everypage.js'></script>
-    <link rel="shortcut icon"
-    type="image/jpg" href="drift-hunters.png"
-    />
-  </head>
-<body>
-<script src="load.js"></script>
-<iframe title="Include gadget (iframe)" width="960" height="640"scrolling="no" frameborder="0" id="518929564" name="518929564" allowtransparency="true" class="igm" 
-        src="./g/drifthunters/index.html"></iframe>
-         <a href=".."
-       style="" >Back To Home Page</a>
+function s1(){
+main.src='./g/drifthunters/index.html';
+document.getElementById('currentServer').innerHTML = '1';
+main.focus();
+}
+function s2(){
+main.src='https://zayaruzostreetorgan.com/uploads/5/5/6/7/5567194/custom_themes/136734914403232081/drift_hunter.html';
+document.getElementById('currentServer').innerHTML = '2';
+main.focus();
+}
+function s3(){
+main.src='https://v6p9d9t4.ssl.hwcdn.net/html/1792221/ItchIO/index.html';
+document.getElementById('currentServer').innerHTML = '3';
+main.focus();
+}
+</script>
 <script src="fullScreen.js"></script>
-<button onclick="openFullscreen('518929564')">Fullscreen Mode</button>
-
-
+<script src="load.js"></script>
+<script>function focus() {document.getElementById('main').focus();}</script>
 </body>
-
 </html>

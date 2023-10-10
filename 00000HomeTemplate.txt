@@ -166,8 +166,15 @@ padding: 12px 24px;
 @media (prefers-color-scheme: dark) {
   body {
     color: #eee;
-    background: #121212;
+    background-image: url(mountainDark.png);
+    background-position: center center;
+    background-repeat:no-repeat;
+    background-attachment: fixed;
+    background-size: cover; 
   }
+img {
+filter: brightness(.9) contrast(1);
+}
   body a {
     color: #809fff;
   }
@@ -187,9 +194,6 @@ background-color:#383838;
 color: #eee;
 background-color:#383838;  
 border: 3px solid #292929;
-  }
-    img {
-    filter: brightness(.9) contrast(1);
   }
 }  
   </style>

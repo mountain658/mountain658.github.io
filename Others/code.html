@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+<title>Code Editor</title>
+<link rel="shortcut icon" type="image/jpg" href="code.png">
+<base href="https://www.w3schools.com/html/tryit.asp?filename=tryhtml_basic">
+<link rel="stylesheet" href="/lib/w3schools31.css">
+<link rel='stylesheet' href='/lib/codemirror.css'>
+<script src='/lib/codemirror.js'></script>
+<script src='/lib/codemirror_jsx.js'></script>
+<script src="/lib/uic.js?v=1.0.5"></script>
+<script>
+window.addEventListener?window.addEventListener("resize",browserResize):window.attachEvent&&window.attachEvent("onresize",browserResize);var xbeforeResize=window.innerWidth;function browserResize(){var e=window.innerWidth;(xbeforeResize<970&&970<=e||970<=xbeforeResize&&e<970||xbeforeResize<728&&728<=e||728<=xbeforeResize&&e<728||xbeforeResize<468&&468<=e||468<=xbeforeResize&&e<468)&&(xbeforeResize=e),window.screen.availWidth<=768&&restack(window.innerHeight>window.innerWidth),fixDragBtn(),showFrameSize()}var fileID="";
+</script>
+<style>
+#container,#shield,.trytopnav{width:100%;position:absolute}#iframewrapper,#textareawrapper{box-shadow:0 1px 3px rgba(0,0,0,.12),0 1px 2px rgba(0,0,0,.24)}#iframewrapper,#textareaCode,#textareaCode2,#textareawrapper{background-color:#fff;height:100%}#container,#dragbar,#shield,.trytopnav{position:absolute}#container,#filenamecontainer span,.localhostoutercontainer,.trytopnav{background-color:#e7e9eb}#breadcrumb a:after,#breadcrumb a:before{content:"";border-top:12px solid transparent;border-bottom:12px solid transparent;top:0}#breadcrumb ul li:first-child a:before,#shield{display:none}#breadcrumb ul:last-child li,#textarea{padding-right:5px}*{-webkit-box-sizing:border-box;-moz-box-sizing:border-box;box-sizing:border-box}body{color:#000;margin:0;font-size:100%}.trytopnav{height:48px;overflow:hidden;min-width:380px;top:99px}.topnav-icons{margin-right:8px}.trytopnav a,.trytopnav button{color:#999}.w3-bar .w3-bar-item:hover{color:#757575!important}a.w3schoolslink{padding:0!important;display:inline!important}a.w3schoolslink:active,a.w3schoolslink:hover{text-decoration:underline!important;background-color:transparent!important}#dragbar{cursor:col-resize;z-index:3;padding:5px}#shield{top:0;left:0;height:100%;z-index:4}#framesize{font-family:Montserrat,'Source Sans Pro',sans-serif;font-size:14px}#textareaCode,#textareaCode2,.localhostdiv{font-size:15px;font-family:consolas,Menlo,"courier new",monospace}#container{overflow:auto;top:144px;bottom:0;height:auto}#iframecontainer,#textareacontainer{float:left;height:100%;width:50%}#iframe,#textarea,#textarea2{height:100%;width:100%;padding-bottom:10px;padding-top:1px}#textarea{padding-left:10px}#iframe{padding-left:5px;padding-right:10px;position:relative}#textareawrapper{width:100%;overflow:auto;position:relative}#iframewrapper{width:100%;-webkit-overflow-scrolling:touch}#textareaCode,#textareaCode2{width:100%;padding:8px;resize:none;border:none;line-height:normal}.localhostoutercontainer{position:absolute;width:auto;left:5px;right:10px;height:30px;z-index:9}.darktheme #resttab,.localhostcontainer,body.darktheme #container,body.darktheme .localhostoutercontainer,body.darktheme .tabs{background-color:#38444d}.localhostoutercontainer.horizontal{left:10px}.localhostcontainer{position:relative;width:auto;right:0;left:0;z-index:2;xpadding:6px 12px;xxborder-bottom:1px solid #d9d9d9;border-top-right-radius:10px;border-top-left-radius:10px;overflow:hidden;padding-top:4px}.localhostdiv{overflow:hidden;color:#000;background-color:#fff;padding-left:10px;border-radius:20px;width:60%;float:left}.localhostbuttoncontainer{width:20%;min-width:100px;color:#ffc107;float:left;font-size:16px;overflow:auto}div.localhostbuttoncontainer span{display:inline-block;color:#ffc107;position:relative;padding-bottom:4px;padding-left:2px}div.localhostbuttoncontainer span:first-child{color:#dc3545;padding-left:12px}div.localhostbuttoncontainer span:last-child{color:#04aa6d;padding-left:2px}.darktheme .tabitem,body.darktheme #textareawrapper,body.darktheme .localhostcontainer{background-color:#15202b}body.darktheme .localhostdiv{border:1px solid #595959;background-color:#fff}#filenamecontainer{position:absolute;text-align:center;z-index:4;width:100%}#filenamecontainer span{opacity:.9;padding:1px 6px;font-family:Consolas;font-size:16px}body.darktheme #filenamecontainer span{background-color:#555;color:#e7e9eb}.CodeMirror.cm-s-default{line-height:normal;padding:4px;height:100%;width:100%}#iframeResult,#iframeSource{background-color:#fff;height:100%;width:100%}#stackH.horizontal,#stackV{background-color:#999}#getwebsitebtn,#runbtn{background-color:#04aa6d;font-family:'Source Sans Pro',sans-serif;font-size:18px;margin-top:4px;border-radius:5px;color:#fff}#stackV.horizontal:hover,#stackV:hover{background-color:#bbb!important}#stackV.horizontal{background-color:transparent}#stackH.horizontal:hover{background-color:#999!important}#iframecontainer.horizontal,#textareacontainer.horizontal{height:50%;float:none;width:100%}#iframe.horizontal,#textarea.horizontal{height:100%;padding-right:10px;padding-left:10px}#iframe.horizontal{padding-bottom:10px}#container.horizontal{min-height:200px;margin-left:0}#tryitLeaderboard{overflow:hidden;text-align:center;margin-top:5px;height:90px}.w3-dropdown-content{width:350px}#breadcrumb ul{font-family:Montserrat,'Source Sans Pro',sans-serif;list-style:none;display:inline-table;padding-inline-start:1px;font-size:12px;margin-block-start:6px;margin-block-end:6px}#breadcrumb li{display:inline}#breadcrumb a{float:left;background:#e7e9eb;padding:3px 10px 3px 20px;position:relative;margin:0 5px 0 0;text-decoration:none;color:#555}#breadcrumb a:after{border-left:12px solid #e7e9eb;position:absolute;right:-12px;z-index:1}#breadcrumb a:before{border-left:12px solid #fff;position:absolute;left:0}#breadcrumb ul li a:hover{background:#04aa6d;color:#fff}#breadcrumb ul li a:hover:after{border-left-color:#04aa6d;color:#fff}#breadcrumb li:last-child{display:inline-block!important;margin-top:3px!important}#runbtn{padding:6px 25px;word-spacing:10px}#getwebsitebtn:hover,#runbtn:hover{background-color:#059862!important;color:#fff!important}#getwebsitebtn{padding:6px 15px;margin-right:10px;display:block;float:right}@media screen and (max-width:727px){.trytopnav{top:70px}#container{top:116px}#breadcrumb{display:none}#tryhome{display:block}}@media screen and (max-width:467px){.trytopnav{top:60px}#container{top:106px}.w3-dropdown-content{width:100%}}@media only screen and (max-device-width:768px){#iframewrapper{overflow:auto}#container,.trytopnav{min-width:310px}.stack{display:none}#tryhome{display:block}}#resttab,.tabitem{position:absolute;z-index:2;font-family:arial;padding:4px 12px;width:70px;cursor:pointer}.tabitem{background-color:#38444d;color:#ddd;border-top-left-radius:10px;border-top-right-radius:10px;opacity:.5}#resttab{cursor:default;z-index:1;background-color:#e7e9eb;width:100%;left:0}.tabitem.tabselected{opacity:1}.fa{padding:10px!important}a.topnav-icons,a.topnav-icons.fa-home,a.topnav-icons.fa-menu,button.topnav-icons.fa-adjust{font-size:28px!important}.darktheme #breadcrumb li{color:#fff}.darktheme #breadcrumb a{background:#38444d;color:#ddd}.darktheme #breadcrumb a:after{border-left:12px solid #38444d}.darktheme #breadcrumb a:before{border-left:12px solid #1d2a35}.darktheme .currentcrumb,body.darktheme .trytopnav a{color:#ddd}body.darktheme,body.darktheme #tryitLeaderboard{background-color:#1d2a35}body.darktheme .trytopnav{background-color:#38444d;color:#ddd}body.darktheme #textareaCode{background-color:#282c34;color:#fff}body.darktheme .tab{background:#15202b;color:#fff;opacity:.5}body.darktheme .tab.active{background:#15202b;color:#fff;opacity:1}body.darktheme ::-webkit-scrollbar{width:12px;height:3px}body.darktheme ::-webkit-scrollbar-track-piece{background-color:#000}body.darktheme ::-webkit-scrollbar-thumb{height:50px;background-color:#38444d}body.darktheme ::-webkit-scrollbar-thumb:hover{background-color:#4b5b68}.darktheme #file1filetab{border-right:1px solid #15202b}
+</style>
+</head>
+<body>
+<div class="trytopnav">
+<div class="w3-bar" style="overflow:auto">
+  <button href="javascript:void(0);" onclick="retheme()" title="Change Theme" class="w3-button w3-bar-item" style="margin-top:-2px;">Re-theme</button>
+  <button class="w3-button w3-bar-item" onclick="saveToURL()">Save to URL</button>
+<button class="w3-button w3-bar-item" onclick="(function(e){e.requestFullscreen?e.requestFullscreen():e.webkitRequestFullscreen?e.webkitRequestFullscreen():e.msRequestFullscreen&&e.msRequestFullscreen()})(window.ifr)">Full Screen</button>
+  <button id="runbtn" class="w3-button w3-bar-item w3-hover-white w3-hover-text-green" onclick="submitTryit(1);uic_r_p();">Run &#10095;</button>
+  <button onclick='downloadCode()' id="getwebsitebtn" class="w3-button w3-bar-item w3-hover-white w3-hover-text-green">Download</button>
+  <span class="w3-right" style="padding:8px 16px 8px 0;display:block;font-size:16px;margin-top:4px"><span id="framesize"></span></span>
+</div>
+</div>
+<div id="shield"></div>
+<a href="javascript:void(0)" id="dragbar"></a>
+<div id="container">
+<div id="navbarDropMenu" class="w3-dropdown-content w3-bar-block w3-border" style="z-index:5">
+  </div>
+  <div id="textareacontainer">
+    <div id="textarea">
+      <div id="textareawrapper">
+            <textarea autocomplete="off" id="textareaCode" wrap="logical" spellcheck="false"><!DOCTYPE html>
+<html>
+<head><title></title><style></style>
+</head>
+<body>
+The content of the body element is displayed in your
+<script>
+document.body.innerHTML += ' browser.';
+</script>
+</body>
+</html></textarea>
+            <form id="codeForm" autocomplete="off" style="margin:0px;display:none;">
+              <input type="hidden" name="code" id="code" />
+            </form>  
+       </div>
+    </div>
+  </div>
+  <div id="iframecontainer">
+    <div id="iframe">
+<div id="iframewrapper">
+</div>
+</div>
+</div>  
+</div>
+<script>
+function submitTryit(e){window.editor&&window.editor.save();var t=document.getElementById("textareaCode").value,a=document.createElement("iframe");a.setAttribute("frameborder","0"),a.setAttribute("id","iframeResult"),a.setAttribute("name","iframeResult"),a.setAttribute("allowfullscreen","true"),document.getElementById("iframewrapper").innerHTML="",document.getElementById("iframewrapper").appendChild(a);a=(window.ifr=a).contentWindow||a.contentDocument.document||a.contentDocument;a.document.open(),a.document.write(t),a.document.close(),a.document.body&&!a.document.body.isContentEditable&&(a.document.body.contentEditable=!0,a.document.body.contentEditable=!1)}function hideSpinner(){document.getElementById("runloadercontainer").style.display="none"}function displaySpinner(){var e=document.getElementById("iframeResult"),t=w3_getStyleValue(e,"width"),a=w3_getStyleValue(e,"height"),n=document.getElementById("runloadercontainer");n.style.width=t,n.style.height=a,n.style.display="block",t=Number(t.replace("px",""))/5,(e=document.getElementById("runloader")).style.width=t+"px",e.style.height=t+"px",a=w3_getStyleValue(e,"height"),a=Number(a.replace("px",""))/2,n=w3_getStyleValue(n,"height"),n=Number(n.replace("px",""))/2,n-=a,e.style.top=n+"px"}submitTryit();var currentStack=!0;function restack(e){var t=document.getElementById("textareacontainer"),a=document.getElementById("iframecontainer"),n=document.getElementById("textarea"),r=document.getElementById("iframe"),d=document.getElementById("container"),o=document.getElementById("stackV"),l=document.getElementById("stackH"),m=document.getElementsByClassName("localhostoutercontainer");t.className=t.className.replace("horizontal",""),a.className=a.className.replace("horizontal",""),n.className=n.className.replace("horizontal",""),r.className=r.className.replace("horizontal",""),d.className=d.className.replace("horizontal",""),m[0]&&(m[0].className=m[0].className.replace("horizontal","")),o&&(o.className=o.className.replace("horizontal","")),o&&(l.className=l.className.replace("horizontal","")),stack="",currentStack=e?(t.className=t.className+" horizontal",a.className=a.className+" horizontal",n.className=n.className+" horizontal",r.className=r.className+" horizontal",d.className=d.className+" horizontal",o&&(o.className=o.className+" horizontal"),o&&(l.className=l.className+" horizontal"),m[0]&&(m[0].className=m[0].className+" horizontal"),stack=" horizontal",document.getElementById("textareacontainer").style.height="50%",document.getElementById("iframecontainer").style.height="50%",document.getElementById("textareacontainer").style.width="100%",!(document.getElementById("iframecontainer").style.width="100%")):(document.getElementById("textareacontainer").style.height="100%",document.getElementById("iframecontainer").style.height="100%",document.getElementById("textareacontainer").style.width="50%",document.getElementById("iframecontainer").style.width="50%",!0),fixDragBtn(),showFrameSize()}function showFrameSize(){var e=Number(w3_getStyleValue(document.getElementById("iframeResult"),"width").replace("px","")).toFixed(),t=Number(w3_getStyleValue(document.getElementById("iframeResult"),"height").replace("px","")).toFixed();document.getElementById("framesize").innerHTML="Result Size: <span>"+e+" x "+t+"</span>"}window.screen.availWidth<=768&&window.innerHeight>window.innerWidth&&restack(!0);var stack,dragging=!1;function fixDragBtn(){var e,t,a,n,r=Number(w3_getStyleValue(document.getElementById("container"),"top").replace("px",""));" horizontal"!=stack?(document.getElementById("dragbar").style.width="5px",textareasize=Number(w3_getStyleValue(document.getElementById("textareawrapper"),"width").replace("px","")),t=Number(w3_getStyleValue(document.getElementById("textarea"),"padding-left").replace("px","")),n=Number(w3_getStyleValue(document.getElementById("dragbar"),"width").replace("px","")),textareaheight=w3_getStyleValue(document.getElementById("textareawrapper"),"height"),a=textareasize+t+t/2-n/2,document.getElementById("dragbar").style.top=r+"px",document.getElementById("dragbar").style.left=a+"px",document.getElementById("dragbar").style.height=textareaheight,document.getElementById("dragbar").style.cursor="col-resize"):(document.getElementById("dragbar").style.height="5px",window.getComputedStyle?(e=window.getComputedStyle(document.getElementById("textareawrapper"),null).getPropertyValue("height"),textareaheight=window.getComputedStyle(document.getElementById("textareawrapper"),null).getPropertyValue("width"),t=window.getComputedStyle(document.getElementById("textarea"),null).getPropertyValue("padding-top"),n=window.getComputedStyle(document.getElementById("dragbar"),null).getPropertyValue("height")):a=document.getElementById("textareawrapper").currentStyle.width,e=Number(e.replace("px","")),t=Number(t.replace("px","")),n=Number(n.replace("px","")),a=r+e+t+t/2,document.getElementById("dragbar").style.top=a+"px",document.getElementById("dragbar").style.left="5px",document.getElementById("dragbar").style.width=textareaheight,document.getElementById("dragbar").style.cursor="row-resize")}function dragstart(e){e.preventDefault(),dragging=!0;document.getElementById("iframecontainer")}function dragmove(e){var t,a,n;dragging&&(document.getElementById("shield").style.display="block"," horizontal"!=stack?5<(a=e.pageX/window.innerWidth*100)&&a<98&&(n=100-a,document.getElementById("textareacontainer").style.width=a+"%",document.getElementById("iframecontainer").style.width=n+"%",fixDragBtn()):(t=Number(w3_getStyleValue(document.getElementById("container"),"top").replace("px","")),5<(a=(e.pageY-t+20)/(window.innerHeight-t+20)*100)&&a<98&&(n=100-a,document.getElementById("textareacontainer").style.height=a+"%",document.getElementById("iframecontainer").style.height=n+"%",fixDragBtn())),showFrameSize())}function dragend(){document.getElementById("shield").style.display="none",dragging=!1;var e=navigator.vendor;window.editor&&-1==e.indexOf("Apple")&&window.editor.refresh()}function retheme(){var e=document.body.className;-1<e.indexOf("darktheme")?(document.body.className=e.replace("darktheme",""),opener&&(opener.document.body.className=e.replace("darktheme","")),localStorage.setItem("preferredmode","light")):(document.body.className+=" darktheme",opener&&(opener.document.body.className+=" darktheme"),localStorage.setItem("preferredmode","dark"))}function colorcoding(){var e=navigator.userAgent;if(e&&-1<e.toUpperCase().indexOf("OPERA MINI"))return!1;window.editor=CodeMirror.fromTextArea(document.getElementById("textareaCode"),{mode:"text/html",lineWrapping:!0,smartIndent:!1,htmlMode:!0,autocorrect:!1,addModeClass:!0})}function getHash(){return location.hash.split("#")[1]}function clickTab(e){return!1}function w3_getStyleValue(e,t){return window.getComputedStyle?window.getComputedStyle(e,null).getPropertyValue(t):e.currentStyle[t]}function openMenu(){var e=document.getElementById("navbarDropMenu"),t=document.getElementById("menuOverlay"),a=document.getElementById("menuButton");-1==a.className.indexOf("w3-text-gray")?a.className+=" w3-text-gray":a.className=a.className.replace(" w3-text-gray",""),-1==a.className.indexOf("w3-gray")?a.className+=" w3-gray":a.className=a.className.replace(" w3-gray",""),-1==e.className.indexOf("w3-show")?e.className+=" w3-show":e.className=e.className.replace(" w3-show",""),-1==t.className.indexOf("w3-show")?t.className+=" w3-show":t.className=t.className.replace(" w3-show","")}function setCodewindowHeight(){for(var e=w3_getStyleValue(document.getElementById("textareawrapper"),"height"),t=document.getElementsByClassName("codewindow"),a=0;a<t.length;a++)t[a].style.height=e,t[a].style.setProperty("overflow","auto","important")}window.addEventListener&&(document.getElementById("dragbar").addEventListener("mousedown",function(e){dragstart(e)}),document.getElementById("dragbar").addEventListener("touchstart",function(e){dragstart(e)}),window.addEventListener("mousemove",function(e){dragmove(e)}),window.addEventListener("touchmove",function(e){dragmove(e)}),window.addEventListener("mouseup",dragend),window.addEventListener("touchend",dragend),window.addEventListener("load",fixDragBtn),window.addEventListener("load",showFrameSize)),"dark"==localStorage.getItem("preferredmode")&&(document.body.className+=" darktheme"),getHash()&&(document.getElementById("textareaCode").value=decodeURI(atob(getHash()))),colorcoding(),window.onclick=function(e){e.target==document.getElementById("menuOverlay")&&openMenu()},uic_r_e();
+</script>
+<script>
+function download(filename, text) {
+    var element = document.createElement('a');
+    element.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(text));
+    element.setAttribute('download', filename);
+
+    element.style.display = 'none';
+    document.body.appendChild(element);
+
+    element.click();
+
+    document.body.removeChild(element);
+    if (putLinkIn) {
+document.getElementById(putLinkIn).value = 'data:text/plain;charset=utf-8,'+encodeURIComponent(text);
+  }
+}
+
+var today = new Date();
+var dd = String(today.getDate()).padStart(2,'0');
+var mm = String(today.getMonth() + 1).padStart(2,'0');
+var yyyy = today.getFullYear();
+today = mm +'/'+ dd +'/'+ yyyy;
+
+function downloadCode() {
+download((today +' HTML.html'), window.editor.getValue())
+}
+
+function saveToURL() {
+location.hash = btoa(encodeURI(window.editor.getValue()));
+}
+
+function useLess() {
+
+}
+
+window.addEventListener("beforeunload", function(event) {
+  useLess();
+  event.returnValue = "Are You Sure You Want To Leave?";
+  useLess();
+});
+</script>
+<script src="/lib/common-deps.js?v=1.0.3"></script>
+<script src="/lib/user-session.js?v=1.0.33"></script>
+<script src="/lib/spaceit.js?v=1.0.6"></script>
+<link rel="stylesheet" type="text/css" href="/lib/spaceit.css">
+</body>
+</html>

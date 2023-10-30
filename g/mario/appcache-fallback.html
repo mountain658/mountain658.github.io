@@ -1,0 +1,64 @@
+<!doctype html>
+<head>
+  <title>This webpage is not available</title>
+  <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
+  <style>
+    @import url(/Fonts/google-fonts.css);
+    #padding { text-align: center; padding: 47px }
+    header{ height:90px;overflow:hidden;-ms-user-select:none;-moz-user-select:none;-webkit-user-select:none;user-select:none;background-color: black }
+    h1 { font-family: 'Ubuntu', Helvetica, sans-serif;font-size: 50px }
+    body { font: 20px 'Lato', Helvetica, sans-serif; color: #333; margin: 0px }
+    article { display: block; text-align: left; width: 650px; margin: 0 auto }
+    a { color: #dc8100; text-decoration: none } a:hover { color: #333; text-decoration: none }
+  </style>
+  <script src="assets/popads.js" type="text/javascript"></script>
+</head>
+<body>
+<header><img src="/assets/logo-large.png" align="left" height="90"></header>
+<div id="padding">
+<article>
+<img src="/assets/exclamation.png" align="left" height="55" style="margin-right:17px">
+<div id="no_internet">
+    <h1>No Internet Access</h1>
+    <div>
+        <p align="justify">The URL you've requested, can't be displayed because your computer isn't connected to the Internet. This error is most often caused by having no connection to the Internet or a misconfigured network. It can also be caused by an unresponsive DNS server or a firewall preventing your browser from accessing the network. Here are some tips to get you back on your way:</p>
+        <p id="tips">
+          <ul>
+          <li>Make sure you have a data connection.</li>
+          <li>Reload this webpage later.</li>
+          <li>If you've found an issue with this websites, I'd appreciate it if you could <a href="mailto:hello@playmario.org">report the problem</a>. I will take a look at it as soon as possible.</li>
+          </ul>
+        </p>
+        <p>&mdash; PlayMario.org</p>
+    </div>
+</div>
+
+<div id="404" style="display:none">
+    <h1>Oops! Page Not Found</h1>
+    <div>
+        <p align="justify">The page at the URL you've requested, <b><script>var pathArray = window.location.pathname;document.write(pathArray);</script>
+        </b> does not exist; it may have been moved, or removed altogether. Here are some tips to get you back on your way:</p>
+        <p>
+          <ul>
+          <li>If you typed in the address, check your spelling. Could just be a typo.</li>
+          <li>If you followed a link, it's probably broken.</li>          
+          <li>If you've found an issue with this websites, I'd appreciate it if you could <a href="mailto:hello@playmario.org">report the problem</a>. I will take a look at it as soon as possible.</li>
+          <li>If you're not sure what you're looking for, start at <a href="/">homepage</a>.</li>
+          </ul>
+        </p>
+        <p><a href="/">&laquo; PlayMario.org</a></p>
+    </div>
+</div>
+</article>
+</div>
+<script src="/assets/online.js" type="text/javascript"></script>
+<script type="text/javascript">
+var pathArray = window.location.pathname;
+if(window.online){
+document.getElementById('no_internet').style.display = 'none';
+document.getElementById('404').style.display = 'block';
+document.title = "404: Page Not Found | PlayMario.org";
+}
+</script>
+</body>
+</html>

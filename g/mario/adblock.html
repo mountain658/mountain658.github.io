@@ -1,0 +1,87 @@
+<!doctype html>
+<head>
+<title>Adblocker Detected | PlayMario.org</title>
+<style>
+  @import url(https://fonts.googleapis.com/css?family=Roboto:400,700);
+  @import url(assets/animate.css);
+  #padding { text-align: center; padding: 36px }
+  header{ height:90px;overflow:hidden;-ms-user-select:none;-moz-user-select:none;-webkit-user-select:none;user-select:none;background-color: black }
+  h1 { font-family: 'Roboto', Helvetica, sans-serif;font-size: 50px }
+  body { font: 20px 'Roboto', Helvetica, sans-serif; color: #333; margin: 0px; overflow: hidden; }
+  article { display: block; text-align: left; width: 650px; margin: 0 auto }
+  a { color: #dc8100; text-decoration: none } a:hover { color: #333; text-decoration: none }
+</style>
+</head>
+<body>
+<header><img src="assets/logo-large.png" align="left" height="90"></header>
+<div id="padding">
+<article>
+<img src="assets/adblock.svg" align="left" height="67" style="margin-right:17px">
+<div id="no_internet">
+    <h1>Adblocker Detected</h1>
+    <div>
+        <p align="justify">Please turn off the Adblocker or whitelist us in your browser to start playing. At <b>www.playmario.org</b>, we rely heavily on advertisement revenue and donations to maintain the running costs of this website (domain, server, cloudflare, ssl) . if you don't want to disable adblocking, consider <a href="#donation" onClick="ShowDonate();">donating</a> instead or you won't be able to play anymore. <a href="/" style="float:right">&laquo; PlayMario.org</a></p>
+    </div>
+</div>
+</article><br>
+<!--  =======================  DONATION FOR GAME START  ========================  -->
+<center id="donation">
+	<hr><br>
+	<table>
+		<tr><center><b>Help us to maintain this website and keep ads to a minimum:</b></center></tr>
+		<tr>
+			<td>
+				<form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
+				<input type="hidden" name="cmd" value="_s-xclick">
+				<input type="hidden" name="hosted_button_id" value="JHAK52H6YKBBJ">
+				<input type="hidden" name="on0" value="Donation Amount"><small>Donate using PayPal:</small><br>
+				<select name="os0">
+					<option value="Coffee">Coffee $2.00 USD</option>
+					<option value="Beer">Beer $5.00 USD</option>
+					<option value="Movie">Movie $10.00 USD</option>
+					<option value="Surprise">Surprise $20.00 USD</option>
+				</select>
+			</td>
+			<td>&nbsp;</td>
+			<td>
+			        <input type="hidden" name="currency_code" value="USD"><br>
+			        <input type="image" src="assets/btn_donate.gif" border="0" name="submit" alt="PayPal – The safer, easier way to pay online.">
+                                <img alt="" border="0" src="assets/pixel.gif" width="1" height="1"></form>
+			</td>
+			<td>&nbsp;&nbsp;&nbsp;&nbsp;</td>
+			<td>&nbsp;|<br>or<br>&nbsp;|</td>
+			<td>&nbsp;&nbsp;&nbsp;&nbsp;</td>
+			<td>
+				<br><a class="coinbase-button" data-code="fd15fab0e14fb04ba0049162b7938e50" data-button-style="donation_small" data-custom="COINBASEdonate9401" href="https://www.coinbase.com/checkouts/fd15fab0e14fb04ba0049162b7938e50">Donate Bitcoins</a><script src="https://www.coinbase.com/assets/button.js" type="text/javascript"></script>
+			</td>
+		</tr>
+	</table>
+</center>
+<!--  =======================  DONATION FOR GAME END  ========================  -->
+</div>
+<script type="text/javascript" src="assets/jquery-1.12.2.min.js"></script>
+<script type="text/javascript">
+	var adtest = document.createElement('div');
+	adtest.innerHTML = '&nbsp;';
+	adtest.className = 'adsbox';
+	document.body.appendChild(adtest);
+	window.setTimeout(function () {
+		if (adtest.offsetHeight != 0) {
+			window.location = "/";
+		}
+		adtest.remove();
+	}, 100);
+	$.fn.extend({
+		animateCss: function (animationName) {
+			var animationEnd = 'webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend';
+			$(this).addClass('animated ' + animationName).one(animationEnd, function() {
+			$(this).removeClass('animated ' + animationName);
+			});
+		}
+	});
+	function ShowDonate(){
+		$('#donation').animateCss('headShake');
+	}
+</script>
+</body>
+</html>

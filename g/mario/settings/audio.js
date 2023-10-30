@@ -1,0 +1,50 @@
+PlayMarioJas.PlayMarioJas.settings.audio = {
+    "directory": "Sounds",
+    "fileTypes": ["mp3", "ogg"],
+    "library": {
+        "Sounds": [
+            "BowserFalls",
+            "BowserFires",
+            "BreakBlock",
+            "Bump",
+            "Coin",
+            "Ending",
+            "Fail",
+            "Fireball",
+            "Firework",
+            "Flagpole",
+            "GainLife",
+            "GameOver2",
+            "GameOver",
+            "Hurry",
+            "JumpSmall",
+            "JumpSuper",
+            "Kick",
+            "LevelComplete",
+            "PlayerDies",
+            "Pause",
+            "Pipe",
+            "PowerDown",
+            "PowerupAppears",
+            "Powerup",
+            "StageClear",
+            "VineEmerging",
+            "WorldClear",
+            "YouDead"
+        ],
+        "Themes": [
+            "Castle",
+            "Overworld",
+            "Underwater",
+            "Underworld",
+            "Star",
+            "Sky",
+            "HurryCastle",
+            "HurryOverworld",
+            "HurryUnderwater",
+            "HurryUnderworld",
+            "HurryStar",
+            "HurrySky"
+        ]
+    }
+};

@@ -1,23 +1,17 @@
 <!DOCTYPE html>
 <html>
-  <head>
-
-      <title>Snake</title>
-    <link rel="shortcut icon"
-    type="image/jpg" href="https://www.google.com/logos/fnbx/snake_arcade/cta_alt.png"
-    />
-    <script src='/everypage.js'></script>
-  </head>
-<body>
-<script src="load.js"></script>
-         <a href="/"
-       style="position:absolute;width;50px;height: 50px;left:20px;top: 50px;" >Back To Home Page</a>
-<iframe title="Include gadget (iframe)" width="600" height="600"scrolling="no" frameborder="0" id="518929564" name="518929564" allowtransparency="true" class="igm" src="https://64bce5a6-c97f-4471-b2d0-7eefa13844b7.id.repl.co/focus.html"></iframe>
-
+<head>
+<title>Snake</title>
+<link rel="shortcut icon" href="snake.png">
+<script src="everypage.js"></script>
+</head>
+<body onload='focus()'>
+<a href=".." style='font-size: 1.5rem;'>Back To Home Page</a>
+<button onclick="openFullscreen('main')" style='font-size: 1.5rem;'>Fullscreen Mode</button>
+<iframe style='height: 600px; width: 600px;' allow="fullscreen" allowfullscreen scrolling="no" frameborder="0" id="main" allowtransparency="true" 
+        src="../g/snake/index.html"></iframe>
 <script src="fullScreen.js"></script>
-<button onclick="openFullscreen('518929564')">Fullscreen Mode</button>
-
-
+<script src="load.js"></script>
+<script>function focus() {document.getElementById('main').focus();}</script>
 </body>
-
 </html>

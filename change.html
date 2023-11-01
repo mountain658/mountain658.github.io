@@ -1,104 +1,31 @@
 <!DOCTYPE html>
 <html>
-<head>
-<title></title>
-<link rel="stylesheet" href="https://964f42af-e9df-427d-b8ab-46a96bcf0fe3.id.repl.co/new.css">
-</head>
-<body>
-  <script src="https://cdn.socket.io/4.6.0/socket.io.min.js" integrity="sha384-c79GN5VsunZvi+Q/WObgk2in0CbZsHnjEqvFxC5DxHn9lTfNce2WW6h2pH6u/kF+" crossorigin="anonymous"></script>
-<header>
-<h1>Changelog</h1>
-</header>
-<small>If you are mountain658, click <a href='update.html'>here</a></small>
-<div id="changelogContainer"></div> <!-- Added this div -->
-
+<body onload="connect()" style="margin: 0;padding: 0;overflow:hidden;">
+  <script src='everypage.js'></script>
+<div id="error"></div>
+<iframe id='frame' frameborder=0 style='poistion:fixed;top:0;left:0;width: 100vw;height: 100vh;'></iframe>
 <script>
-const socket = io("https://964f42af-e9df-427d-b8ab-46a96bcf0fe3.id.repl.co"); // Connect to the Socket.io server
+var frame = document.getElementById("frame");
+var e = document.getElementById("error");
 
-socket.on('changelog', (data) => {
-  // Access the received content and display it
-  var changes = data.data;
-  // Reverse the order of changelog entries
-  changes.reverse();
-  
-  // Add changelog entries to the document
-  changes.forEach(function(change) {
-    var detailsElement = document.createElement("details");
-    var summaryElement = document.createElement("summary");
-    summaryElement.innerText = getDate(change.date) + " - " + change.summary;
-    detailsElement.appendChild(summaryElement);
-
-    var paragraphElement = document.createElement("p");
-    paragraphElement.innerText = change.details;
-    detailsElement.appendChild(paragraphElement);
-
-    var htmlElement = document.createElement("div");
-    htmlElement.innerHTML = change.html;
-    detailsElement.appendChild(htmlElement);
-
-    // Append the details element to the changelogContainer div
-    document.getElementById("changelogContainer").appendChild(detailsElement);
-  });
-});
-
-
-// The rest of the code remains unchanged
-
-function formatTime(timestamp) {
-  const date = new Date(timestamp);
-  const hours = date.getHours();
-  const minutes = date.getMinutes();
-  const ampm = hours >= 12 ? 'PM' : 'AM';
-  const formattedHours = hours % 12 || 12;
-  const formattedMinutes = minutes < 10 ? '0' + minutes : minutes;
-  return formattedHours + ':' + formattedMinutes + ' ' + ampm;
-}
-
-function getTimeAgo(timestamp) {
-  const now = new Date();
-  const diff = now.getTime() - timestamp;
-
-  // Convert milliseconds to seconds, minutes, hours, and days
-  const seconds = Math.floor(diff / 1000);
-  const minutes = Math.floor(seconds / 60);
-  const hours = Math.floor(minutes / 60);
-  const days = Math.floor(hours / 24);
-
-  if (diff < 0) {
-    return 'Right now'; // Future timestamp
-  } else if (seconds < 60) {
-    return 'Just now'; // Less than a minute ago
-  } else if (minutes === 1) {
-    return '1 minute ago';
-  } else if (minutes < 60) {
-    return minutes + ' minutes ago';
-  } else if (hours === 1) {
-    const formattedTime = formatTime(timestamp);
-    return '1 hour ago (' + formattedTime + ')';
-  } else if (hours < 24) {
-    const formattedTime = formatTime(timestamp);
-    return hours + ' hours ago (' + formattedTime + ')';
-  } else if (days === 1) {
-    const formattedTime = formatTime(timestamp);
-    return 'Yesterday (' + formattedTime + ')';
-  } else if (days < 7) {
-    const weekday = new Date(timestamp).toLocaleDateString('en-US', { weekday: 'long' });
-    const formattedTime = formatTime(timestamp);
-    return weekday + ' (' + formattedTime + ')';
-  } else {
-    const date = new Date(timestamp);
-    const month = date.toLocaleDateString('en-US', { month: 'long' });
-    const day = date.getDate();
-    const year = date.getFullYear();
-    const formattedTime = formatTime(timestamp);
-    return month + ' ' + day + ', ' + year + ' (' + formattedTime + ')';
+function connect() {
+var xhr = new XMLHttpRequest();
+xhr.open('GET', 'https://964f42af-e9df-427d-b8ab-46a96bcf0fe3.id.repl.co/');
+xhr.onreadystatechange = function() {
+  if (xhr.readyState == 4 && frame) {
+     if (xhr.responseText) {
+      document.write(xhr.responseText);
+     }
   }
 }
-
-function getDate(date) {
-  var today = new Date(date);
-  return getTimeAgo(today.getTime());
+xhr.send();
 }
+
+setTimeout(function(){
+ if (!frame.srcdoc) {
+e.innerHTML = "<h1>Error, this took too long</h1><hr><h3>You are either offline, or the server is down.</h3><p>Verify your internet connection or try again in a couple minutes.</p><hr><button onclick='connect()'>Retry</button>";
+ }
+}, 5000)
 </script>
 </body>
 </html>

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<body onload="connect()" style="margin: 0;padding: 0;overflow:hidden;">
+  <script src='everypage.js'></script>
+<div id="error"></div>
+<iframe id='frame' frameborder=0 style='poistion:fixed;top:0;left:0;width: 100vw;height: 100vh;'></iframe>
+<script>
+var frame = document.getElementById("frame");
+var e = document.getElementById("error");
+
+function connect() {
+var xhr = new XMLHttpRequest();
+xhr.open('GET', 'https://964f42af-e9df-427d-b8ab-46a96bcf0fe3.id.repl.co/update.html');
+xhr.onreadystatechange = function() {
+  if (xhr.readyState == 4 && frame) {
+     if (xhr.responseText) {
+      document.write(xhr.responseText);
+     }
+  }
+}
+xhr.send();
+}
+
+setTimeout(function(){
+ if (!frame.srcdoc) {
+e.innerHTML = "<h1>Error, this took too long</h1><hr><h3>You are either offline, or the server is down.</h3><p>Verify your internet connection or try again in a couple minutes.</p><hr><button onclick='connect()'>Retry</button>";
+ }
+}, 5000)
+</script>
+</body>
+</html>

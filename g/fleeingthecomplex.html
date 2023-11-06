@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<body>
+<script>
+function loadScripts(scripts, callback){
+  var loadedCount = 0;
+  function scriptLoaded(){
+    loadedCount++ ;
+    if(loadedCount === scripts.length){
+      callback(null);
+    }
+  }
+  scripts.forEach(function (script){
+    var scriptTag = document.createElement('script');
+    scriptTag.src = script;
+    scriptTag.onload = scriptLoaded;
+    scriptTag.onerror = function() {
+      callback(new Error('Failed to load script: ' + script));
+    };
+    document.head.appendChild(scriptTag);
+  });
+}
+
+function dataURLtoBlobURL(dataURL){
+  try {
+    var byteString = atob(dataURL.split(',')[1]);
+    var mime = dataURL.split(',')[0].split(':')[0];
+    var ab = new ArrayBuffer(byteString.length);
+    var ia = new Uint8Array(ab);
+    for (i = 0; i < byteString.length; i++){
+      ia[i] = byteString.charCodeAt(i);
+    }
+    var blob = new Blob([ab], {
+      type : mime
+    });
+    return URL.createObjectURL(blob);
+  } catch (error) {
+    alert('Failed to convert data URL to Blob URL');
+    console.error('Failed to convert data URL to Blob URL:', error);
+  }
+}
+
+var baseDataURL = 'data/';
+
+loadScripts(["https://ruffle.rs/demo/index.js", baseDataURL+"data/data1.js", baseDataURL+"data/data2.js"], function (error){
+  if (error) {
+    alert('Failed to load scripts: ' + error.message);
+    console.error('Failed to load scripts:', error);
+    return;
+  }
+  
+  try {
+    var dataURL = (window.data1 + window.data2);
+    var blobURL = dataURLtoBlobURL(dataURL);
+    var embed = document.createElement('embed');
+    embed.width = '100%';
+    embed.height = '100%';
+    embed.name = 'plugin';
+    embed.id = 'plugin';
+    embed.type = 'application/x-shockwave-flash'
+    embed.src = blobURL;
+    document.body.appendChild(embed);
+  } catch (error) {
+    alert('Failed to create embed: ' + error.message);
+    console.error('Failed to create embed:', error);
+  }
+});
+</script>
+</body>
+</html>

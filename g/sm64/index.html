@@ -1,8 +1,6 @@
 <!Doctype html>
 <html lang="en-us">
   <head>
-    <meta charset="utf-8">
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <title>Super Mario 64</title>
     <link rel="icon" href="logo.png">
     <style>
@@ -11,7 +9,6 @@
         padding: 0;
         width: 100vw;
         min-height: 100vh;
-        font-family: Arial, Helvetica, sans-serif;
         color: white;
         background-color: black;
         image-rendering: pixelated;
@@ -31,13 +28,60 @@
         width: 100vw;
         height: 100vh;
       }
+      #overlay {
+        width: 100vw;
+        height: 100vh;
+        position: absolute;
+        align-items: center;
+        justify-content: center;
+        font-family: inherit;
+        appearance: none;
+        border: 0;
+        background: #2c2c2c;
+        color: #fff;
+        padding: 18px 46px;
+        font-size: 28px;
+        cursor: pointer;
+      }
+      #overlay:hover {
+        background: #3f3f3f;
+      }
+      #overlay:focus {
+       outline: none;
+       box-shadow: 0 0 0 4px #cbd6ee;
+      }
     </style>
   </head>
   <body>
     <div id="container">
+    <button id="overlay" onclick="focusMain()">CLICK TO PLAY NOW<br><pre>Controls:
+X = Jump, Read Dialogue
+Spacebar = Crouch, Ground Pound
+WASD = Camera Controls
+C = Throw, Grab</pre></button>
       <canvas class="emscripten" id="canvas"></canvas>
     </div>
     <script type='text/javascript'>
+    function focusMain() {
+     var resumeBtn = document.getElementById('overlay');
+     resumeBtn.style.left = '1000vw';
+     resumeBtn.style.display = 'none';
+    
+     var canvas = document.getElementById('canvas');
+     canvas.focus();
+    }
+    
+    window.onblur = function(){
+     var resumeBtn = document.getElementById('overlay');
+     resumeBtn.style.left = '0';
+     resumeBtn.style.display = 'block';
+     resumeBtn.innerHTML = `CLICK TO CONTINUE<br><pre>Controls:
+X = Jump, Read Dialogue
+Spacebar = Crouch, Ground Pound
+WASD = Camera Controls
+C = Throw, Grab</pre>`;
+    }
+    
       var Module = {
         preRun: [],
         postRun: [],

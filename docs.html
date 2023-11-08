@@ -1,26 +1,18 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <title>Collaborative Docs</title>
 <script src='everypage.js'></script>
-
 <link rel="shortcut icon" href="Docs.png" type="image/png"/>
-
 <script src="load.js"></script>
-<body>
+<body onload="updateRedirect()">
    <a href='..'>Back to Home Page</a>
 <h1>Type doc code in the box below</h1>
-
-<input id="key" onkeyup='updateRedirect()' class='center' autocomplete="off" readonly onfocus="this.removeAttribute('readonly');">
-
+<input id="key" value="mountain658" onkeyup='updateRedirect()' class='center' autocomplete="off" readonly onfocus="this.removeAttribute('readonly');">
 <br><br>
-
-<h3>Currently In Doc: <span id='inRoom'></span></h3>
-
+<h3>Currently In Doc: <span id='inRoom'>mountain658</span></h3>
 <div id='iframeDiv'>
 <iframe id='join' src='' width='100%' height='500px'></iframe>
 </div>
-
 <script>
 function updateRedirect() {
 var iFD = document.getElementById("iframeDiv");

@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Duck Life - Mountain Game Games</title>
+<link rel="shortcut icon" href="ducklife.png">
+<script src="everypage.js"></script>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <style>
+body {
+background-image: url(mountain.png);
+background-position: center center;
+background-repeat:no-repeat;
+background-attachment: fixed;
+background-size: cover; 
+}
+
+body::-webkit-scrollbar {
+    display: none;
+}
+
+body {
+  -ms-overflow-style: none; 
+  scrollbar-width: none;  
+}
+
+.whiteButton {
+position: absolute;
+top: 0px;
+right: 0px;
+display: flex;
+}
+	  
+.whitebutton {
+background-color: Transparent;
+background-repeat:no-repeat;
+border: none;
+cursor: default;
+overflow: hidden;
+outline:none;
+font-size:0.25em;
+}
+
+.blueContainer {
+background-color:#79ceea;
+text-align:center; 
+border-radius: 10px;
+}
+
+.f-newest {
+border-radius: 5px;
+text-align:center; 
+overflow-x: scroll;
+}
+
+.fiveGrid {
+display: grid;
+text-align:center; 
+grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+}
+  
+	.text-center {
+	  text-align: center;
+	}
+  
+	.game-link {
+	  height: 200px;
+	  width: 150px;
+      margin: 5px;
+	}
+  
+	.game-tile {
+	  background-color: white;
+	  height: 200px;
+	  width: 150px;
+	  border-radius: 30px;
+	  -webkit-animation: scale-down-center 0.1s both;
+	  animation: scale-down-center 0.1s both;
+	}
+  
+	.game-tile:hover {
+	  -webkit-animation: scale-up-center 0.1s both;
+	  animation: scale-up-center 0.1s both;
+      font-weight: bold;
+      cursor: pointer;
+	}
+    
+	.game-tile:hover .game-title{
+      font-size: bold;
+      cursor: pointer;
+	}
+  
+	@-webkit-keyframes scale-up-center {
+	  0% {
+		-webkit-transform: scale(1);
+		transform: scale(1);
+	  }
+  
+	  100% {
+		-webkit-transform: scale(1.1);
+		transform: scale(1.1);
+	  }
+	}
+  
+	@-webkit-keyframes scale-down-center {
+	  0% {
+		-webkit-transform: scale(1.1);
+		transform: scale(1.1);
+	  }
+  
+	  100% {
+		-webkit-transform: scale(1);
+		transform: scale(1);
+	  }
+	}
+  
+	.game-icon {
+	  border-radius: 15px;
+	  width: 150px;
+	  height: 150px;
+	}
+  
+	.game-title {
+	  font-size: 15px;
+	  text-align: center;
+	}
+  
+	.flex-container {
+	  display: flex;
+	  flex-direction: row;
+	  order: 0;
+	  flex-grow: 0;
+	  flex-wrap: wrap;
+	}
+  
+	.container {
+	  padding: 10px;
+	}
+  
+	#searchQuery {
+	  width: calc(50% + 100px);
+	  border: 3px solid #ddd;
+	  border-radius: 10px;
+      margin: 10px;
+      padding: 5px;
+	}
+  h2 {
+   width: 100%; 
+   margin: 10px 0 20px; 
+  } 
+
+  h2 span { 
+    padding:0 10px; 
+  }
+  .topcorner{
+  position:absolute;
+  top:10;
+  right:15;
+  }
+  .chat{
+background-color:skyblue;
+font-size: 16px;
+padding: 12px 24px;
+  }
+  
+@media (prefers-color-scheme: dark) {
+  body {
+    color: #eee;
+    background-image: url(mountainDark.png);
+    background-position: center center;
+    background-repeat:no-repeat;
+    background-attachment: fixed;
+    background-size: cover; 
+  }
+img {
+filter: brightness(.9) contrast(1);
+}
+  body a {
+    color: #809fff;
+  }
+ .game-tile {
+	  background-color: #292929;
+  }
+  .whitebutton {
+  color: #eee;
+  }
+  .blueContainer {
+background-color:#191919;
+ }
+ .chat { 
+background-color:#383838; 
+ }
+  #searchQuery {
+color: #eee;
+background-color:#383838;  
+border: 3px solid #292929;
+  }
+}  
+  </style>
+</head>
+<body>
+  <h1>Duck Life - Mountain Game Games</h1>
+<a href='..' style="font-size:1.25rem;">Back To Home Page</a>
+    <div>
+<label for="searchQuery">Search:</label>
+    <input type="search" id="searchQuery" onload="startSearch()" onkeyup="startSearch()" title="Search" autocomplete='off'>
+  </div>
+    <div id="search">
+  <div class="flex-container">
+	<section>
+   <div class="flex-container">
+
+  <a href="ducklife1.html"class="game-link container">	
+  <div class="game-tile">	
+  <img class="game-icon" src="ducklife1.png" alt="Duck Life 1" loading="lazy">
+  <h1 class="game-title">Duck Life 1</h1> 	
+  </div>
+  </a>
+  
+  <a href="ducklife2.html"class="game-link container">	
+  <div class="game-tile">	
+  <img class="game-icon" src="ducklife2.png" alt="Duck Life 2" loading="lazy">
+  <h1 class="game-title">Duck Life 2</h1> 	
+  </div>
+  </a>
+  
+  <a href="ducklife3.html"class="game-link container">	
+  <div class="game-tile">	
+  <img class="game-icon" src="ducklife3.png" alt="Duck Life 3" loading="lazy">
+  <h1 class="game-title">Duck Life 3</h1> 	
+  </div>
+  </a>
+  
+  <a href="ducklife4.html"class="game-link container">	
+  <div class="game-tile">	
+  <img class="game-icon" src="ducklife4.png" alt="Duck Life 4" loading="lazy">
+  <h1 class="game-title">Duck Life 4</h1> 	
+  </div>
+  </a>
+  
+  <a href="ducklife5.html"class="game-link container">	
+  <div class="game-tile">	
+  <img class="game-icon" src="ducklife5.png" alt="Duck Life 5" loading="lazy">
+  <h1 class="game-title">Duck Life 5</h1> 	
+  </div>
+  </a>
+  
+</div>
+  </section>
+   </div>
+    </div>
+   
+  <script>
+function startSearch() {
+  var input, filter, ul, li, a, i;
+  input = document.getElementById("searchQuery");
+  filter = input.value.toUpperCase();
+  ul = document.getElementById("search");
+  li = ul.getElementsByTagName("a");
+  for (i = 0; i < li.length; i++) {
+    a = li[i].getElementsByTagName("h1")[0];
+    if (a.innerHTML.toUpperCase().indexOf(filter) > -1) {
+      li[i].style.display = "";
+    } else {
+      li[i].style.display = "none";
+    }
+  }
+}
+
+loadTitle();
+function  loadTitle(){
+    if (localStorage.Titlesave) {
+      document.title = localStorage.Titlesave;
+ }
+}
+loadIcon();
+function  loadIcon(){
+    if (localStorage.Iconsave) {
+      function changeFavicon(src) { var link = document.createElement('link'),     oldLink = document.getElementById('dynamic-favicon'); link.id = 'dynamic-favicon'; link.rel = 'shortcut icon'; link.href = src; if (oldLink) {  document.head.removeChild(oldLink);
+} document.head.appendChild(link);}
+changeFavicon(localStorage.Iconsave);
+ }
+}
+  </script>
+</body>
+</html>

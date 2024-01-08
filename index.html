@@ -160,7 +160,11 @@ grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
   .chat{
 background-color:skyblue;
 font-size: 16px;
-padding: 12px 24px;
+padding: 10px 10px;
+border-radius: 10px;
+  }
+  .chat iframe {
+   border-radius: 10px;
   }
   .niceButton {
 background-color: #98d6ee;
@@ -290,8 +294,15 @@ function startSearch() {
   </div>
   </a>
 
-<div class="game-link container">	
-<iframe style="height: 200px; width: 330px;" class="game-tile" frameborder=0 id='changelog' src="change.html"></iframe>
+  <a href="https://gams-offline.github.io/Gams/" target="_blank" class="game-link container">	
+  <div class="game-tile">	
+  <img class="game-icon" src="gams.png" alt="Gams Offline Logo" loading="lazy">
+  <h1 class="game-title">Gams Offline</h1> 	
+  </div>
+  </a>
+
+<div class="game-link container" style="height: 200px; width: 330px">	
+<iframe style="height: 200px; width: 330px; overflow:scroll" class="game-tile" frameborder=0 id='changelog' src="change.html"></iframe>
 </div>
   
 </div>
@@ -517,7 +528,7 @@ introJs().start();
 }
 
 	function joinChat() {
-document.getElementById('chat').innerHTML = ("<iframe width='99%' height = '400px' id='thechat' src="
+document.getElementById('chat').innerHTML = ("<iframe width='99%' height = '350px' id='thechat' src="
 +"'ccc.html'></iframe>");
 }
 

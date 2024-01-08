@@ -10,7 +10,7 @@ var e = document.getElementById("error");
 
 function connect() {
 var xhr = new XMLHttpRequest();
-xhr.open('GET', 'https://ffac8353-03d4-4003-af31-962a9c1a8768.id.repl.co/');
+xhr.open('GET', 'https://17bd527b-c768-482e-a95d-c2abf615c96c-00-hkzb0zywhldt.global.replit.dev/');
 xhr.onreadystatechange = function() {
   if (xhr.readyState == 4 && frame) {
      if (xhr.responseText) {
@@ -22,11 +22,20 @@ xhr.onreadystatechange = function() {
 xhr.send();
 }
 
+function connectDirect() {
+e.innerHTML = "";
+frame.src = "https://17bd527b-c768-482e-a95d-c2abf615c96c-00-hkzb0zywhldt.global.replit.dev/";
+}
+
 setTimeout(function(){
  if (!frame.srcdoc) {
-e.innerHTML = "<h1>Error, this took too long</h1><hr><h3>You are either offline, or the server is down.</h3><p>Verify your internet connection or try again in a couple minutes.</p><hr><button onclick='connect()'>Retry</button>";
+e.innerHTML = "<h1>Error, this took too long</h1><hr><h3>You are either offline, or the server is down.</h3><p>Verify your internet connection or try again in a couple minutes.</p><hr><button onclick='connect()'>Retry</button><br><h1>Or...</h1><button onclick='connectDirect()'>Attempt Direct Connect (Usually blocked)</button>";
  }
-}, 5000)
+}, 3000);
+
+setTimeout(function(){
+connectDirect();
+}, 5000);
 </script>
 </body>
 </html>

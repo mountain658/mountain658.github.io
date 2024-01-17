@@ -10,22 +10,32 @@ var e = document.getElementById("error");
 
 function connect() {
 var xhr = new XMLHttpRequest();
-xhr.open('GET', 'https://964f42af-e9df-427d-b8ab-46a96bcf0fe3.id.repl.co/update.html');
+xhr.open('GET', 'https://e1ef611f-7f73-40d8-8689-7649f475cb7a-00-2r82gjnsrxuoq.janeway.replit.dev/update.html');
 xhr.onreadystatechange = function() {
   if (xhr.readyState == 4 && frame) {
      if (xhr.responseText) {
-      document.write(xhr.responseText);
+      e.innerHTML = "";
+      frame.srcdoc = (xhr.responseText);
      }
   }
 }
 xhr.send();
 }
 
+function connectDirect() {
+e.innerHTML = "";
+frame.src = "https://e1ef611f-7f73-40d8-8689-7649f475cb7a-00-2r82gjnsrxuoq.janeway.replit.dev/update.html";
+}
+
 setTimeout(function(){
  if (!frame.srcdoc) {
-e.innerHTML = "<h1>Error, this took too long</h1><hr><h3>You are either offline, or the server is down.</h3><p>Verify your internet connection or try again in a couple minutes.</p><hr><button onclick='connect()'>Retry</button>";
+e.innerHTML = "<h1>Error, this took too long</h1><hr><h3>You are either offline, or the server is down.</h3><p>Verify your internet connection or try again in a couple minutes.</p><hr><button onclick='connect()'>Retry</button><br><h1>Or...</h1><button onclick='connectDirect()'>Attempt Direct Connect (Usually blocked)</button>";
  }
-}, 5000)
+}, 3000);
+
+setTimeout(function(){
+connectDirect();
+}, 5000);
 </script>
 </body>
 </html>

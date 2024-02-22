@@ -118,5 +118,11 @@ var changes = [
   "date" : "2024-02-22T10:49", 
   "details" : "Fixed the Learning game. And now you can play it.", 
   "html" : "<a href=\"learning.html\">Learning</a><h3 style=\"color:gold;font-weight:bold\">-mountain658</h3>"
+},
+{
+  "summary" : "Fixed There is no game!", 
+  "date" : "2024-02-22T11:14", 
+  "details" : "Fixed there is no game game. And now you can play it.", 
+  "html" : "<a href=\"thereisnogame.html\">There is no game</a><h3 style=\"color:purple;font-weight:bold\">-shotgunshelly</h3>"
 }
 ];

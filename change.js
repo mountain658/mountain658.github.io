@@ -112,5 +112,11 @@ var changes = [
   "date" : "2024-01-11T08:50", 
   "details" : "Learn To Fly made an idle game. And now you can play it.", 
   "html" : "<a href=\"learntoflyidle.html\">Learn To Fly Idle</a><h3 style=\"color:gold;font-weight:bold\">-mountain658</h3>"
+},
+{
+  "summary" : "Fixed Learning Game!", 
+  "date" : "2024-02-22T10:49", 
+  "details" : "Fixed the Learning game. And now you can play it.", 
+  "html" : "<a href=\"learning.html\">Learning</a><h3 style=\"color:gold;font-weight:bold\">-mountain658</h3>"
 }
 ];

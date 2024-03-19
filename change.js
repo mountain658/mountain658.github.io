@@ -136,5 +136,11 @@ var changes = [
   "date": "2024-03-19T10:57",
   "details": "Just Fixed Madalin Stunt Cars 2!!! Go play it!",
   "html": "<br><a href=\"StuntCars.html\" target=\"blank\">CircleO</a><h3 style=\"color:gold;font-weight:bold\">-mountain658</h3>"
+},
+{
+  "summary": "Crossy Road Fixed!",
+  "date": "2024-03-19T10:57",
+  "details": "Just Fixed Crossy Road! Woo! Go play it.",
+  "html": "<br><a href=\"crossyroad.html\" target=\"blank\">CircleO</a><h3 style=\"color:gold;font-weight:bold\">-mountain658</h3>"
 }
 ];

@@ -142,5 +142,11 @@ var changes = [
   "date": "2024-03-19T10:57",
   "details": "Just Fixed Crossy Road! Woo! Go play it.",
   "html": "<br><a href=\"crossyroad.html\" target=\"blank\">CircleO</a><h3 style=\"color:gold;font-weight:bold\">-mountain658</h3>"
+},
+{
+  "summary": "Volley Random is working!",
+  "date": "2024-03-19T11:03",
+  "details": "Just Fixed Volley Random! Woo! Go play it.",
+  "html": "<br><a href=\"volleyrandom.html\" target=\"blank\">Volley Random</a><h3 style=\"color:gold;font-weight:bold\">-mountain658</h3>"
 }
 ];

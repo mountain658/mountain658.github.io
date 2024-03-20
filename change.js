@@ -166,5 +166,11 @@ var changes = [
   "date": "2024-03-20T10:20",
   "details": "Fixed Ping Pong Chaos, so now you can play it!",
   "html": "<br><a href=\"pingpongchaos.html\" target=\"blank\">Ping Pong Chaos</a><h3 style=\"color:gold;font-weight:bold\">-mountain658</h3>"
+},
+{
+  "summary": "T-rex Game Updated!!!",
+  "date": "2024-03-20T10:25",
+  "details": "Fixed T-rex Game, so now you can play it, also, now with game modes!",
+  "html": "<br><a href=\"t-rex-game/t-rex.html\" target=\"blank\">T-rex Game</a><h3 style=\"color:gold;font-weight:bold\">-mountain658</h3>"
 }
 ];

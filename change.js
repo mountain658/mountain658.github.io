@@ -154,5 +154,11 @@ var changes = [
   "date": "2024-03-20T10:03",
   "details": "Removed a broken Subway Surfers server.",
   "html": "<br><a href=\"subwaysurfers.html\" target=\"blank\">Subway Surfers</a><h3 style=\"color:gold;font-weight:bold\">-mountain658</h3>"
+},
+{
+  "summary": "Fixed Papery Planes",
+  "date": "2024-03-20T10:03",
+  "details": "Fixed Papery Planes, so now you can play it!",
+  "html": "<br><a href=\"paperyplanes.html\" target=\"blank\">Papery Planes</a><h3 style=\"color:gold;font-weight:bold\">-mountain658</h3>"
 }
 ];

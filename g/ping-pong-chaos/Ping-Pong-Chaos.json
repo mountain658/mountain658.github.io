@@ -1,0 +1,9 @@
+{
+"TOTAL_MEMORY": 268435456,
+"dataUrl": "Ping-Pong-Chaos.data.unityweb",
+"asmCodeUrl": "Ping-Pong-Chaos.asm.code.unityweb",
+"asmMemoryUrl": "Ping-Pong-Chaos.asm.memory.unityweb",
+"asmFrameworkUrl": "Ping-Pong-Chaos.asm.framework.unityweb",
+"splashScreenStyle": "Dark",
+"backgroundColor": "#1F6FBF"
+}

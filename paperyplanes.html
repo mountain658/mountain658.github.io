@@ -1,20 +1,17 @@
 <!DOCTYPE html>
 <html>
-  <head>
-      <title>Papery Planes</title>
-    <link rel="shortcut icon" type="image/jpg" 
-    href="paperyplanes.png"/>
-    <script src='../everypage.js'></script>
-  </head>
+<head>
+<title>Papery Planes</title>
+<link rel="shortcut icon" href="paperyplanes.png">
+<script src="everypage.js"></script>
+</head>
 <body onload='focus()'>
-<script src="load.js"></script>
-         <a href="/" style='font-size: 2vw;'>Back To Home Page</a>
-         <button onclick="openFullscreen('518929564')" style='font-size: 2vw;'>Fullscreen Mode</button>      
-<iframe style='height: 95vh; width: 95vw;' scrolling="no" frameborder="0" id="518929564" allowtransparency="true" 
-        src="https://ae5c977e-f81d-49f2-915b-f708c66431d6.id.repl.co/school/"></iframe>
+<a href=".." style='font-size: 1.5rem;'>Back To Home Page</a>
+<button onclick="openFullscreen('main')" style='font-size: 1.5rem;'>Fullscreen Mode</button>
+<iframe style='height: calc(100vh - 1.5rem); width: calc(100vw - 2rem);' allow="fullscreen" allowfullscreen scrolling="no" frameborder="0" id="main" allowtransparency="true" 
+        src="g/paperyplanes/index.html"></iframe>
 <script src="fullScreen.js"></script>
-<script>
-function focus() {document.getElementById('518929564').focus();}
-</script>
+<script src="load.js"></script>
+<script>function focus() {document.getElementById('main').focus();}</script>
 </body>
 </html>

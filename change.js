@@ -148,5 +148,11 @@ var changes = [
   "date": "2024-03-19T11:03",
   "details": "Just Fixed Volley Random! Woo! Go play it.",
   "html": "<br><a href=\"volleyrandom.html\" target=\"blank\">Volley Random</a><h3 style=\"color:gold;font-weight:bold\">-mountain658</h3>"
+},
+{
+  "summary": "Subway Surfers",
+  "date": "2024-03-20T10:03",
+  "details": "Removed a broken Subway Surfers server.",
+  "html": "<br><a href=\"subwaysurfers.html\" target=\"blank\">Subway Surfers</a><h3 style=\"color:gold;font-weight:bold\">-mountain658</h3>"
 }
 ];

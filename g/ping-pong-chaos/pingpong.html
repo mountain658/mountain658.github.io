@@ -1,0 +1,9 @@
+<body style='background-color:black'> </body>
+<link rel="stylesheet" href="style.css">
+<script src="UnityProgress.js"></script>
+<script src="Ping-Pong-Chaos.js"></script>
+<script>
+var gameInstance = UnityLoader.instantiate("gameContainer", "Ping-Pong-Chaos.json", {onProgress: UnityProgress,Module:{onRuntimeInitialized: function() {UnityProgress(gameInstance, "complete")}}});
+</script>
+<div class="webgl-content">
+<div id="gameContainer" style="width: 100vw; height: 100vh; margin: auto"></div></div>

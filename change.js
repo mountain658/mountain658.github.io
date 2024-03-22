@@ -124,5 +124,59 @@ var changes = [
   "date" : "2024-02-22T11:14", 
   "details" : "Fixed there is no game game. And now you can play it.", 
   "html" : "<a href=\"thereisnogame.html\">There is no game</a><h3 style=\"color:purple;font-weight:bold\">-shotgunshelly</h3>"
+},
+{
+  "summary": "Fixed CircleO",
+  "date": "2024-03-19T10:48",
+  "details": "CircleO is Fixed! Go play it!",
+  "html": "<a href=\"circleo.html\" target=\"blank\">CircleO</a><h3 style=\"color:gold;font-weight:bold\">-mountain658</h3>"
+},
+{
+  "summary": "Madalin Stunt Cars 2 Fixed!",
+  "date": "2024-03-19T10:57",
+  "details": "Just Fixed Madalin Stunt Cars 2!!! Go play it!",
+  "html": "<br><a href=\"StuntCars.html\" target=\"blank\">CircleO</a><h3 style=\"color:gold;font-weight:bold\">-mountain658</h3>"
+},
+{
+  "summary": "Crossy Road Fixed!",
+  "date": "2024-03-19T10:57",
+  "details": "Just Fixed Crossy Road! Woo! Go play it.",
+  "html": "<br><a href=\"crossyroad.html\" target=\"blank\">CircleO</a><h3 style=\"color:gold;font-weight:bold\">-mountain658</h3>"
+},
+{
+  "summary": "Volley Random is working!",
+  "date": "2024-03-19T11:03",
+  "details": "Just Fixed Volley Random! Woo! Go play it.",
+  "html": "<br><a href=\"volleyrandom.html\" target=\"blank\">Volley Random</a><h3 style=\"color:gold;font-weight:bold\">-mountain658</h3>"
+},
+{
+  "summary": "Subway Surfers",
+  "date": "2024-03-20T10:03",
+  "details": "Removed a broken Subway Surfers server.",
+  "html": "<br><a href=\"subwaysurfers.html\" target=\"blank\">Subway Surfers</a><h3 style=\"color:gold;font-weight:bold\">-mountain658</h3>"
+},
+{
+  "summary": "Fixed Papery Planes",
+  "date": "2024-03-20T10:03",
+  "details": "Fixed Papery Planes, so now you can play it!",
+  "html": "<br><a href=\"paperyplanes.html\" target=\"blank\">Papery Planes</a><h3 style=\"color:gold;font-weight:bold\">-mountain658</h3>"
+},
+{
+  "summary": "Ping Pong Chaos, is Fixed!",
+  "date": "2024-03-20T10:20",
+  "details": "Fixed Ping Pong Chaos, so now you can play it!",
+  "html": "<br><a href=\"pingpongchaos.html\" target=\"blank\">Ping Pong Chaos</a><h3 style=\"color:gold;font-weight:bold\">-mountain658</h3>"
+},
+{
+  "summary": "T-rex Game Updated!!!",
+  "date": "2024-03-20T10:25",
+  "details": "Fixed T-rex Game, so now you can play it, also, now with game modes!",
+  "html": "<br><a href=\"t-rex-game/t-rex.html\" target=\"blank\">T-rex Game</a><h3 style=\"color:gold;font-weight:bold\">-mountain658</h3>"
+},
+{
+  "summary": "Moto X3M Pool, fixed.",
+  "date": "2024-03-20T10:30",
+  "details": "Fixed Moto X3M Pool.html!",
+  "html": "<br><a href=\"motox3mpool.html\" target=\"blank\">Moto X3M Pool</a><h3 style=\"color:gold;font-weight:bold\">-mountain658</h3>"
 }
 ];

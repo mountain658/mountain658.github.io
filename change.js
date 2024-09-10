@@ -183,6 +183,6 @@ var changes = [
   "summary": "Add Slope 2.",
   "date": "2024-09-09T22:30",
   "details": "Added first game this century!",
-  "html": "<br><a href=\"motox3mpool.html\" target=\"blank\">Moto X3M Pool</a><h3 style=\"color:purple;font-weight:italic\">-shotgunshelly</h3>"
+  "html": "<br><a href=\"slope2.html\" target=\"blank\">Slope 2!</a><h3 style=\"color:purple;font-weight:italic\">-shotgunshelly</h3>"
 }
 ];

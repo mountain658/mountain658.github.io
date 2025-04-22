@@ -188,7 +188,7 @@ var changes = [
 ,
   {
   "summary": "Add Procrastination Clicker",
-  "date": "2024-09-09T22:30",
+  "date": "2025-04-21T19:23",
   "details": "Yooo it's 2025! I think I'm old.",
   "html": "<br><a href=\"procrastinationclicker.html\" target=\"blank\">Procrastination Clicker</a><h3 style=\"color:gold;font-weight:italic\">-mountain658</h3>"
 }

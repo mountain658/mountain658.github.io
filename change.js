@@ -185,4 +185,11 @@ var changes = [
   "details": "Added first game this century!",
   "html": "<br><a href=\"slope2.html\" target=\"blank\">Slope 2!</a><h3 style=\"color:purple;font-weight:italic\">-shotgunshelly</h3>"
 }
+,
+  {
+  "summary": "Add Procrastination Clicker",
+  "date": "2024-09-09T22:30",
+  "details": "Yooo it's 2025! I think I'm old.",
+  "html": "<br><a href=\"procrastinationclicker.html\" target=\"blank\">Procrastination Clicker</a><h3 style=\"color:gold;font-weight:italic\">-mountain658</h3>"
+}
 ];

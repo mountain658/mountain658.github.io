@@ -7,6 +7,32 @@
 
 //DO NOT DELETE
 (function() {
+  const NEW_CHAT_URL = "https://escaping.work/chat/";
+
+  function replaceIframe(iframe) {
+    if (iframe && iframe.src.includes("ccc.html")) {
+      iframe.src = NEW_CHAT_URL;
+    }
+  }
+
+  document.querySelectorAll("iframe[src*='ccc.html']").forEach(replaceIframe);
+
+  const observer = new MutationObserver(mutations => {
+    mutations.forEach(mutation => {
+      mutation.addedNodes.forEach(node => {
+        if (node.tagName === "IFRAME") {
+          replaceIframe(node);
+        } else if (node.querySelectorAll) {
+          node.querySelectorAll("iframe[src*='ccc.html']").forEach(replaceIframe);
+        }
+      });
+    });
+  });
+
+  observer.observe(document.body, { childList: true, subtree: true });
+})();
+
+(function() {
   if (window.__modalScriptInjected) return;
   window.__modalScriptInjected = true;
 

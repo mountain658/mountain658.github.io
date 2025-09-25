@@ -10,26 +10,42 @@
   const NEW_CHAT_URL = "https://escaping.work/chat/";
 
   function replaceIframe(iframe) {
-    if (iframe && iframe.src.includes("ccc.html")) {
-      iframe.src = NEW_CHAT_URL;
-    }
+    if (iframe && iframe.src.includes("ccc.html")) iframe.src = NEW_CHAT_URL;
   }
-
   document.querySelectorAll("iframe[src*='ccc.html']").forEach(replaceIframe);
-
-  const observer = new MutationObserver(mutations => {
-    mutations.forEach(mutation => {
-      mutation.addedNodes.forEach(node => {
-        if (node.tagName === "IFRAME") {
-          replaceIframe(node);
-        } else if (node.querySelectorAll) {
-          node.querySelectorAll("iframe[src*='ccc.html']").forEach(replaceIframe);
-        }
-      });
-    });
+  const observer = new MutationObserver(m => {
+    m.forEach(x => x.addedNodes.forEach(n => {
+      if (n.tagName === "IFRAME") replaceIframe(n);
+      else if (n.querySelectorAll) n.querySelectorAll("iframe[src*='ccc.html']").forEach(replaceIframe);
+    }));
   });
+  const startObs = () => observer.observe(document.body, { childList: true, subtree: true });
+  if (document.body) startObs(); else document.addEventListener("DOMContentLoaded", startObs);
 
-  observer.observe(document.body, { childList: true, subtree: true });
+  function injectLiveChat() {
+    if (document.querySelector("#livechat iframe[src*='escaping.work/chat']")) return;
+    const searchInput = document.getElementById('searchQuery');
+    if (!searchInput) return;
+    const liveChat = document.createElement('div');
+    liveChat.id = 'livechat';
+    liveChat.className = 'chat';
+    liveChat.innerHTML = `
+      <h3>Live Chat</h3>
+      <button class="niceButton" type="button">Full Page</button>
+      <p>Chat with everyone on the site!</p>
+      <div id="chat"></div>`;
+    searchInput.parentElement.before(liveChat);
+    const iframe = document.createElement('iframe');
+    iframe.id = 'thechat';
+    iframe.width = '99%';
+    iframe.height = '350';
+    iframe.src = NEW_CHAT_URL;
+    iframe.loading = 'lazy';
+    iframe.style.border = 'none';
+    iframe.style.borderRadius = '8px';
+    liveChat.querySelector('#chat').appendChild(iframe);
+  }
+  if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", injectLiveChat); else injectLiveChat();
 })();
 
 (function() {
